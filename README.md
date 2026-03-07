@@ -1,6 +1,6 @@
 # Founder Skills
 
-**24 agent skills for non-technical founders building world-class products.**
+**27 agent skills for non-technical founders building world-class products.**
 
 Site: **https://fskills.xyz**
 
@@ -13,7 +13,7 @@ Skills for pi, Claude, and Codex. Every skill produces a concrete `.md` artifact
 The skills map to six phases of building a product:
 
 ```
-Strategy → Design → Build → Launch → Compound → PMF
+Strategy → Design → Build → Launch → Compound → PMF → Scale
 ```
 
 You don't need all 24. Start where you are.
@@ -30,6 +30,8 @@ You don't need all 24. Start where you are.
 | `problem-validator` | `problem-validation-report.md` — evidence the problem is real | "Validate my problem" |
 | `customer-hypothesis` | `customer-profile.md` — specific customer portrait | "Define my customer" |
 | `assumption-mapper` | `assumptions-map.md` — ranked risky bets with cheap tests | "Map my assumptions" |
+| `user-interview-guide` | `research-report.md` — validated insights from 5 user interviews | "Run user interviews" |
+| `competitor-mapper` | `competitor-map.md` — competitive landscape + positioning gap | "Map my competition" |
 
 ### Design — UX before UI
 
@@ -80,6 +82,12 @@ You don't need all 24. Start where you are.
 | Skill | What it produces | Invoke with |
 |-------|-----------------|-------------|
 | `founder-partner` | Updated `founder-context.md` + direction for the session | "Partner" or "Check in with my partner" |
+
+### Scale — Your first hires (human and AI)
+
+| Skill | What it produces | Invoke with |
+|-------|-----------------|-------------|
+| `first-hire-brief` | `human-hire-brief.md` or `agent-hire-brief.md` — who or what to hire first | "Help me make my first hire" |
 
 ---
 
