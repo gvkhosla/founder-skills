@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 64" fill="none">
+  <rect x="0" y="4" width="56" height="56" rx="14" fill="#05080E"/>
+  <rect x="0.5" y="4.5" width="55" height="55" rx="13.5" stroke="rgba(255,255,255,0.14)"/>
+
+  <text x="28" y="44"
+        text-anchor="middle"
+        font-family="Geist, 'Geist Sans', 'Inter', system-ui, -apple-system, sans-serif"
+        font-size="35"
+        font-weight="800"
+        letter-spacing="-2.4"
+        fill="#ff8a2a">/fs</text>
+
+  <text x="72" y="40"
+        font-family="Geist, 'Geist Sans', 'Inter', system-ui, -apple-system, sans-serif"
+        font-size="35"
+        font-weight="700"
+        letter-spacing="-1.1"
+        fill="#f7f9fb">founder skills</text>
+</svg>

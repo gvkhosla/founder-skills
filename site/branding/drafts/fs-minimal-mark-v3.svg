@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <rect width="512" height="512" rx="28" fill="#000000"/>
-  <rect x="1" y="1" width="510" height="510" rx="27" stroke="#ffffff" stroke-opacity="0.16"/>
+  <rect width="512" height="512" rx="40" fill="#000000"/>
+  <rect x="1" y="1" width="510" height="510" rx="39" stroke="#ffffff" stroke-opacity="0.18"/>
 
-  <text x="256" y="412"
+  <text x="256" y="388"
         text-anchor="middle"
         font-family="Geist, 'Geist Sans', Inter, system-ui, -apple-system, sans-serif"
-        font-size="404"
+        font-size="356"
         font-weight="900"
-        letter-spacing="-34"
+        letter-spacing="-28"
         fill="#ff7a1a">/fs</text>
 </svg>

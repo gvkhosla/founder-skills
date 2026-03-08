@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
   <rect width="1200" height="630" fill="#000000"/>
 
-  <rect x="78" y="68" width="236" height="236" rx="16" fill="#000000"/>
-  <rect x="79" y="69" width="234" height="234" rx="15" stroke="#ffffff" stroke-opacity="0.16"/>
-  <text x="196" y="278"
+  <rect x="78" y="68" width="236" height="236" rx="24" fill="#000000"/>
+  <rect x="79" y="69" width="234" height="234" rx="23" stroke="#ffffff" stroke-opacity="0.18"/>
+  <text x="196" y="258"
         text-anchor="middle"
         font-family="Geist, 'Geist Sans', Inter, system-ui, -apple-system, sans-serif"
-        font-size="192"
+        font-size="172"
         font-weight="900"
-        letter-spacing="-14"
+        letter-spacing="-12"
         fill="#ff7a1a">/fs</text>
 
   <text x="78" y="404"
@@ -21,11 +21,11 @@
         font-family="Geist, 'Geist Sans', Inter, system-ui, -apple-system, sans-serif"
         font-size="34"
         font-weight="600"
-        fill="#ffffff">24 custom workflows for pi, Codex, and Claude Code</text>
+        fill="#ffffff">24 custom founder workflows for pi, Codex, and Claude Code</text>
   <text x="78" y="548"
         font-family="Geist, 'Geist Sans', Inter, system-ui, -apple-system, sans-serif"
         font-size="46"
         font-weight="800"
         letter-spacing="-1"
-        fill="#ff7a1a">fskills.xyz</text>
+        fill="#ffffff">fskills.xyz</text>
 </svg>

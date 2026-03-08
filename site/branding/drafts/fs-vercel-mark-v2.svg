@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="72" fill="#05080E"/>
+  <rect x="1" y="1" width="510" height="510" rx="71" stroke="rgba(255,255,255,0.12)"/>
+
+  <text x="256" y="366"
+        text-anchor="middle"
+        font-family="Geist, 'Geist Sans', Inter, system-ui, -apple-system, sans-serif"
+        font-size="324"
+        font-weight="900"
+        letter-spacing="-22"
+        fill="#ff8a2a">/fs</text>
+</svg>

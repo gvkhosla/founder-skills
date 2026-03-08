@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f131a"/>
+      <stop offset="1" stop-color="#070910"/>
+    </linearGradient>
+    <linearGradient id="warm" x1="70" y1="110" x2="430" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a2a"/>
+      <stop offset="1" stop-color="#ffbe84"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect x="1" y="1" width="510" height="510" rx="95" stroke="rgba(255,255,255,0.12)"/>
+
+  <text x="86" y="336"
+        font-family="Inter, Avenir Next, SF Pro Display, system-ui, sans-serif"
+        font-size="244"
+        font-weight="900"
+        letter-spacing="-20"
+        fill="url(#warm)">fs</text>
+
+  <path d="M124 396L232 124H316L208 396H124Z" fill="#05070c"/>
+  <path d="M128 398L233 136H283L178 398H128Z" fill="url(#warm)"/>
+</svg>

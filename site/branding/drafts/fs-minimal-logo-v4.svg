@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 56" fill="none">
-  <rect x="0" y="0" width="56" height="56" rx="6" fill="#000000"/>
-  <rect x="1" y="1" width="54" height="54" rx="5" stroke="#ffffff" stroke-opacity="0.16"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 64" fill="none">
+  <rect x="0" y="4" width="56" height="56" rx="6" fill="#000000"/>
+  <rect x="1" y="5" width="54" height="54" rx="5" stroke="#ffffff" stroke-opacity="0.16"/>
 
-  <text x="30" y="43"
+  <text x="28" y="52"
         text-anchor="middle"
         font-family="Geist, 'Geist Sans', Inter, system-ui, -apple-system, sans-serif"
-        font-size="46"
+        font-size="54"
         font-weight="900"
-        letter-spacing="-3.3"
+        letter-spacing="-4.2"
         fill="#ff7a1a">/fs</text>
 
-  <text x="72" y="38"
+  <text x="72" y="40"
         font-family="Geist, 'Geist Sans', Inter, system-ui, -apple-system, sans-serif"
         font-size="44"
         font-weight="800"

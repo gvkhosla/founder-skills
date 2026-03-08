@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1017"/>
+      <stop offset="1" stop-color="#06080d"/>
+    </linearGradient>
+    <linearGradient id="warm" x1="96" y1="126" x2="420" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff7a1a"/>
+      <stop offset="1" stop-color="#ffc58f"/>
+    </linearGradient>
+    <mask id="cutout">
+      <rect width="512" height="512" fill="black"/>
+      <rect x="78" y="108" width="356" height="296" rx="54" fill="white"/>
+      <text x="112" y="318"
+            font-family="Inter, Avenir Next, SF Pro Display, system-ui, sans-serif"
+            font-size="216"
+            font-weight="900"
+            font-style="italic"
+            letter-spacing="-16"
+            fill="black">/fs</text>
+    </mask>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect x="1" y="1" width="510" height="510" rx="95" stroke="rgba(255,255,255,0.12)"/>
+
+  <rect x="78" y="108" width="356" height="296" rx="54" fill="url(#warm)" mask="url(#cutout)"/>
+
+  <path d="M130 402L208 208H276L198 402H130Z" fill="#06080d" opacity="0.9"/>
+</svg>
