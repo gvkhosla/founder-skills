@@ -753,14 +753,48 @@
       padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       display: flex;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
       color: var(--soft);
       font-family: var(--font-sans);
       font-size: 0.86rem;
     }
 
+    .footer-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .footer-logo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0.92;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+
+    .footer-logo-link:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .footer-favicon,
+    .footer-khosla-logo {
+      width: 32px;
+      height: 32px;
+      display: block;
+      border-radius: 7px;
+    }
+
+    .footer-favicon {
+      image-rendering: pixelated;
+    }
+
     .footer-copy {
-      text-align: center;
+      text-align: right;
     }
 
     .footer-copy a {
@@ -813,12 +847,32 @@
       .connect-code-head { align-items: stretch; flex-direction: column; }
       .connect-inline-copy,
       #copy-agent-btn { width: 100%; }
+      .footer-favicon,
+      .footer-khosla-logo {
+        width: 30px;
+        height: 30px;
+      }
       .footer-copy {
         font-size: 0.82rem;
       }
     }
 
     @media (max-width: 520px) {
+      footer {
+        gap: 0.8rem;
+      }
+      .footer-left {
+        gap: 0.55rem;
+      }
+      .footer-copy {
+        text-align: right;
+        font-size: 0.78rem;
+      }
+      .footer-favicon,
+      .footer-khosla-logo {
+        width: 28px;
+        height: 28px;
+      }
       .start-modal {
         padding: 14px;
       }
@@ -1079,6 +1133,14 @@ Stay in this same thread and keep the company context alive.</pre>
       </div>
 
       <footer>
+        <div class="footer-left">
+          <a class="footer-logo-link" href="/" aria-label="Founder Skills">
+            <img class="footer-favicon" src="/favicon.svg" alt="Founder Skills favicon" />
+          </a>
+          <a class="footer-logo-link" href="https://khoslalab.com" target="_blank" rel="noopener noreferrer" aria-label="khosla lab">
+            <img class="footer-khosla-logo" src="/assets/khosla-lab-logo.png" alt="khosla lab logo" />
+          </a>
+        </div>
         <div class="footer-copy"><a href="https://khoslalab.com" target="_blank" rel="noopener noreferrer">made by khosla lab</a></div>
       </footer>
     </div>
