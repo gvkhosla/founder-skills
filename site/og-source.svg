@@ -14,9 +14,10 @@
   <rect x="70" y="64" width="56" height="56" rx="10" fill="#09090b" fill-opacity="0.88"/>
   <image href="/favicon.svg" x="78" y="72" width="40" height="40" preserveAspectRatio="xMidYMid meet"/>
 
-  <text x="70" y="576"
+  <text x="1110" y="576"
+        text-anchor="end"
         font-family="Arial, Helvetica, sans-serif"
-        font-size="42"
+        font-size="30"
         font-weight="700"
         fill="#f97316">fskills.xyz</text>
 </svg>
