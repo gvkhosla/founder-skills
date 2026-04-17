@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="site/logo.svg" alt="Founder Skills" width="320" />
+  <img src="site/assets/hero-invader.png" alt="Founder Skills invader" width="720" />
 </p>
 
 <p align="center">
-  <img src="site/social-preview.png" alt="Founder Skills social preview" width="720" />
+  <a href="https://fskills.xyz">fskills.xyz</a>
 </p>
 
 # Founder Skills OS

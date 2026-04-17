@@ -1,46 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bottom-fade" x1="600" y1="420" x2="600" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#09090b" stop-opacity="0"/>
+      <stop offset="1" stop-color="#09090b" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+
   <rect width="1200" height="630" fill="#09090b"/>
-  <rect x="48" y="48" width="1104" height="534" rx="28" fill="#0d0d10" stroke="#1f1f23"/>
+  <image href="/assets/hero-invader.png" x="0" y="0" width="1200" height="630" preserveAspectRatio="xMidYMid slice"/>
+  <rect width="1200" height="630" fill="#09090b" fill-opacity="0.1"/>
+  <rect y="420" width="1200" height="210" fill="url(#bottom-fade)"/>
 
-  <rect x="96" y="92" width="74" height="74" rx="10" fill="#000000"/>
-  <rect x="97" y="93" width="72" height="72" rx="9" stroke="#ffffff" stroke-opacity="0.16"/>
-  <text x="133" y="149"
-        text-anchor="middle"
-        font-family="Geist, Inter, Arial, sans-serif"
-        font-size="60"
-        font-weight="900"
-        letter-spacing="-4"
-        fill="#f97316">/fs</text>
+  <rect x="70" y="64" width="56" height="56" rx="10" fill="#09090b" fill-opacity="0.88"/>
+  <image href="/favicon.svg" x="78" y="72" width="40" height="40" preserveAspectRatio="xMidYMid meet"/>
 
-  <text x="190" y="144"
-        font-family="Geist, Inter, Arial, sans-serif"
-        font-size="64"
-        font-weight="800"
-        letter-spacing="-2"
-        fill="#f5f5f5">founder skills</text>
-
-  <text x="96" y="276"
-        font-family="Geist, Inter, Arial, sans-serif"
-        font-size="90"
-        font-weight="800"
-        letter-spacing="-4"
-        fill="#f5f5f5">Turn your agent into</text>
-  <text x="96" y="368"
-        font-family="Geist, Inter, Arial, sans-serif"
-        font-size="90"
-        font-weight="800"
-        letter-spacing="-4"
-        fill="#f5f5f5">a brutally honest co-founder.</text>
-
-  <text x="96" y="462"
-        font-family="Geist, Inter, Arial, sans-serif"
-        font-size="34"
-        font-weight="500"
-        fill="#b0b0b7">Founder workflows, company memory, and clear next-step routing.</text>
-
-  <text x="96" y="538"
-        font-family="Geist, Inter, Arial, sans-serif"
-        font-size="38"
+  <text x="70" y="576"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="42"
         font-weight="700"
         fill="#f97316">fskills.xyz</text>
 </svg>
