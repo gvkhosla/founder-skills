@@ -1,5 +1,5 @@
 import path from "node:path";
-import { loadAllCanonicalSequences, loadAllCanonicalSkills } from "../../../../packages/core/src/loaders/index.js";
+import { loadAllCanonicalSequences, loadAllCanonicalSkills } from "../../../core/src/loaders/index.js";
 import {
   ensureFounderWorkspace,
   readArtifactIndex,
@@ -7,7 +7,7 @@ import {
   startSequence,
   syncSequenceState,
   writeSequenceState,
-} from "../../../../packages/state/src/workspace.js";
+} from "../../../state/src/workspace.js";
 
 export function startSequenceCommand(rootDir: string, projectDir: string, sequenceName: string) {
   const resolvedProjectDir = path.resolve(projectDir);

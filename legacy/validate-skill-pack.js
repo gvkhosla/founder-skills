@@ -155,9 +155,9 @@ function assertOutputMap(mapName, source, canonical) {
 function assertNoLegacyStrings() {
   const scans = [
     'README.md',
-    'docs/PHILOSOPHY.md',
-    'docs/AUTHORING.md',
-    'docs/MULTI-AGENT.md',
+    'docs/legacy/PHILOSOPHY.md',
+    'docs/legacy/AUTHORING.md',
+    'docs/legacy/MULTI-AGENT.md',
     'site/index.html',
     'site/llms.txt',
     'site/og-source.svg',

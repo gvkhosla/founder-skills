@@ -3,8 +3,8 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { initStateCommand } from "../../apps/cli/src/commands/state.js";
-import { startSequenceCommand } from "../../apps/cli/src/commands/sequence.js";
+import { initStateCommand } from "../../packages/cli/src/commands/state.js";
+import { startSequenceCommand } from "../../packages/cli/src/commands/sequence.js";
 import { readCompanyState } from "../../packages/state/src/workspace.js";
 
 const root = process.cwd();

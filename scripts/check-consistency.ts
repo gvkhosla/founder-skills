@@ -3,10 +3,13 @@ import path from "node:path";
 
 const root = process.cwd();
 const checks = [
-  "docs/founder-skills-os-orchestrator-state-model.md",
-  "docs/founder-skills-os-folder-scaffold.md",
-  "docs/founder-skills-os-host-adapter-contract.md",
-  "docs/founder-skills-os-coding-host-priority.md",
+  "docs/README.md",
+  "docs/internal/README.md",
+  "docs/legacy/README.md",
+  "docs/internal/founder-skills-os-orchestrator-state-model.md",
+  "docs/internal/founder-skills-os-folder-scaffold.md",
+  "docs/internal/founder-skills-os-host-adapter-contract.md",
+  "docs/internal/founder-skills-os-coding-host-priority.md",
   "docs/founder-partner-manifesto.md",
   "docs/homepage-positioning.md",
   "docs/founder-skills-os-install-export-flows.md",
@@ -14,6 +17,7 @@ const checks = [
   "turbo.json",
   "tsconfig.base.json",
   "tsconfig.json",
+  "packages/cli/src/index.ts",
   "packages/core/src/index.ts",
   "packages/core/src/loaders/canonical-skill.ts",
   "packages/graph/src/artifact-index.ts",

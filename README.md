@@ -155,10 +155,10 @@ In practice that means:
 
 ## Docs
 
+- [Docs index](docs/README.md)
 - [Homepage positioning](docs/homepage-positioning.md)
 - [Founder Partner manifesto](docs/founder-partner-manifesto.md)
 - [OS install/export flows](docs/founder-skills-os-install-export-flows.md)
-- [OS repo architecture](docs/founder-skills-os-repo-architecture.md)
 - [Legacy compatibility layer](legacy/README.md)
 
 ## Development

@@ -1,6 +1,6 @@
 import path from "node:path";
-import { loadAllCanonicalSequences, loadAllCanonicalSkills } from "../../../../packages/core/src/loaders/index.js";
-import { recommendNextMove } from "../../../../packages/orchestrator/src/founder-partner.js";
+import { loadAllCanonicalSequences, loadAllCanonicalSkills } from "../../../core/src/loaders/index.js";
+import { recommendNextMove } from "../../../orchestrator/src/founder-partner.js";
 import {
   ensureFounderWorkspace,
   readArtifactIndex,
@@ -9,7 +9,7 @@ import {
   writeCompanyState,
   writeRecommendedNextStep,
   type EnsureWorkspaceOptions,
-} from "../../../../packages/state/src/workspace.js";
+} from "../../../state/src/workspace.js";
 
 const VALID_STAGES = ["idea", "validating", "building", "launched", "revenue", "growing"] as const;
 

@@ -1,5 +1,5 @@
 import path from "node:path";
-import { recommendStateCommand } from "../apps/cli/src/index.js";
+import { recommendStateCommand } from "../packages/cli/src/index.js";
 
 function usage() {
   console.log(`Founder Skills OS recommendation

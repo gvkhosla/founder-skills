@@ -1,5 +1,5 @@
 import path from "node:path";
-import { initStateCommand } from "../apps/cli/src/index.js";
+import { initStateCommand } from "../packages/cli/src/index.js";
 import type { CompanyStage } from "../packages/core/src/types/state.js";
 
 function usage() {

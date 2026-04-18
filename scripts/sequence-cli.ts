@@ -1,5 +1,5 @@
 import path from "node:path";
-import { startSequenceCommand, syncSequenceCommand } from "../apps/cli/src/index.js";
+import { startSequenceCommand, syncSequenceCommand } from "../packages/cli/src/index.js";
 
 function usage() {
   console.log(`Founder Skills OS sequence control

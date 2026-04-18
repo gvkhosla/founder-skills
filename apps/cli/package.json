@@ -1,9 +1,0 @@
-{
-  "name": "@founder-skills/cli",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "echo 'CLI scaffold ready'"
-  }
-}

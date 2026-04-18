@@ -121,11 +121,8 @@ founder-skills/
 │  │  │  ├─ bottlenecks.ts
 │  │  │  ├─ confidence.ts
 │  │  │  ├─ freshness.ts
+│  │  │  ├─ workspace.ts
 │  │  │  └─ migrations/
-│  │  ├─ schemas/
-│  │  │  ├─ company-state.schema.json
-│  │  │  ├─ weekly-review.schema.json
-│  │  │  └─ metrics.schema.json
 │  │  └─ package.json
 │  │
 │  ├─ graph/
@@ -253,7 +250,7 @@ founder-skills/
 │  │  ├─ first-hire-decision/
 │  │  └─ support-to-roadmap/
 │  │
-│  ├─ schemas/
+│  ├─ validators/
 │  ├─ rubrics/
 │  └─ templates/
 │

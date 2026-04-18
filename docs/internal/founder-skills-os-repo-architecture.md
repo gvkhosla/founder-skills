@@ -48,7 +48,7 @@ founder-skills/
 ├─ source/
 │  ├─ skills/                      # canonical skill source files by domain
 │  ├─ sequences/                   # multi-step workflows (validate→build, GTM engine, PMF recovery)
-│  ├─ schemas/                     # JSON schemas for state, artifacts, sequences, scorecards
+│  ├─ validators/                  # runtime validators for state, artifacts, sequences, and scorecards
 │  ├─ rubrics/                     # scoring rubrics for evals and artifact quality
 │  └─ templates/                   # host and artifact templates
 │
@@ -76,10 +76,10 @@ founder-skills/
 │  └─ fixtures/
 │
 ├─ docs/
-│  ├─ architecture/
-│  ├─ product/
-│  ├─ skills/
-│  └─ founder-skills-os-repo-architecture.md
+│  ├─ internal/
+│  ├─ legacy/
+│  ├─ README.md
+│  └─ founder-skills-os-install-export-flows.md
 │
 ├─ scripts/
 │  ├─ gen-host-skills.ts
@@ -410,8 +410,8 @@ packages/state/
 │  ├─ freshness.ts
 │  ├─ confidence.ts
 │  ├─ bottlenecks.ts
-│  └─ stage-machine.ts
-└─ schemas/
+│  ├─ stage-machine.ts
+│  └─ workspace.ts                 # runtime validation + state IO
 ```
 
 ## Core state schema
