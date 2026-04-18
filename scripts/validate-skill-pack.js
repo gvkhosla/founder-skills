@@ -237,19 +237,21 @@ function assertNpmReadiness() {
     }
   }
 
+  const installCommand = 'npx --yes github:gvkhosla/founder-skills install --agent pi';
+
   const readme = readFile('README.md');
-  if (!readme.includes('npx founder-skills install --agent pi')) {
-    fail('README.md: missing npx install command for pi');
+  if (!readme.includes(installCommand)) {
+    fail('README.md: missing GitHub npx install command for pi');
   }
 
   const llms = readFile('site/llms.txt');
-  if (!llms.includes('npx founder-skills install --agent pi')) {
-    fail('site/llms.txt: missing npx install command for pi');
+  if (!llms.includes(installCommand)) {
+    fail('site/llms.txt: missing GitHub npx install command for pi');
   }
 
   const site = readFile('site/index.html');
-  if (!site.includes('npx founder-skills install --agent pi')) {
-    fail('site/index.html: missing npx install command for pi');
+  if (!site.includes(installCommand)) {
+    fail('site/index.html: missing GitHub npx install command for pi');
   }
 }
 

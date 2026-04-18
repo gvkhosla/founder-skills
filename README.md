@@ -43,11 +43,11 @@ It includes:
 - multi-host generation and install/export flows
 
 ### 2. Legacy pack
-The published package still ships the original **27-skill pack**.
+The repo still ships the original **27-skill pack**.
 
-That is what powers:
+You can install that legacy pack directly from GitHub with:
 ```bash
-npx founder-skills install --agent pi
+npx --yes github:gvkhosla/founder-skills install --agent pi
 ```
 
 ## Best supported today
@@ -69,7 +69,7 @@ Chat bundles are also generated for:
 ## Fastest way to try it
 
 ```bash
-npx founder-skills install --agent pi
+npx --yes github:gvkhosla/founder-skills install --agent pi
 ```
 
 Then start with:
@@ -86,13 +86,13 @@ If the bottleneck is unclear, start with **`founder-partner`**.
 
 ```bash
 # pi
-npx founder-skills install --agent pi
+npx --yes github:gvkhosla/founder-skills install --agent pi
 
 # Claude Code
-npx founder-skills install --agent claude --scope project
+npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
 
 # Codex
-npx founder-skills install --agent codex --out ./AGENTS.founder-skills.md
+npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md
 ```
 
 ### OS beta install

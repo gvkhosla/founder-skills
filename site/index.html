@@ -908,7 +908,7 @@
         <p class="hero-copy">Founder Skills transforms your agent into a co-founder with product taste, validation rigor, and a growth mindset - to get you from idea to PMF and beyond.</p>
 
         <div class="install-box">
-          <code id="install-command"><span class="install-prefix">$</span>npx founder-skills install --agent pi</code>
+          <code id="install-command"><span class="install-prefix">$</span>npx --yes github:gvkhosla/founder-skills install --agent pi</code>
           <button class="copy-btn" id="copy-btn">Copy</button>
         </div>
 
@@ -1183,13 +1183,13 @@ Stay in this same thread and keep the company context alive.</pre>
     const installAgentButtons = Array.from(document.querySelectorAll('[data-install-agent]'));
     const installOptions = {
       pi: {
-        command: 'npx founder-skills install --agent pi'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent pi'
       },
       'claude-code': {
-        command: 'npx founder-skills install --agent claude --scope project'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent claude --scope project'
       },
       codex: {
-        command: 'npx founder-skills install --agent codex --out ./AGENTS.founder-skills.md'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md'
       },
       opencode: {
         command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen && npm run os:install -- --host opencode --project /path/to/startup'

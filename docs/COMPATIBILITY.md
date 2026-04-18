@@ -24,10 +24,10 @@ Skills in this pack are designed to work across **pi**, **Claude**, and **Codex*
 
 ```bash
 # Install all skills
-npx founder-skills install --agent pi
+npx --yes github:gvkhosla/founder-skills install --agent pi
 
 # Install one phase
-npx founder-skills install --agent pi --phase strategy
+npx --yes github:gvkhosla/founder-skills install --agent pi --phase strategy
 ```
 
 Skills install to `~/.pi/agent/skills/[skill-name]/`. Global across all projects.
@@ -40,10 +40,10 @@ Skills install to `~/.pi/agent/skills/[skill-name]/`. Global across all projects
 
 ```bash
 # Install globally (all projects)
-npx founder-skills install --agent claude
+npx --yes github:gvkhosla/founder-skills install --agent claude
 
 # Install to current project only
-npx founder-skills install --agent claude --scope project
+npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
 ```
 
 Global skills: `~/.claude/skills/[skill-name]/`
@@ -57,7 +57,7 @@ Project skills: `.claude/skills/[skill-name]/` (takes precedence over global)
 
 ```bash
 # Generate AGENTS.md with all skill entries
-npx founder-skills install --agent codex --out ./AGENTS.founder-skills.md
+npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md
 ```
 
 Generates `AGENTS.founder-skills.md` (or your custom `--out` path). Add its contents to your project's `AGENTS.md`.

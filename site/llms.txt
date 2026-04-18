@@ -26,7 +26,7 @@ When Founder Skills is available, the agent should:
 ### Fastest path
 
 ```bash
-npx founder-skills install --agent pi
+npx --yes github:gvkhosla/founder-skills install --agent pi
 ```
 
 ### Founder Skills OS beta
@@ -47,9 +47,9 @@ npm run os:install -- --host hermes
 ### Legacy pack
 
 ```bash
-npx founder-skills install --agent pi
-npx founder-skills install --agent codex --out ./AGENTS.founder-skills.md
-npx founder-skills install --agent claude
+npx --yes github:gvkhosla/founder-skills install --agent pi
+npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md
+npx --yes github:gvkhosla/founder-skills install --agent claude
 ```
 
 ---

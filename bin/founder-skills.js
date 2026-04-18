@@ -28,12 +28,12 @@ Install options:
   --out, -o     (codex only) output file path (default: ./AGENTS.founder-skills.md)
 
 Examples:
-  npx founder-skills install --agent pi
-  npx founder-skills install --agent pi --phase strategy
-  npx founder-skills install claude project
-  npx founder-skills install --agent claude --scope project --phase pmf
-  npx founder-skills install --agent codex --out ./AGENTS.md
-  npx founder-skills list
+  npx --yes github:gvkhosla/founder-skills install --agent pi
+  npx --yes github:gvkhosla/founder-skills install --agent pi --phase strategy
+  npx --yes github:gvkhosla/founder-skills install claude project
+  npx --yes github:gvkhosla/founder-skills install --agent claude --scope project --phase pmf
+  npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.md
+  npx --yes github:gvkhosla/founder-skills list
 `);
 }
 
