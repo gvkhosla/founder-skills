@@ -152,85 +152,12 @@
 
     .hero-copy {
       max-width: 40rem;
-      margin: 0 auto 1.25rem;
+      margin: 0 auto 2rem;
       font-size: 1.05rem;
       line-height: 1.58;
       color: var(--muted);
       text-wrap: pretty;
       animation: fade-up .7s cubic-bezier(.22,.9,.22,1) .14s both;
-    }
-
-    .install-context {
-      width: 100%;
-      max-width: 620px;
-      display: grid;
-      gap: 0.7rem;
-      margin: 0 auto 0.7rem;
-      animation: fade-up .7s cubic-bezier(.22,.9,.22,1) .2s both;
-    }
-
-    .install-mode-switch {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      padding: 0.3rem;
-      border-radius: 999px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      width: fit-content;
-      margin: 0 auto;
-    }
-
-    .install-mode-btn {
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 0.48rem 0.9rem;
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color .15s ease, color .15s ease, transform .15s ease;
-    }
-
-    .install-mode-btn:hover {
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-    .install-mode-btn.is-active {
-      background: color-mix(in srgb, var(--accent) 14%, var(--surface));
-      color: var(--text);
-    }
-
-    .install-help {
-      color: var(--soft);
-      font-size: 0.84rem;
-      line-height: 1.55;
-      max-width: 52ch;
-      margin: 0 auto;
-      text-align: center;
-      text-wrap: balance;
-    }
-
-    .install-verify {
-      color: var(--muted);
-      font-size: 0.82rem;
-      line-height: 1.52;
-      max-width: 60ch;
-      margin: -0.1rem auto 0;
-      text-align: center;
-      text-wrap: pretty;
-    }
-
-    .install-verify code {
-      font-size: 0.76rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.08rem 0.35rem;
     }
 
     .install-box {
@@ -906,14 +833,6 @@
       .hero { padding: 1rem 0 2.3rem; }
       .hero-mark { margin-bottom: 1.7rem; }
       .hero-copy { font-size: 0.96rem; line-height: 1.52; }
-      .install-context { gap: 0.6rem; }
-      .install-mode-switch {
-        width: 100%;
-        justify-content: center;
-      }
-      .install-mode-btn {
-        flex: 1 1 0;
-      }
       .install-box {
         flex-direction: column;
         align-items: stretch;
@@ -951,12 +870,6 @@
       }
       .footer-left {
         gap: 0.55rem;
-      }
-      .install-help {
-        font-size: 0.8rem;
-      }
-      .install-verify {
-        font-size: 0.78rem;
       }
       .footer-copy {
         text-align: right;
@@ -1004,15 +917,6 @@
         <h1>Turn your agent into a brutally honest co-founder.</h1>
         <p class="hero-copy">Founder Skills transforms your agent into a co-founder with product taste, validation rigor, and a growth mindset - to get you from idea to PMF and beyond.</p>
 
-        <div class="install-context">
-          <div class="install-mode-switch" role="tablist" aria-label="Install mode">
-            <button class="install-mode-btn is-active" type="button" data-install-mode="quick" aria-pressed="true">Quick install</button>
-            <button class="install-mode-btn" type="button" data-install-mode="os" aria-pressed="false">OS beta</button>
-          </div>
-          <p class="install-help" id="install-help">Runs the legacy pack directly from GitHub. Fastest path for pi, Claude, and Codex.</p>
-          <p class="install-verify" id="install-verify">Verify: check <code>~/.pi/agent/skills/founder-partner/SKILL.md</code>, then try <code>/skill founder-partner</code>.</p>
-        </div>
-
         <div class="install-box">
           <code id="install-command"><span class="install-prefix">$</span>npx --yes github:gvkhosla/founder-skills install --agent pi</code>
           <button class="copy-btn" id="copy-btn">Copy</button>
@@ -1028,29 +932,29 @@
       </section>
 
       <section class="works-with" aria-label="Supported coding agents">
-        <span class="strip-label" id="install-target-label">Quick install hosts</span>
+        <span class="strip-label">Works with</span>
         <div class="logo-row">
           <button class="logo-item is-active" type="button" data-install-agent="pi" aria-label="pi" aria-pressed="true">
             <img class="theme-dark-only logo-pi" src="/brands/pi-dark.svg" alt="pi" />
             <img class="theme-light-only logo-pi" src="/brands/pi-light.svg" alt="pi" />
           </button>
-          <button class="logo-item" type="button" data-install-agent="claude-code" aria-label="Claude Code" aria-pressed="false">
-            <img class="theme-dark-only logo-claude" src="/brands/claude-dark.png" alt="Claude Code" />
-            <img class="theme-light-only logo-claude" src="/brands/claude-light.png" alt="Claude Code" />
+          <button class="logo-item" type="button" data-install-agent="openclaw" aria-label="OpenClaw" aria-pressed="false">
+            <img class="theme-dark-only logo-wordmark" src="/brands/openclaw-light.png" alt="OpenClaw" />
+            <img class="theme-light-only logo-wordmark" src="/brands/openclaw-dark.png" alt="OpenClaw" />
           </button>
           <button class="logo-item" type="button" data-install-agent="codex" aria-label="Codex" aria-pressed="false">
             <img class="theme-dark-only logo-codex" src="/brands/codex-dark.png" alt="Codex" />
             <img class="theme-light-only logo-codex" src="/brands/codex-light.png" alt="Codex" />
           </button>
-          <button class="logo-item" type="button" data-install-agent="opencode" aria-label="OpenCode" aria-pressed="false" hidden>
+          <button class="logo-item" type="button" data-install-agent="opencode" aria-label="OpenCode" aria-pressed="false">
             <img class="theme-dark-only logo-wordmark" src="/brands/opencode-dark.svg" alt="OpenCode" />
             <img class="theme-light-only logo-wordmark" src="/brands/opencode-light.svg" alt="OpenCode" />
           </button>
-          <button class="logo-item" type="button" data-install-agent="openclaw" aria-label="OpenClaw" aria-pressed="false" hidden>
-            <img class="theme-dark-only logo-wordmark" src="/brands/openclaw-light.png" alt="OpenClaw" />
-            <img class="theme-light-only logo-wordmark" src="/brands/openclaw-dark.png" alt="OpenClaw" />
+          <button class="logo-item" type="button" data-install-agent="claude-code" aria-label="Claude Code" aria-pressed="false">
+            <img class="theme-dark-only logo-claude" src="/brands/claude-dark.png" alt="Claude Code" />
+            <img class="theme-light-only logo-claude" src="/brands/claude-light.png" alt="Claude Code" />
           </button>
-          <button class="logo-item" type="button" data-install-agent="hermes" aria-label="Hermes" aria-pressed="false" hidden>
+          <button class="logo-item" type="button" data-install-agent="hermes" aria-label="Hermes" aria-pressed="false">
             <img class="theme-dark-only logo-hermes" src="/brands/hermes-dark.png" alt="Hermes" />
             <img class="theme-light-only logo-hermes" src="/brands/hermes-light.png" alt="Hermes" />
           </button>
@@ -1286,59 +1190,29 @@ Stay in this same thread and keep the company context alive.</pre>
     const startModalCopyBtn = document.getElementById('start-modal-copy-btn');
     const startModalPrompt = document.getElementById('start-modal-prompt');
     const installCommand = document.getElementById('install-command');
-    const installHelp = document.getElementById('install-help');
-    const installVerify = document.getElementById('install-verify');
-    const installTargetLabel = document.getElementById('install-target-label');
-    const installModeButtons = Array.from(document.querySelectorAll('[data-install-mode]'));
     const installAgentButtons = Array.from(document.querySelectorAll('[data-install-agent]'));
-    const installModes = {
-      quick: {
-        label: 'Quick install hosts',
-        help: 'Runs the legacy pack directly from GitHub. Fastest path for pi, Claude, and Codex.',
-        defaultAgent: 'pi'
-      },
-      os: {
-        label: 'OS beta hosts',
-        help: 'Repo-based install with .fs memory, sequences, and next-step routing. Best for OpenCode, OpenClaw, and Hermes.',
-        defaultAgent: 'opencode'
-      }
-    };
     const installOptions = {
       pi: {
-        mode: 'quick',
-        command: 'npx --yes github:gvkhosla/founder-skills install --agent pi',
-        verify: 'Verify: check <code>~/.pi/agent/skills/founder-partner/SKILL.md</code>, then try <code>/skill founder-partner</code>.'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent pi'
       },
       'claude-code': {
-        mode: 'quick',
-        command: 'npx --yes github:gvkhosla/founder-skills install --agent claude --scope project',
-        verify: 'Verify: check <code>.claude/skills/founder-partner/SKILL.md</code> in your project, then ask Claude to use <code>founder-partner</code>.'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent claude --scope project'
       },
       codex: {
-        mode: 'quick',
-        command: 'npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md',
-        verify: 'Verify: confirm <code>AGENTS.founder-skills.md</code> was created, then merge it into <code>AGENTS.md</code>.'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md'
       },
       opencode: {
-        mode: 'os',
-        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host opencode --project /path/to/startup',
-        verify: 'Verify: check <code>.opencode/founder-skills-os/workspace/project-instructions.md</code> and the managed Founder Skills section in <code>AGENTS.md</code>.'
+        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host opencode --project /path/to/startup'
       },
       openclaw: {
-        mode: 'os',
-        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host openclaw --project /path/to/startup',
-        verify: 'Verify: check <code>.openclaw/founder-skills-os/founder-skills-full-CLAUDE.md</code> and the managed Founder Skills section in <code>AGENTS.md</code>.'
+        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host openclaw --project /path/to/startup'
       },
       hermes: {
-        mode: 'os',
-        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host hermes',
-        verify: 'Verify: check <code>~/.hermes/skills/founder-skills-os/workspace/project-instructions.md</code>, then run <code>hermes skills list</code>.'
+        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host hermes'
       }
     };
-    let currentInstallMode = 'quick';
     let currentInstallAgent = 'pi';
     const storedTheme = localStorage.getItem('founder-skills-theme');
-    const storedInstallMode = localStorage.getItem('founder-skills-install-mode');
     const storedInstallAgent = localStorage.getItem('founder-skills-install-agent');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -1348,19 +1222,12 @@ Stay in this same thread and keep the company context alive.</pre>
       document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'light' ? '#fffdfa' : '#09090b');
     }
 
-    function availableAgentsForMode(mode) {
-      return Object.entries(installOptions)
-        .filter(([, option]) => option.mode === mode)
-        .map(([agentId]) => agentId);
-    }
-
     function setInstallAgent(agentId) {
       const option = installOptions[agentId];
       if (!option || !installCommand) return;
 
       currentInstallAgent = agentId;
       installCommand.innerHTML = `<span class="install-prefix">$</span>${option.command}`;
-      if (installVerify) installVerify.innerHTML = option.verify;
       localStorage.setItem('founder-skills-install-agent', agentId);
 
       installAgentButtons.forEach((button) => {
@@ -1370,42 +1237,8 @@ Stay in this same thread and keep the company context alive.</pre>
       });
     }
 
-    function setInstallMode(mode, preferredAgent) {
-      const config = installModes[mode];
-      if (!config) return;
-
-      currentInstallMode = mode;
-      localStorage.setItem('founder-skills-install-mode', mode);
-
-      if (installHelp) installHelp.textContent = config.help;
-      if (installTargetLabel) installTargetLabel.textContent = config.label;
-
-      installModeButtons.forEach((button) => {
-        const isActive = button.getAttribute('data-install-mode') === mode;
-        button.classList.toggle('is-active', isActive);
-        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      });
-
-      installAgentButtons.forEach((button) => {
-        const agentId = button.getAttribute('data-install-agent');
-        if (!agentId || !installOptions[agentId]) return;
-        button.hidden = installOptions[agentId].mode !== mode;
-      });
-
-      const nextAgent = availableAgentsForMode(mode).includes(preferredAgent)
-        ? preferredAgent
-        : availableAgentsForMode(mode).includes(currentInstallAgent)
-          ? currentInstallAgent
-          : config.defaultAgent;
-
-      setInstallAgent(nextAgent);
-    }
-
     setTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
-    const initialMode = installModes[storedInstallMode]
-      ? storedInstallMode
-      : installOptions[storedInstallAgent]?.mode || 'quick';
-    setInstallMode(initialMode, storedInstallAgent);
+    setInstallAgent(installOptions[storedInstallAgent] ? storedInstallAgent : 'pi');
 
     if (startModalPrompt && agentPasteText) {
       startModalPrompt.textContent = agentPasteText.textContent.trim();
@@ -1418,24 +1251,10 @@ Stay in this same thread and keep the company context alive.</pre>
       });
     }
 
-    installModeButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const mode = button.getAttribute('data-install-mode');
-        if (!mode) return;
-        setInstallMode(mode);
-      });
-    });
-
     installAgentButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const agentId = button.getAttribute('data-install-agent');
-        if (!agentId || !installOptions[agentId]) return;
-
-        if (installOptions[agentId].mode !== currentInstallMode) {
-          setInstallMode(installOptions[agentId].mode, agentId);
-          return;
-        }
-
+        if (!agentId) return;
         setInstallAgent(agentId);
       });
     });
