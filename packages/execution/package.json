@@ -1,7 +1,0 @@
-{
-  "name": "@founder-skills/execution",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "main": "./src/implementation-plan.ts"
-}

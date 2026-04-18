@@ -17,16 +17,16 @@ const groups: Record<string, string[]> = {
   docs: [
     "docs/README.md",
     "docs/internal/README.md",
+    "docs/internal/archive/README.md",
     "docs/legacy/README.md",
     "docs/internal/founder-skills-os-orchestrator-state-model.md",
-    "docs/internal/founder-skills-os-folder-scaffold.md",
     "docs/internal/founder-skills-os-host-adapter-contract.md",
     "docs/internal/founder-skills-os-coding-host-priority.md",
     "docs/founder-partner-manifesto.md",
     "docs/homepage-positioning.md",
     "docs/founder-skills-os-install-export-flows.md",
   ],
-  workspace: ["pnpm-workspace.yaml", "turbo.json", "tsconfig.base.json", "tsconfig.json"],
+  workspace: ["package.json", "package-lock.json", "tsconfig.base.json", "tsconfig.json"],
   core: [
     "packages/cli/src/index.ts",
     "packages/core/src/index.ts",

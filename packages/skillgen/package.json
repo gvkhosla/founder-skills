@@ -1,7 +1,0 @@
-{
-  "name": "@founder-skills/skillgen",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "main": "./src/generate-host-output.ts"
-}

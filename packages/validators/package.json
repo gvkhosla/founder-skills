@@ -1,7 +1,0 @@
-{
-  "name": "@founder-skills/validators",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "main": "./src/check-consistency.ts"
-}
