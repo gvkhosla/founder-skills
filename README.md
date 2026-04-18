@@ -45,7 +45,7 @@ It includes:
 ### 2. Legacy pack
 The repo still ships the original **27-skill pack**.
 
-You can install that legacy pack directly from GitHub with:
+It is not published on npm right now, so the quick install runs directly from GitHub:
 ```bash
 npx --yes github:gvkhosla/founder-skills install --agent pi
 ```
@@ -95,6 +95,11 @@ npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
 npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md
 ```
 
+Verify:
+- pi → `~/.pi/agent/skills/founder-partner/SKILL.md`
+- Claude Code → `.claude/skills/founder-partner/SKILL.md`
+- Codex → `AGENTS.founder-skills.md`
+
 ### OS beta install
 
 Run these from this repo:
@@ -114,6 +119,12 @@ npm run os:install -- --host hermes --project /path/to/startup
 ```
 
 You can also use the OS install flow for pi, Claude Code, and Codex.
+
+Verify OS installs with:
+- OpenCode → `.opencode/founder-skills-os/workspace/project-instructions.md`
+- OpenClaw → `.openclaw/founder-skills-os/founder-skills-full-CLAUDE.md`
+- Hermes → `~/.hermes/skills/founder-skills-os/workspace/project-instructions.md`
+- any initialized repo → `npm run os:doctor -- --project /path/to/startup`
 
 ## OS beta quickstart
 

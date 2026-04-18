@@ -215,6 +215,24 @@
       text-wrap: balance;
     }
 
+    .install-verify {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.52;
+      max-width: 60ch;
+      margin: -0.1rem auto 0;
+      text-align: center;
+      text-wrap: pretty;
+    }
+
+    .install-verify code {
+      font-size: 0.76rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.08rem 0.35rem;
+    }
+
     .install-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -937,6 +955,9 @@
       .install-help {
         font-size: 0.8rem;
       }
+      .install-verify {
+        font-size: 0.78rem;
+      }
       .footer-copy {
         text-align: right;
         font-size: 0.78rem;
@@ -988,7 +1009,8 @@
             <button class="install-mode-btn is-active" type="button" data-install-mode="quick" aria-pressed="true">Quick install</button>
             <button class="install-mode-btn" type="button" data-install-mode="os" aria-pressed="false">OS beta</button>
           </div>
-          <p class="install-help" id="install-help">Legacy pack. Fastest path for pi, Claude, and Codex.</p>
+          <p class="install-help" id="install-help">Runs the legacy pack directly from GitHub. Fastest path for pi, Claude, and Codex.</p>
+          <p class="install-verify" id="install-verify">Verify: check <code>~/.pi/agent/skills/founder-partner/SKILL.md</code>, then try <code>/skill founder-partner</code>.</p>
         </div>
 
         <div class="install-box">
@@ -1265,13 +1287,14 @@ Stay in this same thread and keep the company context alive.</pre>
     const startModalPrompt = document.getElementById('start-modal-prompt');
     const installCommand = document.getElementById('install-command');
     const installHelp = document.getElementById('install-help');
+    const installVerify = document.getElementById('install-verify');
     const installTargetLabel = document.getElementById('install-target-label');
     const installModeButtons = Array.from(document.querySelectorAll('[data-install-mode]'));
     const installAgentButtons = Array.from(document.querySelectorAll('[data-install-agent]'));
     const installModes = {
       quick: {
         label: 'Quick install hosts',
-        help: 'Legacy pack. Fastest path for pi, Claude, and Codex.',
+        help: 'Runs the legacy pack directly from GitHub. Fastest path for pi, Claude, and Codex.',
         defaultAgent: 'pi'
       },
       os: {
@@ -1283,27 +1306,33 @@ Stay in this same thread and keep the company context alive.</pre>
     const installOptions = {
       pi: {
         mode: 'quick',
-        command: 'npx --yes github:gvkhosla/founder-skills install --agent pi'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent pi',
+        verify: 'Verify: check <code>~/.pi/agent/skills/founder-partner/SKILL.md</code>, then try <code>/skill founder-partner</code>.'
       },
       'claude-code': {
         mode: 'quick',
-        command: 'npx --yes github:gvkhosla/founder-skills install --agent claude --scope project'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent claude --scope project',
+        verify: 'Verify: check <code>.claude/skills/founder-partner/SKILL.md</code> in your project, then ask Claude to use <code>founder-partner</code>.'
       },
       codex: {
         mode: 'quick',
-        command: 'npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md'
+        command: 'npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md',
+        verify: 'Verify: confirm <code>AGENTS.founder-skills.md</code> was created, then merge it into <code>AGENTS.md</code>.'
       },
       opencode: {
         mode: 'os',
-        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host opencode --project /path/to/startup'
+        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host opencode --project /path/to/startup',
+        verify: 'Verify: check <code>.opencode/founder-skills-os/workspace/project-instructions.md</code> and the managed Founder Skills section in <code>AGENTS.md</code>.'
       },
       openclaw: {
         mode: 'os',
-        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host openclaw --project /path/to/startup'
+        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host openclaw --project /path/to/startup',
+        verify: 'Verify: check <code>.openclaw/founder-skills-os/founder-skills-full-CLAUDE.md</code> and the managed Founder Skills section in <code>AGENTS.md</code>.'
       },
       hermes: {
         mode: 'os',
-        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host hermes'
+        command: 'git clone https://github.com/gvkhosla/founder-skills.git && cd founder-skills && npm install && npm run os:gen:all && npm run os:install -- --host hermes',
+        verify: 'Verify: check <code>~/.hermes/skills/founder-skills-os/workspace/project-instructions.md</code>, then run <code>hermes skills list</code>.'
       }
     };
     let currentInstallMode = 'quick';
@@ -1331,6 +1360,7 @@ Stay in this same thread and keep the company context alive.</pre>
 
       currentInstallAgent = agentId;
       installCommand.innerHTML = `<span class="install-prefix">$</span>${option.command}`;
+      if (installVerify) installVerify.innerHTML = option.verify;
       localStorage.setItem('founder-skills-install-agent', agentId);
 
       installAgentButtons.forEach((button) => {

@@ -19,6 +19,7 @@ import {
   syncSequenceState,
   writeArtifactIndex,
   readArtifactIndex,
+  readCompanyState,
   readSequenceState,
 } from "../../packages/state/src/workspace.js";
 
@@ -84,6 +85,48 @@ test("startSequence and syncSequenceState track the current lifecycle step", () 
   const synced = syncSequenceState(readSequenceState(tempDir), catalog, readArtifactIndex(tempDir));
   assert.equal(synced.currentStep, "customer-hypothesis");
   assert.equal(synced.steps?.find((step) => step.name === "problem-validator")?.status, "done");
+});
+
+test("readCompanyState rejects invalid persisted stage values", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-invalid-company-state-"));
+  fs.mkdirSync(path.join(tempDir, ".fs"), { recursive: true });
+  fs.writeFileSync(
+    path.join(tempDir, COMPANY_STATE_FILE),
+    JSON.stringify({
+      company: { name: "Acme", stage: "nonsense", currentBottleneck: "problem-clarity" },
+      metrics: {},
+      execution: {},
+      focus: {},
+      stateMeta: { version: 1, lastUpdated: "2026-04-18" },
+    }),
+    "utf8",
+  );
+
+  assert.throws(() => readCompanyState(tempDir), /company\.stage must be one of/);
+});
+
+test("readArtifactIndex rejects invalid artifact payloads", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-invalid-artifacts-"));
+  fs.mkdirSync(path.join(tempDir, ".fs"), { recursive: true });
+  fs.writeFileSync(
+    path.join(tempDir, ARTIFACT_INDEX_FILE),
+    JSON.stringify({ artifacts: [{ path: 123 }] }),
+    "utf8",
+  );
+
+  assert.throws(() => readArtifactIndex(tempDir), /artifacts\[0\]\.path must be a string/);
+});
+
+test("readSequenceState rejects invalid step statuses", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-invalid-sequence-state-"));
+  fs.mkdirSync(path.join(tempDir, ".fs"), { recursive: true });
+  fs.writeFileSync(
+    path.join(tempDir, SEQUENCE_STATE_FILE),
+    JSON.stringify({ steps: [{ name: "problem-validator", status: "wat" }] }),
+    "utf8",
+  );
+
+  assert.throws(() => readSequenceState(tempDir), /steps\[0\]\.status must be one of/);
 });
 
 test("renderRecommendedNextStep produces a founder-readable routing note", () => {

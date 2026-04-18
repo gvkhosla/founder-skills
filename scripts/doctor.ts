@@ -1,5 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
+import {
+  ARTIFACT_INDEX_FILE,
+  COMPANY_STATE_FILE,
+  FOUNDER_CONTEXT_FILE,
+  RECOMMENDED_NEXT_FILE,
+  SEQUENCE_STATE_FILE,
+  TRUTH_MEMO_FILE,
+  readArtifactIndex,
+  readCompanyState,
+  readSequenceState,
+} from "../packages/state/src/workspace.js";
 
 const root = process.cwd();
 const groups: Record<string, string[]> = {
@@ -61,17 +72,83 @@ const groups: Record<string, string[]> = {
   ],
 };
 
-let failed = false;
-for (const [group, relPaths] of Object.entries(groups)) {
-  const missing = relPaths.filter((rel) => !fs.existsSync(path.join(root, rel)));
-  if (missing.length === 0) {
-    console.log(`✓ ${group}`);
-    continue;
+function parseArgs(argv: string[]) {
+  let projectDir: string | undefined;
+
+  for (let index = 0; index < argv.length; index += 1) {
+    const token = argv[index];
+    if (token === "--help" || token === "-h") {
+      console.log(`Founder Skills OS doctor\n\nUsage:\n  npm run os:doctor\n  npm run os:doctor -- --project /path/to/startup\n`);
+      process.exit(0);
+    }
+    if (token === "--project") {
+      projectDir = argv[index + 1];
+      index += 1;
+      continue;
+    }
+    throw new Error(`Unknown option: ${token}`);
   }
-  failed = true;
-  console.log(`✗ ${group}`);
-  for (const rel of missing) console.log(`  - missing: ${rel}`);
+
+  return { projectDir };
 }
 
-if (failed) process.exit(1);
-console.log("Founder Skills OS bootstrap looks healthy.");
+function checkWorkspaceState(projectDir: string) {
+  const checks: Array<[string, string, () => void]> = [
+    ["company-state", COMPANY_STATE_FILE, () => void readCompanyState(projectDir)],
+    ["artifact-index", ARTIFACT_INDEX_FILE, () => void readArtifactIndex(projectDir)],
+    ["sequence-state", SEQUENCE_STATE_FILE, () => void readSequenceState(projectDir)],
+  ];
+
+  let failed = false;
+  for (const [label, relPath, validate] of checks) {
+    const absPath = path.join(projectDir, relPath);
+    if (!fs.existsSync(absPath)) {
+      console.log(`- missing ${relPath}`);
+      failed = true;
+      continue;
+    }
+
+    validate();
+    console.log(`✓ ${label}`);
+  }
+
+  for (const relPath of [FOUNDER_CONTEXT_FILE, TRUTH_MEMO_FILE, RECOMMENDED_NEXT_FILE]) {
+    const absPath = path.join(projectDir, relPath);
+    if (fs.existsSync(absPath)) {
+      console.log(`✓ ${relPath}`);
+    } else {
+      console.log(`- missing ${relPath}`);
+      failed = true;
+    }
+  }
+
+  if (failed) {
+    throw new Error(`Workspace validation failed for ${projectDir}`);
+  }
+}
+
+try {
+  const { projectDir } = parseArgs(process.argv.slice(2));
+  let failed = false;
+  for (const [group, relPaths] of Object.entries(groups)) {
+    const missing = relPaths.filter((rel) => !fs.existsSync(path.join(root, rel)));
+    if (missing.length === 0) {
+      console.log(`✓ ${group}`);
+      continue;
+    }
+    failed = true;
+    console.log(`✗ ${group}`);
+    for (const rel of missing) console.log(`  - missing: ${rel}`);
+  }
+
+  if (projectDir) {
+    console.log(`Checking workspace state in ${path.resolve(projectDir)}`);
+    checkWorkspaceState(path.resolve(projectDir));
+  }
+
+  if (failed) process.exit(1);
+  console.log(projectDir ? "Founder Skills OS bootstrap and workspace look healthy." : "Founder Skills OS bootstrap looks healthy.");
+} catch (error) {
+  console.error(error instanceof Error ? error.message : String(error));
+  process.exit(1);
+}

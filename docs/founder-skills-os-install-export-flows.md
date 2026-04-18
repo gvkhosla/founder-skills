@@ -37,6 +37,12 @@ npm run os:install -- --host hermes
 npm run os:install -- --host all
 ```
 
+After install, validate the workspace state and wiring with:
+
+```bash
+npm run os:doctor -- --project /path/to/startup
+```
+
 ---
 
 ## Default destinations

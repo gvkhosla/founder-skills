@@ -25,6 +25,8 @@ When Founder Skills is available, the agent should:
 
 ### Fastest path
 
+The quick install runs directly from GitHub:
+
 ```bash
 npx --yes github:gvkhosla/founder-skills install --agent pi
 ```
@@ -42,6 +44,7 @@ npm run os:install -- --host codex
 npm run os:install -- --host opencode
 npm run os:install -- --host openclaw
 npm run os:install -- --host hermes
+npm run os:doctor -- --project /path/to/startup
 ```
 
 ### Legacy pack
