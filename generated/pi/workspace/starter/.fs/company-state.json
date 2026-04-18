@@ -1,0 +1,69 @@
+{
+  "company": {
+    "name": "New Startup",
+    "stage": "idea",
+    "businessModel": "unknown",
+    "founderType": "unknown",
+    "teamShape": "solo",
+    "currentBottleneck": "problem-clarity"
+  },
+  "founders": {
+    "primaryFounderMode": "founder-led",
+    "riskTolerance": "medium",
+    "timeHorizon": "90-days",
+    "keyConstraints": []
+  },
+  "product": {
+    "coreJob": "",
+    "primaryUser": "",
+    "productScopeState": "undefined",
+    "buildState": "not-started",
+    "launchState": "not-ready",
+    "pmfState": "pre-pmf"
+  },
+  "goToMarket": {
+    "positioningState": "not-started",
+    "salesMotion": "founder-led",
+    "marketingState": "light",
+    "seoGeoState": "not-started",
+    "adsState": "not-started"
+  },
+  "metrics": {
+    "northStar": {
+      "name": "",
+      "trend": "unknown"
+    },
+    "pmfSignal": "none",
+    "pipelineHealth": "unknown",
+    "activationHealth": "unknown",
+    "retentionHealth": "unknown",
+    "cacHealth": "unknown"
+  },
+  "execution": {
+    "implementationConfidence": "low",
+    "architectureConfidence": "low",
+    "qaConfidence": "low",
+    "reviewState": "not-started",
+    "designToCodeReady": false,
+    "releaseReadiness": "not-ready"
+  },
+  "support": {
+    "topTicketThemes": [],
+    "onboardingFrictionKnown": false,
+    "churnThemeKnown": false
+  },
+  "hiring": {
+    "nextHireNeeded": "unknown",
+    "capacityPressure": "low"
+  },
+  "focus": {
+    "activeExperiments": [],
+    "openQuestions": []
+  },
+  "stateMeta": {
+    "version": 1,
+    "lastUpdated": "2026-04-18",
+    "lastReviewed": "2026-04-18",
+    "confidence": "low"
+  }
+}
