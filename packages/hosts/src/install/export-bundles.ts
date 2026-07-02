@@ -36,10 +36,17 @@ export function installGeneratedHostBundle(options: InstallGeneratedHostOptions)
   }
 
   const bundlePath = path.resolve(options.dest ?? getDefaultBundlePath(options.host, scope, projectDir));
-  copyDirectory(generatedDir, bundlePath);
-
-  const notes = [`Copied generated/${options.host} → ${bundlePath}`];
+  const notes: string[] = [];
   const updatedFiles: string[] = [];
+
+  if (options.host === "codex" && scope === "global") {
+    const installedSkills = installCodexGlobalSkills(generatedDir, bundlePath);
+    notes.push(`Installed ${installedSkills.length} Codex skill(s) from generated/codex → ${bundlePath}`);
+    notes.push("Codex discovers skills at ~/.codex/skills/<skill-name>/SKILL.md; restart Codex if a skill is not immediately visible");
+  } else {
+    copyDirectory(generatedDir, bundlePath);
+    notes.push(`Copied generated/${options.host} → ${bundlePath}`);
+  }
 
   if (options.host === "pi") {
     notes.push("pi will discover nested SKILL.md folders under ~/.pi/agent/skills/");
@@ -57,7 +64,7 @@ export function installGeneratedHostBundle(options: InstallGeneratedHostOptions)
     notes.push(`Updated ${claudeFile} with a managed Founder Skills OS section`);
   }
 
-  if (options.host === "codex") {
+  if (options.host === "codex" && scope === "project") {
     const agentsFile = path.join(projectDir, "AGENTS.md");
     upsertManagedSectionFile(agentsFile, "FOUNDER-SKILLS-OS-CODEX", renderCodexSection(path.relative(projectDir, bundlePath) || "."));
     updatedFiles.push(agentsFile);
@@ -103,7 +110,9 @@ export function getDefaultBundlePath(host: CodingHostId, scope: InstallScope, pr
         ? path.join(os.homedir(), ".claude", "skills", BUNDLE_NAME)
         : path.join(projectDir, ".claude", "skills", BUNDLE_NAME);
     case "codex":
-      return path.join(projectDir, ".codex", BUNDLE_NAME);
+      return scope === "global"
+        ? path.join(os.homedir(), ".codex", "skills")
+        : path.join(projectDir, ".codex", BUNDLE_NAME);
     case "opencode":
       return path.join(projectDir, ".opencode", BUNDLE_NAME);
     case "openclaw":
@@ -139,6 +148,43 @@ function copyDirectory(src: string, dest: string) {
   fs.rmSync(dest, { recursive: true, force: true });
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.cpSync(src, dest, { recursive: true });
+}
+
+function installCodexGlobalSkills(generatedDir: string, skillsRoot: string): string[] {
+  const skillDirs = findSkillDirs(generatedDir);
+  const seen = new Set<string>();
+  fs.mkdirSync(skillsRoot, { recursive: true });
+
+  for (const skillDir of skillDirs) {
+    const skillName = path.basename(skillDir);
+    if (seen.has(skillName)) {
+      throw new Error(`Duplicate Codex skill name '${skillName}' while installing generated Codex skills.`);
+    }
+    seen.add(skillName);
+
+    const dest = path.join(skillsRoot, skillName);
+    fs.rmSync(dest, { recursive: true, force: true });
+    fs.cpSync(skillDir, dest, { recursive: true });
+  }
+
+  return skillDirs.map((skillDir) => path.basename(skillDir)).sort();
+}
+
+function findSkillDirs(rootDir: string): string[] {
+  const out: string[] = [];
+  const entries = fs.readdirSync(rootDir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const dir = path.join(rootDir, entry.name);
+    if (fs.existsSync(path.join(dir, "SKILL.md"))) {
+      out.push(dir);
+      continue;
+    }
+    out.push(...findSkillDirs(dir));
+  }
+
+  return out;
 }
 
 function renderClaudeProjectSection(bundlePath: string): string {

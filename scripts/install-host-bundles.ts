@@ -16,15 +16,16 @@ Usage:
 
 Options:
   --host <id>         Target host (default: all)
-  --scope <mode>      global | project (claude-code only, default: project)
+  --scope <mode>      global | project (codex default: global; claude-code default: project)
   --project <path>    Project directory for project-scoped hosts (default: cwd)
-  --dest <path>       Override destination bundle path for a single host install
+  --dest <path>       Override destination bundle/install path for a single host install
 
 Examples:
   npm run os:gen
   npm run os:install -- --host pi
   npm run os:install -- --host claude-code --scope project
-  npm run os:install -- --host codex --project /path/to/repo
+  npm run os:install -- --host codex
+  npm run os:install -- --host codex --scope project --project /path/to/repo
   npm run os:install -- --host all --project /path/to/repo
 `);
 }

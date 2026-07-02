@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { installGeneratedHostBundle, upsertManagedSection } from "../../packages/hosts/src/install/export-bundles.js";
 
 const root = process.cwd();
@@ -22,13 +23,34 @@ test("upsertManagedSection replaces an existing managed block", () => {
   assert.ok(!next.includes("old body"));
 });
 
-test("codex install exports bundle and updates AGENTS.md", () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-codex-"));
+test("codex global install exports top-level invokable skills without touching AGENTS.md", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-codex-global-"));
+  const skillsDir = path.join(tempDir, ".codex", "skills");
+
+  const result = installGeneratedHostBundle({
+    rootDir: root,
+    host: "codex",
+    scope: "global",
+    projectDir: tempDir,
+    dest: skillsDir,
+  });
+
+  assert.equal(result.bundlePath, skillsDir);
+  assert.equal(result.updatedFiles.length, 0);
+  assert.ok(fs.existsSync(path.join(skillsDir, "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(skillsDir, "problem-validator", "SKILL.md")));
+  assert.ok(!fs.existsSync(path.join(skillsDir, "strategy", "problem-validator", "SKILL.md")));
+  assert.ok(!fs.existsSync(path.join(tempDir, "AGENTS.md")));
+});
+
+test("codex project install exports bundle and updates AGENTS.md", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-codex-project-"));
   const bundleDir = path.join(tempDir, ".codex", "founder-skills-os");
 
   const result = installGeneratedHostBundle({
     rootDir: root,
     host: "codex",
+    scope: "project",
     projectDir: tempDir,
     dest: bundleDir,
   });
@@ -40,6 +62,33 @@ test("codex install exports bundle and updates AGENTS.md", () => {
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", "truth-memo.md")));
   assert.ok(fs.existsSync(path.join(bundleDir, "strategy", "problem-validator", "SKILL.md")));
   assert.ok(fs.readFileSync(agentsFile, "utf8").includes("Founder Skills OS for Codex"));
+});
+
+test("legacy codex install writes top-level global skills", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-codex-"));
+
+  execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "install", "--agent", "codex"], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  });
+
+  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "problem-validator", "SKILL.md")));
+  assert.ok(!fs.existsSync(path.join(tempDir, "AGENTS.founder-skills.md")));
+});
+
+test("legacy codex project install writes AGENTS reference without global skills", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-codex-project-"));
+
+  execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "install", "--agent", "codex", "--scope", "project", "--out", "./AGENTS.founder-skills.md"], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  });
+
+  assert.ok(fs.readFileSync(path.join(tempDir, "AGENTS.founder-skills.md"), "utf8").includes("founder-partner"));
+  assert.ok(!fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
 });
 
 test("claude project install exports bundle and updates CLAUDE.md", () => {

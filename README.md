@@ -87,14 +87,18 @@ npx --yes github:gvkhosla/founder-skills install --agent pi
 # Claude Code
 npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
 
-# Codex
-npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md
+# Codex global skills (invokable as $founder-partner after Codex restart)
+npx --yes github:gvkhosla/founder-skills install --agent codex
+
+# Codex project AGENTS bundle (optional/reference mode)
+npx --yes github:gvkhosla/founder-skills install --agent codex --scope project --out ./AGENTS.founder-skills.md
 ```
 
 Verify:
 - pi → `~/.pi/agent/skills/founder-partner/SKILL.md`
 - Claude Code → `.claude/skills/founder-partner/SKILL.md`
-- Codex → `AGENTS.founder-skills.md`
+- Codex global → `~/.codex/skills/founder-partner/SKILL.md`
+- Codex project/reference mode → `AGENTS.founder-skills.md`
 
 ### Founder Skills OS install
 
@@ -117,6 +121,8 @@ npm run os:install -- --host hermes --project /path/to/startup
 You can also use the OS install flow for pi, Claude Code, and Codex.
 
 Verify OS installs with:
+- Codex global → `~/.codex/skills/founder-partner/SKILL.md`
+- Codex project (`--scope project`) → `.codex/founder-skills-os/workspace/project-instructions.md`
 - OpenCode → `.opencode/founder-skills-os/workspace/project-instructions.md`
 - OpenClaw → `.openclaw/founder-skills-os/founder-skills-full-CLAUDE.md`
 - Hermes → `~/.hermes/skills/founder-skills-os/workspace/project-instructions.md`
