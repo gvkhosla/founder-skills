@@ -439,7 +439,7 @@ function renderUniversalAgentsSection() {
     '- `truth-memo.md`',
     '- `recommended-next-step.md`',
     '- `docs/founder-work/startup-loop.md`',
-    'Start with `co-founder` when the next move is unclear. Keep chat short: bottom line, one next move, and up to three steps. Keep detailed markdown files as supporting memory. Close meaningful cycles with `compound` so the next session starts smarter.',
+    'Start with `co-founder` when the next move is unclear. Keep chat short: verdict, one next move, and up to three steps. Keep detailed markdown files as supporting memory. Close meaningful cycles with `compound` so the next session starts smarter.',
   ].join('\n');
 }
 

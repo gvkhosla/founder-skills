@@ -40,7 +40,7 @@ Use these to make ambiguous startup work concrete. Ask one at a time when uncert
 
 Every co-founder session should first give the human founder a short in-chat brief:
 
-- bottom line / current bottleneck
+- verdict / current bottleneck
 - one move
 - up to three concrete next steps
 - which files were updated

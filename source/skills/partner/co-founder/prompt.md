@@ -154,7 +154,7 @@ Do not make the founder read files to understand the answer. Respond first with:
 
 ```markdown
 ## Founder Brief
-**Bottom line:** [bottleneck or verdict in 1-2 sentences]
+**Verdict:** [bottleneck or verdict in 1-2 sentences]
 **Do this now:** [one move]
 1. [first concrete step]
 2. [second concrete step]
