@@ -1,6 +1,6 @@
 ---
 name: seo-geo-strategist
-description: Designs a practical SEO and GEO strategy so the product can compound through discoverability. Use when messaging exists but search visibility is weak or nonexistent. Produces seo-geo-plan.md.
+description: Designs a practical search and generative-engine visibility plan. Use when messaging exists but discovery does not compound yet. Returns seo-geo-plan.md.
 ---
 
 # seo-geo-strategist

@@ -1,6 +1,6 @@
 {
   "name": "founder-skills",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Brutally honest founder workflows and company-memory for coding agents",
   "bin": {
     "founder-skills": "bin/founder-skills.js"
@@ -12,6 +12,7 @@
     "scripts/validate-skill-pack.js",
     "legacy",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE",
     "generated",
     "source",

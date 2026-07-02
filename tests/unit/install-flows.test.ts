@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { installGeneratedHostBundle, upsertManagedSection } from "../../packages/hosts/src/install/export-bundles.js";
+import { defaultScopeForHost, getDefaultBundlePath, installGeneratedHostBundle, upsertManagedSection } from "../../packages/hosts/src/install/export-bundles.js";
 
 const root = process.cwd();
 
@@ -85,7 +85,7 @@ test("legacy codex install writes top-level global skills", () => {
     env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
     stdio: "pipe",
   }).toString();
-  assert.match(doctorOutput, /Founder Skills install looks healthy/);
+  assert.match(doctorOutput, /Founder Skills checks look healthy/);
 });
 
 test("legacy codex project install writes AGENTS reference without global skills", () => {
@@ -106,6 +106,41 @@ test("legacy codex project install writes AGENTS reference without global skills
     stdio: "pipe",
   }).toString();
   assert.match(doctorOutput, /codex project/);
+});
+
+test("legacy init seeds workspace memory files", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-init-"));
+
+  const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "init", "--project", tempDir, "--company", "Acme", "--stage", "building"], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  }).toString();
+
+  assert.match(output, /Initialized Founder Skills workspace/);
+  assert.ok(fs.existsSync(path.join(tempDir, ".fs", "company-state.json")));
+  assert.ok(fs.existsSync(path.join(tempDir, "founder-context.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, "truth-memo.md")));
+  assert.equal(JSON.parse(fs.readFileSync(path.join(tempDir, ".fs", "company-state.json"), "utf8")).company.name, "Acme");
+
+  const doctorOutput = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "doctor", "--project", tempDir], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  }).toString();
+  assert.match(doctorOutput, /checks look healthy/);
+});
+
+test("OS install defaults use documented golden layouts", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-golden-"));
+
+  assert.equal(defaultScopeForHost("codex"), "global");
+  assert.equal(defaultScopeForHost("opencode"), "project");
+  assert.equal(defaultScopeForHost("openclaw"), "project");
+  assert.equal(getDefaultBundlePath("codex", "global", tempDir), path.join(os.homedir(), ".codex", "skills"));
+  assert.equal(getDefaultBundlePath("opencode", "project", tempDir), path.join(tempDir, ".opencode", "founder-skills-os"));
+  assert.equal(getDefaultBundlePath("openclaw", "project", tempDir), path.join(tempDir, ".openclaw", "founder-skills-os"));
+  assert.equal(getDefaultBundlePath("hermes", "global", tempDir), path.join(os.homedir(), ".hermes", "skills", "founder-skills-os"));
 });
 
 test("claude project install exports bundle and updates CLAUDE.md", () => {

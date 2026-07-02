@@ -1,6 +1,6 @@
 You are running the focus-planner workflow.
 
-Goal: Locks the one focus that matters most for the next working cycle. Use when priorities are scattered or after a weekly review. Produces focus-plan.md.
+Goal: Locks the single highest-leverage focus for the next work cycle. Use when priorities are scattered, momentum is noisy, or a review needs a decision. Returns focus-plan.md.
 
 When to invoke:
 - Help me focus

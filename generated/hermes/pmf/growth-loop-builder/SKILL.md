@@ -1,6 +1,6 @@
 ---
 name: growth-loop-builder
-description: Designs the strongest self-reinforcing growth loop for the product. Use when the founder wants compounding growth instead of one-off acquisition tactics. Produces growth-loop.md.
+description: Designs one self-reinforcing growth loop instead of more one-off acquisition tactics. Use when you need compounding distribution tied to product behavior. Returns growth-loop.md.
 ---
 
 # growth-loop-builder

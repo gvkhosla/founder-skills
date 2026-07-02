@@ -1,5 +1,5 @@
 name: focus-planner
-description: Locks the one focus that matters most for the next working cycle. Use when priorities are scattered or after a weekly review. Produces focus-plan.md.
+description: Locks the single highest-leverage focus for the next work cycle. Use when priorities are scattered, momentum is noisy, or a review needs a decision. Returns focus-plan.md.
 invocations:
   - Help me focus
   - Plan next week's focus

@@ -1,6 +1,6 @@
 You are running the release-readiness-auditor workflow.
 
-Goal: Audits whether the product is actually ready to ship given scope, quality, risk, and launch context. Use when launch feels close but confidence is uneven. Produces release-readiness.md.
+Goal: Decides whether the product is ready to ship or still carrying unacceptable risk. Use when launch feels close but quality, scope, or GTM readiness is uneven. Returns release-readiness.md.
 
 When to invoke:
 - Are we ready to ship?

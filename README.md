@@ -64,76 +64,58 @@ Chat bundles are also generated for:
 
 ## Fastest way to try it
 
-```bash
-npx --yes github:gvkhosla/founder-skills install --agent pi
-```
-
-Then start with:
-
-```text
-Be brutally honest with me.
-```
-
-If the bottleneck is unclear, start with **`founder-partner`**.
-
-Founder Skills are designed to be **human-first in chat**: you should get a short bottom line, one next move, and concrete steps immediately. The `.md` files are durable memory for agents and follow-up work, not required reading before you can act.
-
-## Install by host
-
-### Legacy compatibility install
+Pick your agent, install, then start with `founder-partner`.
 
 ```bash
 # pi
 npx --yes github:gvkhosla/founder-skills install --agent pi
 
-# Claude Code
-npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
-
-# Codex global skills (invokable as $founder-partner after Codex restart)
+# Codex, invokable as $founder-partner after restart
 npx --yes github:gvkhosla/founder-skills install --agent codex
 
-# Codex project AGENTS bundle (optional/reference mode)
-npx --yes github:gvkhosla/founder-skills install --agent codex --scope project --out ./AGENTS.founder-skills.md
+# Claude Code, project-scoped
+npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
 ```
 
-Verify:
-- `founder-skills doctor --agent pi`
-- `founder-skills doctor --agent claude --scope project`
-- `founder-skills doctor --agent codex`
-- pi → `~/.pi/agent/skills/founder-partner/SKILL.md`
-- Claude Code → `.claude/skills/founder-partner/SKILL.md`
-- Codex global → `~/.codex/skills/founder-partner/SKILL.md`
-- Codex project/reference mode → `AGENTS.founder-skills.md`
-
-### Founder Skills OS install
-
-Run these from this repo:
+Optional but recommended for startup repos:
 
 ```bash
-npm install
-npm run os:gen:all
-
-# OpenCode
-npm run os:install -- --host opencode --project /path/to/startup
-
-# OpenClaw
-npm run os:install -- --host openclaw --project /path/to/startup
-
-# Hermes
-npm run os:install -- --host hermes --project /path/to/startup
+npx --yes github:gvkhosla/founder-skills init --project . --company "Acme"
+npx --yes github:gvkhosla/founder-skills doctor --project .
 ```
 
-You can also use the OS install flow for pi, Claude Code, and Codex.
+Then ask:
 
-Verify OS installs with:
-- `npm run os:doctor -- --host codex`
-- `npm run os:doctor -- --host opencode --scope project --project /path/to/startup`
-- Codex global → `~/.codex/skills/founder-partner/SKILL.md`
-- Codex project (`--scope project`) → `.codex/founder-skills-os/workspace/project-instructions.md`
-- OpenCode → `.opencode/founder-skills-os/workspace/project-instructions.md`
-- OpenClaw → `.openclaw/founder-skills-os/founder-skills-full-CLAUDE.md`
-- Hermes → `~/.hermes/skills/founder-skills-os/workspace/project-instructions.md`
-- any initialized repo → `npm run os:doctor -- --project /path/to/startup`
+```text
+Use founder-partner and be brutally honest with me.
+```
+
+Founder Skills are **human-first in chat**: you get a short bottom line, one next move, and concrete steps immediately. The `.md` files are durable memory for agents and follow-up work, not required reading before you can act.
+
+## 60-second demo
+
+```text
+You: Use founder-partner and be brutally honest with me.
+
+Agent:
+## Founder Brief
+Bottom line: You are building before the painful customer moment is specific enough. The risk is not engineering speed; it is inventing for a vague user.
+Do this now: validate one narrow customer and one urgent workaround before adding features.
+1. Name the exact buyer and moment of pain.
+2. Talk to 5 people about the current workaround.
+3. Only scope the MVP after one repeated painful pattern appears.
+Details saved: recommended-next-step.md, truth-memo.md, founder-context.md.
+```
+
+## Install matrix
+
+| If you want... | Use this | Verify |
+| --- | --- | --- |
+| Quick pi skills | `founder-skills install --agent pi` | `founder-skills doctor --agent pi` |
+| Codex `$skill-name` invocation | `founder-skills install --agent codex` | `founder-skills doctor --agent codex` |
+| Claude Code project skills | `founder-skills install --agent claude --scope project` | `founder-skills doctor --agent claude --scope project` |
+| Repo memory files | `founder-skills init --project .` | `founder-skills doctor --project .` |
+| OpenCode/OpenClaw/Hermes beta bundles | clone repo, then `npm run os:install -- --host <host> --project /path/to/startup` | `npm run os:doctor -- --host <host> --project /path/to/startup` |
 
 ## Founder Skills OS quickstart
 
@@ -141,17 +123,8 @@ Verify OS installs with:
 npm install
 npm run os:gen:all
 npm run os:init -- --project /path/to/startup --stage building --sequence validate-to-build
-npm run os:recommend -- --project /path/to/startup
-```
-
-Useful commands:
-
-```bash
-npm run os:sequence -- start --name gtm-engine --project /path/to/startup
-npm run os:sequence -- sync --project /path/to/startup
-npm run os:install -- --host pi
-npm run os:install -- --host claude-code --scope project
-npm run os:install -- --host codex
+npm run os:install -- --host opencode --project /path/to/startup
+npm run os:doctor -- --host opencode --project /path/to/startup
 ```
 
 ## Core idea

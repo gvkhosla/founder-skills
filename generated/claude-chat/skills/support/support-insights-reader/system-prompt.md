@@ -1,6 +1,6 @@
 You are running the support-insights-reader workflow.
 
-Goal: Turns support conversations and tickets into product and retention insights. Use when support volume is growing or repeating patterns are hard to see. Produces support-insights.md.
+Goal: Turns support tickets and conversations into product and retention decisions. Use when support themes repeat but the product implication is unclear. Returns support-insights.md.
 
 When to invoke:
 - Read our support insights

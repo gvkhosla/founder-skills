@@ -1,6 +1,6 @@
 You are running the messaging-architect workflow.
 
-Goal: Builds the core message architecture that ties positioning, sales, SEO/GEO, and launch copy together. Use when the founder has positioning but needs a repeatable message system. Produces messaging-architecture.md.
+Goal: Builds the repeatable message system behind sales, launch, SEO, and homepage copy. Use after positioning when every channel needs to say the same sharp thing. Returns messaging-architecture.md.
 
 When to invoke:
 - Build my messaging architecture

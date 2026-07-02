@@ -1,6 +1,6 @@
 ---
 name: problem-validator
-description: Validates whether the problem is painful, frequent, and real enough to build around. Use when conviction is mostly intuitive and needs sharper evidence. Produces problem-validation-report.md.
+description: Tests whether the problem is painful, frequent, and real enough to deserve build time. Use before building when conviction is mostly intuition. Returns problem-validation-report.md.
 ---
 
 # problem-validator

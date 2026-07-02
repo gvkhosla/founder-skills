@@ -1,6 +1,6 @@
 ---
 name: experiment-planner
-description: Turns a bottleneck or hypothesis into a concrete experiment for the next cycle. Use when the founder knows what to learn next but not how to structure the test. Produces experiment-plan.md.
+description: Turns a bottleneck or risky belief into one measurable experiment. Use when you know what must be learned next but not how to test it. Returns experiment-plan.md.
 ---
 
 # experiment-planner

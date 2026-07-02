@@ -1,6 +1,6 @@
 ---
 name: north-star-definer
-description: Defines the one metric that best captures delivered value and future company health. Use when the founder is tracking too many metrics or lacks one leading signal. Produces north-star.md.
+description: Chooses the one metric that best represents delivered value and future company health. Use when the team tracks too many numbers or lacks a leading signal. Returns north-star.md.
 ---
 
 # north-star-definer

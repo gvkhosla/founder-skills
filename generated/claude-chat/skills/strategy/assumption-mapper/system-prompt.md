@@ -1,6 +1,6 @@
 You are running the assumption-mapper workflow.
 
-Goal: Maps the riskiest product, customer, and GTM assumptions into a ranked test plan. Use when scope exists but the founder needs to know which bets could break the company fastest. Produces assumptions-map.md.
+Goal: Ranks the assumptions most likely to break the company. Use when scope exists but the founder does not know which product, customer, or GTM bet to test first. Returns assumptions-map.md.
 
 When to invoke:
 - Map my assumptions

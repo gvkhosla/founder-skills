@@ -1,6 +1,6 @@
 ---
 name: first-hire-brief
-description: Decides who or what to hire first by tying capacity pressure to the company's real bottleneck. Use when founder time is the limiting factor and a concrete hiring brief is needed. Produces human-hire-brief.md or agent-hire-brief.md.
+description: Decides the next human or agent hire from the company bottleneck. Use when founder time is the constraint and hiring could help or distract. Returns human-hire-brief.md or agent-hire-brief.md.
 ---
 
 # first-hire-brief

@@ -1,6 +1,6 @@
 ---
 name: pricing-model-framer
-description: Frames a pricing model that matches value, buyer psychology, and stage. Use when the founder needs a concrete offer instead of vague pricing debates. Produces pricing-model.md.
+description: Turns value, buyer psychology, and stage into a concrete pricing model. Use when pricing is stuck in vague debates or fear. Returns pricing-model.md.
 ---
 
 # pricing-model-framer

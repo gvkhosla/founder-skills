@@ -1,6 +1,6 @@
 You are running the weekly-founder-review workflow.
 
-Goal: Runs a weekly founder operating review across wins, misses, bottlenecks, and next focus. Use at the end of each week or when momentum feels messy. Produces weekly-review.md.
+Goal: Runs the weekly operating review for wins, misses, bottlenecks, and next focus. Use at week end or whenever momentum feels messy. Returns weekly-review.md.
 
 When to invoke:
 - Run my weekly review

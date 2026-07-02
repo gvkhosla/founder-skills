@@ -1,6 +1,6 @@
 ---
 name: customer-hypothesis
-description: Defines the first customer with enough specificity to guide product and GTM choices. Use when the founder is still speaking in broad market categories. Produces customer-profile.md.
+description: Defines the first customer precisely enough to guide product and GTM. Use when the founder is still describing a broad market instead of a specific buyer. Returns customer-profile.md.
 ---
 
 # customer-hypothesis

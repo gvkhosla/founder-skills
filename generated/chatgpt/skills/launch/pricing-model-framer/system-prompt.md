@@ -1,6 +1,6 @@
 You are running the pricing-model-framer workflow.
 
-Goal: Frames a pricing model that matches value, buyer psychology, and stage. Use when the founder needs a concrete offer instead of vague pricing debates. Produces pricing-model.md.
+Goal: Turns value, buyer psychology, and stage into a concrete pricing model. Use when pricing is stuck in vague debates or fear. Returns pricing-model.md.
 
 When to invoke:
 - Frame my pricing

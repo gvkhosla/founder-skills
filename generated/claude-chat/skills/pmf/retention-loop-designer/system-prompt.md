@@ -1,6 +1,6 @@
 You are running the retention-loop-designer workflow.
 
-Goal: Designs the habit and return loop that makes users come back without constant prompting. Use when retention is weak or engagement needs to compound. Produces retention-loop.md.
+Goal: Designs the reason users come back without constant prompting. Use when activation happens but return behavior is weak. Returns retention-loop.md.
 
 When to invoke:
 - Design my retention loop
