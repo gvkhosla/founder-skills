@@ -15,6 +15,12 @@ When cycles stop producing signal improvement, there are exactly five possible r
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Help me figure out why I'm stuck"** or **"Run failure navigator"** or **"Why isn't this working?"**
 
 Auto-triggered by `build-cycle` after 3+ consecutive flat cycles.

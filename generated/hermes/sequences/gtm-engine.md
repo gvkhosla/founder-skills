@@ -25,6 +25,13 @@ Builds the company's core GTM system from positioning through messaging, SEO/GEO
 - seo-geo-plan.md
 - cac-diagnosis.md
 
+## Human-facing response (required)
+Before or alongside any file updates, give the founder a short chat answer first:
+- **Bottom line:** the direct verdict or useful answer in 1-2 sentences
+- **Do this now:** the single next action plus up to 3 concrete steps
+- **Details saved:** list only the artifact paths you created or updated
+Keep the chat response under 150 words unless the founder asks for detail. Do not paste full markdown artifacts into chat; files are the durable record for agents.
+
 ## Success signals
 - founder_has_one_clear_message_and_channel_system
 

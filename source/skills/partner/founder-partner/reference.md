@@ -31,7 +31,13 @@ Use these to grill strategy and validation. Ask one at a time when uncertainty i
 - **Why now / future-fit:** what change in the world makes this more necessary, not just more possible?
 
 ## Output standard
-Every founder-partner session should leave behind:
+Every founder-partner session should first give the human founder a short in-chat brief:
+- bottom line / hard truth
+- one move
+- up to three concrete next steps
+- which files were updated
+
+It should also leave behind durable agent memory:
 - a `truth-memo.md` with the hard truth, contradictions, verdict, and next move
 - an updated `founder-context.md` that reflects what changed
 - a `recommended-next-step.md` that is specific enough to execute immediately

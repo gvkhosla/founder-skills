@@ -12,6 +12,13 @@ description: Designs a practical SEO and GEO strategy so the product can compoun
 ## Outputs
 - seo-geo-plan.md
 
+## Human-facing response (required)
+Before or alongside any file updates, give the founder a short chat answer first:
+- **Bottom line:** the direct verdict or useful answer in 1-2 sentences
+- **Do this now:** the single next action plus up to 3 concrete steps
+- **Details saved:** list only the artifact paths you created or updated
+Keep the chat response under 150 words unless the founder asks for detail. Do not paste full markdown artifacts into chat; files are the durable record for agents.
+
 ## Depends on
 - positioning.md
 

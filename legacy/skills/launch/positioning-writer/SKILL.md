@@ -9,6 +9,12 @@ version: 2.0.0
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Write my positioning"** or **"Help me explain what I do"**
 
 Share your product description, customer profile, or MVP brief.

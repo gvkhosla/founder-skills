@@ -21,6 +21,12 @@ After 10 cycles, you have a complete record of your product's evolution — what
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Run build cycle"** or **"Let's do our cycle"** or **"What did we learn?"**
 
 This takes 20–30 minutes. Do it with intention — not rushed. Total time invested compounds.

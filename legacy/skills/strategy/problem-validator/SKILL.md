@@ -9,6 +9,12 @@ version: 2.0.0
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Validate my problem"** or **"Is this problem worth solving?"**
 
 You'll answer 5 questions. Three research agents run in parallel to gather evidence. Total time: 10 minutes.

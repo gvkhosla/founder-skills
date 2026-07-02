@@ -2,6 +2,7 @@ import type { CanonicalSequence } from "../../../core/src/types/sequence.js";
 import type { CanonicalSkill } from "../../../core/src/types/skill.js";
 import type { GeneratedArtifact, HostCapabilities } from "../../../core/src/types/host.js";
 import type { HostAdapter, HostValidationResult, InstallBundle, WorkspaceBundle } from "./host-adapter.js";
+import { HUMAN_FIRST_RESPONSE_CONTRACT } from "./response-ux.js";
 
 export abstract class ChatHostAdapter implements HostAdapter {
   abstract id: string;
@@ -73,6 +74,7 @@ export abstract class ChatHostAdapter implements HostAdapter {
       `Goal: ${skill.description}`,
       `When to invoke:\n${skill.invocations.map((invocation) => `- ${invocation}`).join("\n")}`,
       `Outputs:\n${skill.outputs.map((output) => `- ${output}`).join("\n")}`,
+      HUMAN_FIRST_RESPONSE_CONTRACT,
     ];
 
     if (skill.dependsOn.length > 0) {
@@ -118,6 +120,7 @@ export abstract class ChatHostAdapter implements HostAdapter {
       `Entrypoint:\n- ${sequence.entrypoint}`,
       `Steps:\n${sequence.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}`,
       `Primary outputs:\n${sequence.primaryOutputs.map((output) => `- ${output}`).join("\n")}`,
+      HUMAN_FIRST_RESPONSE_CONTRACT,
     ];
 
     if (sequence.successSignal.length > 0) {

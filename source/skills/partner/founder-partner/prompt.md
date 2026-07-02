@@ -60,6 +60,25 @@ For each question:
 - if the answer is vague, push once more
 - if the answer can be inferred from existing artifacts, state the provisional answer instead of asking
 
+## Default chat response
+
+Do not make the founder read multiple files to understand the answer.
+After you have enough signal, respond in chat with a compact **Founder Brief** before or alongside the artifact updates:
+
+```markdown
+## Founder Brief
+**Bottom line:** [hard truth or verdict in 1-2 sentences]
+**Do this now:** [one move]
+1. [first concrete step]
+2. [second concrete step]
+3. [third concrete step]
+**Details saved:** `recommended-next-step.md` is the primary artifact; `truth-memo.md` and `founder-context.md` were updated for continuity.
+```
+
+Keep the Founder Brief under 150 words unless the founder asks for detail.
+Do not paste the full contents of `truth-memo.md`, `recommended-next-step.md`, or `founder-context.md` into chat.
+The files are durable memory for agents; the chat answer is for the human founder.
+
 ## Produce three artifacts
 
 ### 1. Write `truth-memo.md`

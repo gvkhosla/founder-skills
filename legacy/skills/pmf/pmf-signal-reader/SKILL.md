@@ -23,6 +23,12 @@ This skill reads the real signals — behavioral, not stated.
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Read my PMF signals"** or **"Do I have PMF?"** or **"Is this traction real?"**
 
 Output: `pmf-assessment.md` — signal strength (None/Faint/Building/Clear), specific evidence for the rating, and the leading indicators to watch next cycle.
