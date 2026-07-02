@@ -12,14 +12,14 @@
 ## What We Hope
 - A real bottleneck, wedge, and next move will emerge quickly.
 
-## The Hard Truth
+## Current Bottleneck
 - You do not have enough written evidence yet to trust your own story.
 
 ## Contradictions / Weak Assumptions
 - Unknown until the first partner session runs.
 
-## Current Bottleneck
-- unknown
+## Main Contradiction
+- Unknown until the first partner session runs.
 
 ## Verdict
 - validate-first

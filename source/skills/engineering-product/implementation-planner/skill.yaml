@@ -19,10 +19,8 @@ checks:
 readiness_gate: build-readiness
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - chatgpt
-  - claude-chat
   - openclaw
   - hermes

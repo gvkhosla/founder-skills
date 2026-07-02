@@ -7,13 +7,11 @@ const adapters = getDefaultHostAdapters();
 test("default host adapters include coding and chat surfaces", () => {
   const ids = adapters.map((adapter) => adapter.id);
   assert.ok(ids.includes("pi"));
-  assert.ok(ids.includes("claude-code"));
   assert.ok(ids.includes("codex"));
   assert.ok(ids.includes("opencode"));
   assert.ok(ids.includes("openclaw"));
   assert.ok(ids.includes("hermes"));
   assert.ok(ids.includes("chatgpt"));
-  assert.ok(ids.includes("claude-chat"));
 });
 
 test("openclaw and hermes adapters emit coding-harness artifacts", () => {

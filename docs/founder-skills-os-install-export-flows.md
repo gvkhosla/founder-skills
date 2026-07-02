@@ -1,96 +1,87 @@
-# Founder Skills OS — Install and Export Flows
+# Founder Skills OS install and export flows
 
-Founder Skills OS now has a concrete install/export layer for the coding-host rebuild.
-
-## Prerequisite
-
-Generate the latest coding-host outputs first:
-
-```bash
-npm run os:gen
-```
-
-## Supported hosts
+Founder Skills OS currently supports these generated host bundles:
 
 - pi
-- Claude Code
 - Codex
 - OpenCode
 - OpenClaw
 - Hermes
+- ChatGPT prompt bundles
 
-## Main command
+## Generate bundles
 
 ```bash
-npm run os:install -- --host <host>
+npm run os:gen:all
 ```
 
-Use the simplest path that matches your host:
+This writes host-specific outputs under `generated/<host>/`.
 
-| Goal | Command |
+## Install examples
+
+| Flow | Command |
 | --- | --- |
-| Global Codex `$skill-name` skills | `npm run os:install -- --host codex` |
-| Project Claude Code skills | `npm run os:install -- --host claude-code --scope project --project /path/to/startup` |
-| Project OpenCode instructions | `npm run os:install -- --host opencode --project /path/to/startup` |
-| Project OpenClaw instructions | `npm run os:install -- --host openclaw --project /path/to/startup` |
-| Global Hermes skills | `npm run os:install -- --host hermes` |
-| Everything | `npm run os:install -- --host all --project /path/to/startup` |
+| pi global skills | `npm run os:install -- --host pi` |
+| Codex global `$skill-name` skills | `npm run os:install -- --host codex` |
+| Codex project bundle | `npm run os:install -- --host codex --scope project --project /path/to/startup` |
+| OpenCode project bundle | `npm run os:install -- --host opencode --scope project --project /path/to/startup` |
+| OpenClaw project bundle | `npm run os:install -- --host openclaw --scope project --project /path/to/startup` |
+| Hermes global skills | `npm run os:install -- --host hermes` |
 
-After install, validate host wiring and workspace state with:
+## Host layout
+
+### pi
+- global scope: `~/.pi/agent/skills/founder-skills-os/`
+- nested generated skills under `generated/pi/<domain>/<skill>/SKILL.md`
+
+### Codex
+- global scope: `~/.codex/skills/<skill-name>/SKILL.md`
+- project scope: `.codex/founder-skills-os/`
+- project installs also update an `AGENTS.md` managed section
+
+### OpenCode
+- project scope: `.opencode/founder-skills-os/`
+- project installs update an `AGENTS.md` managed section
+
+### OpenClaw
+- project scope: `.openclaw/founder-skills-os/`
+- project installs update an `AGENTS.md` managed section
+- helper prompt files:
+  - `founder-skills-lite.md`
+  - `founder-skills-full.md`
+
+### Hermes
+- global scope: `~/.hermes/skills/founder-skills-os/`
+
+### ChatGPT
+- generated prompt bundles live under `generated/chatgpt/`
+- these are copy/paste or project-instruction assets, not native installed skills
+
+## Workspace memory
+
+Every host bundle includes starter workspace files:
+
+- `.fs/company-state.json`
+- `.fs/artifact-index.json`
+- `.fs/sequence-state.json`
+- `.fs/weekly-review.json`
+- `founder-context.md`
+- `truth-memo.md`
+- `recommended-next-step.md`
+- `docs/founder-work/startup-loop.md`
+
+Use:
 
 ```bash
-npm run os:doctor -- --host codex
-npm run os:doctor -- --host opencode --scope project --project /path/to/startup
+npm run os:init -- --project /path/to/startup
 npm run os:doctor -- --project /path/to/startup
 ```
 
----
+## Validation
 
-## Default destinations
-
-### pi
-- bundle copied to `~/.pi/agent/skills/founder-skills-os/`
-- nested `SKILL.md` folders are discovered recursively by pi
-
-### Claude Code
-- project scope: `.claude/skills/founder-skills-os/`
-- global scope: `~/.claude/skills/founder-skills-os/`
-- project installs also update a managed Founder Skills OS section in `CLAUDE.md`
-
-### Codex
-- default/global scope installs each generated skill as `~/.codex/skills/<skill-name>/SKILL.md`
-- this makes skills invokable by name in Codex after restart (for example `$founder-partner`)
-- project scope is still available with `--scope project`; it copies the bundle to `.codex/founder-skills-os/` and updates project `AGENTS.md`
-
-### OpenCode
-- bundle copied to `.opencode/founder-skills-os/`
-- project `AGENTS.md` gets a managed Founder Skills OS section
-
-### OpenClaw
-- bundle copied to `.openclaw/founder-skills-os/`
-- project `AGENTS.md` gets a managed Founder Skills OS section referencing:
-  - `agents-founder-skills-section.md`
-  - `founder-skills-lite-CLAUDE.md`
-  - `founder-skills-full-CLAUDE.md`
-
-### Hermes
-- bundle copied to `~/.hermes/skills/founder-skills-os/`
-- nested `SKILL.md` folders are discovered recursively by Hermes
-- verify with `hermes skills list`
-
----
-
-## Why this matters
-
-This makes the rebuild practical.
-
-Founder Skills OS is no longer just generating files into `generated/`.
-It now has a real path to:
-- pi skill installation
-- Claude Code project wiring
-- Codex project wiring
-- OpenCode project wiring
-- OpenClaw AGENTS/project wiring
-- Hermes skill installation
-
-That gives the coding-host strategy a real install surface instead of just scaffolding.
+```bash
+npm run os:gen:all
+npm run os:check:generated
+npm run os:typecheck
+npm test
+```

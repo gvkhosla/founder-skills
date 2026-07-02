@@ -47,10 +47,6 @@ jobs:
           HOME="$tmp" npm run os:install -- --host pi
           test -f "$tmp/.pi/agent/skills/founder-skills-os/partner/founder-partner/SKILL.md"
 
-          npm run os:install -- --host claude-code --scope project --project "$tmp"
-          test -f "$tmp/.claude/skills/founder-skills-os/workspace/project-instructions.md"
-          grep -q "Founder Skills OS" "$tmp/CLAUDE.md"
-
           HOME="$tmp" npm run os:install -- --host codex
           test -f "$tmp/.codex/skills/founder-partner/SKILL.md"
 

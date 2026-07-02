@@ -10,11 +10,13 @@ Steps:
 2. weekly-founder-review
 3. focus-planner
 4. experiment-planner
+5. founder-compound
 
 Primary outputs:
 - weekly-review.md
 - focus-plan.md
 - experiment-plan.md
+- docs/founder-learnings/
 
 ## Human-facing response (required)
 Before or alongside any file updates, give the founder a short chat answer first:
@@ -36,3 +38,4 @@ Run this sequence every week.
 3. Decide the one focus for this week
 4. Lock one or two active experiments
 5. Recommend the next skill or sequence if conditions change
+6. Capture the learning with founder-compound so the next cycle starts smarter

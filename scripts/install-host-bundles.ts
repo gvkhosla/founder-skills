@@ -12,18 +12,17 @@ function usage() {
   console.log(`Founder Skills OS host installer
 
 Usage:
-  npm run os:install -- --host <pi|claude-code|codex|opencode|openclaw|hermes|all> [options]
+  npm run os:install -- --host <pi|codex|opencode|openclaw|hermes|all> [options]
 
 Options:
   --host <id>         Target host (default: all)
-  --scope <mode>      global | project (codex/pi/hermes default: global; claude-code/opencode/openclaw default: project)
+  --scope <mode>      global | project (codex/pi/hermes default: global; opencode/openclaw default: project)
   --project <path>    Project directory for project-scoped hosts (default: cwd)
   --dest <path>       Override destination bundle/install path for a single host install
 
 Examples:
   npm run os:gen
   npm run os:install -- --host pi
-  npm run os:install -- --host claude-code --scope project
   npm run os:install -- --host codex
   npm run os:install -- --host codex --scope project --project /path/to/repo
   npm run os:install -- --host all --project /path/to/repo

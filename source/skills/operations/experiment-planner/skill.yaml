@@ -10,10 +10,8 @@ checks:
   - success_metric_present
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - chatgpt
-  - claude-chat
   - openclaw
   - hermes

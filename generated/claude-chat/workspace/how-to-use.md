@@ -1,1 +1,0 @@
-Start each serious session by reviewing company state, artifact freshness, founder-context.md, truth-memo.md, active sequence, and recommended-next-step.md before asking for new work.

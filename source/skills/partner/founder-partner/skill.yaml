@@ -28,10 +28,8 @@ checks:
   - founder_focus_locked
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - chatgpt
-  - claude-chat
   - openclaw
   - hermes

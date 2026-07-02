@@ -14,6 +14,7 @@ Steps:
 6. growth-loop-builder
 7. experiment-planner
 8. weekly-founder-review
+9. founder-compound
 
 Primary outputs:
 - north-star.md
@@ -24,6 +25,7 @@ Primary outputs:
 - growth-loop.md
 - experiment-plan.md
 - weekly-review.md
+- docs/founder-learnings/
 
 ## Human-facing response (required)
 Before or alongside any file updates, give the founder a short chat answer first:
@@ -46,5 +48,6 @@ Flow:
 3. use support and churn to explain the signal
 4. redesign retention before forcing growth
 5. choose one experiment and lock the weekly learning loop
+6. Capture the learning with founder-compound so the next cycle starts smarter
 
 The goal is not optimism. The goal is a grounded plan for what to improve next.

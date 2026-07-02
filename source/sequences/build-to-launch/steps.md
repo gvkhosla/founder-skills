@@ -8,5 +8,6 @@ Flow:
 3. verify quality and release readiness
 4. turn the product into a sellable offer
 5. prepare the launch motion
+6. Capture the learning with founder-compound so the next cycle starts smarter
 
 Do not skip the release-readiness step just because the launch work feels more urgent.

@@ -6,9 +6,11 @@ steps:
   - weekly-founder-review
   - focus-planner
   - experiment-planner
+  - founder-compound
 primary_outputs:
   - weekly-review.md
   - focus-plan.md
   - experiment-plan.md
+  - docs/founder-learnings/
 success_signal:
   - founder_has_one_clear_priority_for_the_week

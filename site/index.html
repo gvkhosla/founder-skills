@@ -950,10 +950,6 @@
             <img class="theme-dark-only logo-wordmark" src="/brands/opencode-dark.svg" alt="OpenCode" />
             <img class="theme-light-only logo-wordmark" src="/brands/opencode-light.svg" alt="OpenCode" />
           </button>
-          <button class="logo-item" type="button" data-install-agent="claude-code" aria-label="Claude Code" aria-pressed="false">
-            <img class="theme-dark-only logo-claude" src="/brands/claude-dark.png" alt="Claude Code" />
-            <img class="theme-light-only logo-claude" src="/brands/claude-light.png" alt="Claude Code" />
-          </button>
           <button class="logo-item" type="button" data-install-agent="hermes" aria-label="Hermes" aria-pressed="false">
             <img class="theme-dark-only logo-hermes" src="/brands/hermes-dark.png" alt="Hermes" />
             <img class="theme-light-only logo-hermes" src="/brands/hermes-light.png" alt="Hermes" />
@@ -964,7 +960,7 @@
       <div class="sections">
         <section class="section" id="what">
           <div class="section-label">Why it works</div>
-          <h2 class="section-title">Reads the state. Tells the truth. Calls the next move.</h2>
+          <h2 class="section-title">Reads the state. Compounds the context. Calls the next move.</h2>
           <p>Founder Skills reads company memory before it speaks.</p>
           <p>It answers in chat first: bottom line, one move, concrete steps. The markdown files are supporting memory, not homework.</p>
           <div class="feature-grid">
@@ -1134,7 +1130,7 @@ Details saved: recommended-next-step.md, truth-memo.md, founder-context.md.</pre
             <h2 class="section-title">Paste this into your agent once.</h2>
             <p>One setup prompt. Better defaults.</p>
             <button class="hero-btn hero-btn-primary" id="copy-agent-btn">Copy for agent</button>
-            <div class="connect-note">Works in pi, Claude Code, Codex, OpenCode, OpenClaw, Hermes, ChatGPT, and Claude.</div>
+            <div class="connect-note">Works in pi, Codex, OpenCode, OpenClaw, Hermes, and ChatGPT.</div>
           </div>
 
           <div class="connect-preview">
@@ -1214,9 +1210,6 @@ Stay in this same thread and let startup context compound.</pre>
     const installOptions = {
       pi: {
         command: 'npx --yes github:gvkhosla/founder-skills install --agent pi'
-      },
-      'claude-code': {
-        command: 'npx --yes github:gvkhosla/founder-skills install --agent claude --scope project'
       },
       codex: {
         command: 'npx --yes github:gvkhosla/founder-skills install --agent codex'

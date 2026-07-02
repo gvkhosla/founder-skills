@@ -9,3 +9,4 @@ Use this sequence when the founder has conviction around the problem and now nee
 4. Turn scope into a concrete implementation plan
 5. Review architecture and technical risk
 6. Audit release readiness before shipping
+7. Capture the learning with founder-compound so the next cycle starts smarter

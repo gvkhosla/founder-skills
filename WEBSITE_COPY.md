@@ -37,7 +37,6 @@ Edit this file to change wording before syncing it back into `site/index.html`.
 
 **Supported harnesses shown**
 - pi
-- Claude Code
 - Codex
 - OpenCode
 - OpenClaw

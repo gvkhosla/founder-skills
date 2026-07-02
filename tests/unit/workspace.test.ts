@@ -11,6 +11,7 @@ import {
   RECOMMENDED_NEXT_FILE,
   SEQUENCE_STATE_FILE,
   STARTER_TEMPLATE_DATE,
+  STARTUP_LOOP_FILE,
   TRUTH_MEMO_FILE,
   ensureFounderWorkspace,
   getStarterWorkspaceFiles,
@@ -45,6 +46,7 @@ test("ensureFounderWorkspace creates stateful operating files", () => {
   assert.ok(fs.existsSync(path.join(tempDir, FOUNDER_CONTEXT_FILE)));
   assert.ok(fs.existsSync(path.join(tempDir, TRUTH_MEMO_FILE)));
   assert.ok(fs.existsSync(path.join(tempDir, RECOMMENDED_NEXT_FILE)));
+  assert.ok(fs.existsSync(path.join(tempDir, STARTUP_LOOP_FILE)));
   assert.equal(result.sequenceState.activeSequence, "validate-to-build");
 });
 
@@ -53,9 +55,11 @@ test("generated starter workspace files are deterministic", () => {
   const founderContext = starterFiles.find((file) => file.path.endsWith("founder-context.md"));
   const truthMemo = starterFiles.find((file) => file.path.endsWith("truth-memo.md"));
   const weeklyReview = starterFiles.find((file) => file.path.endsWith("weekly-review.json"));
+  const startupLoop = starterFiles.find((file) => file.path.endsWith("startup-loop.md"));
 
   assert.ok(founderContext?.content.includes(`Last updated: ${STARTER_TEMPLATE_DATE}`));
   assert.ok(truthMemo?.content.includes(`# Truth Memo — ${STARTER_TEMPLATE_DATE}`));
+  assert.ok(startupLoop?.content.includes("artifact_contract: founder-skills/startup-loop/v1"));
   assert.equal(JSON.parse(weeklyReview?.content || "{}").weekOf, STARTER_TEMPLATE_DATE);
 });
 
@@ -70,6 +74,17 @@ test("startSequence and syncSequenceState track the current lifecycle step", () 
     artifacts: [
       {
         path: "problem-validation-report.md",
+        createdBy: "problem-validator",
+        createdAt: "2026-04-16",
+        dependsOn: [],
+        feedsInto: [],
+        confidence: "high",
+        freshness: "fresh",
+        supersededBy: null,
+        recommendedNext: [],
+      },
+      {
+        path: STARTUP_LOOP_FILE,
         createdBy: "problem-validator",
         createdAt: "2026-04-16",
         dependsOn: [],

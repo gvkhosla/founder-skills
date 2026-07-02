@@ -2,7 +2,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-export type CodingHostId = "pi" | "claude-code" | "codex" | "opencode" | "openclaw" | "hermes";
+export type CodingHostId = "pi" | "codex" | "opencode" | "openclaw" | "hermes";
 export type InstallScope = "global" | "project";
 
 export interface InstallGeneratedHostOptions {
@@ -23,7 +23,7 @@ export interface InstallResult {
 const BUNDLE_NAME = "founder-skills-os";
 
 export function getSupportedCodingHosts(): CodingHostId[] {
-  return ["pi", "claude-code", "codex", "opencode", "openclaw", "hermes"];
+  return ["pi", "codex", "opencode", "openclaw", "hermes"];
 }
 
 export function installGeneratedHostBundle(options: InstallGeneratedHostOptions): InstallResult {
@@ -57,12 +57,6 @@ export function installGeneratedHostBundle(options: InstallGeneratedHostOptions)
     notes.push("Run `hermes skills list` to confirm the bundle is visible");
   }
 
-  if (options.host === "claude-code" && scope === "project") {
-    const claudeFile = path.join(projectDir, "CLAUDE.md");
-    upsertManagedSectionFile(claudeFile, "FOUNDER-SKILLS-OS", renderClaudeProjectSection(path.relative(projectDir, bundlePath) || "."));
-    updatedFiles.push(claudeFile);
-    notes.push(`Updated ${claudeFile} with a managed Founder Skills OS section`);
-  }
 
   if (options.host === "codex" && scope === "project") {
     const agentsFile = path.join(projectDir, "AGENTS.md");
@@ -100,17 +94,13 @@ export function installGeneratedHostBundle(options: InstallGeneratedHostOptions)
 }
 
 export function defaultScopeForHost(host: CodingHostId): InstallScope {
-  return host === "claude-code" || host === "opencode" || host === "openclaw" ? "project" : "global";
+  return host === "opencode" || host === "openclaw" ? "project" : "global";
 }
 
 export function getDefaultBundlePath(host: CodingHostId, scope: InstallScope, projectDir: string): string {
   switch (host) {
     case "pi":
       return path.join(os.homedir(), ".pi", "agent", "skills", BUNDLE_NAME);
-    case "claude-code":
-      return scope === "global"
-        ? path.join(os.homedir(), ".claude", "skills", BUNDLE_NAME)
-        : path.join(projectDir, ".claude", "skills", BUNDLE_NAME);
     case "codex":
       return scope === "global"
         ? path.join(os.homedir(), ".codex", "skills")
@@ -197,8 +187,6 @@ function renderPostInstallNotes(host: CodingHostId, scope: InstallScope, project
       return scope === "global"
         ? ["Try next: restart Codex, then type `$founder-partner`.", `Verify later: ${doctor}`]
         : ["Try next: ask Codex to use founder-partner from the managed AGENTS.md instructions.", `Verify later: ${doctor}`];
-    case "claude-code":
-      return ["Try next: ask Claude Code, \"Use the founder-partner skill.\"", `Verify later: ${doctor}`];
     case "pi":
       return ["Try next: ask pi, \"Use founder-partner.\"", `Verify later: ${doctor}`];
     case "hermes":
@@ -208,17 +196,6 @@ function renderPostInstallNotes(host: CodingHostId, scope: InstallScope, project
     case "openclaw":
       return ["Try next: ask OpenClaw to route through founder-partner from AGENTS.md.", `Verify later: ${doctor}`];
   }
-}
-
-function renderClaudeProjectSection(bundlePath: string): string {
-  return [
-    "## Founder Skills OS",
-    `Load Founder Skills OS from \`${toPosix(bundlePath)}\`.`,
-    `Read \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/project-instructions.md"))}\` before broad planning or implementation.`,
-    `Use the starter files in \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/starter"))}\` or run \`npm run os:init -- --project .\` from the Founder Skills repo to seed .fs state files.`,
-    "Start with `founder-partner` when the bottleneck is unclear.",
-    "Continue active sequences like `validate-to-build`, `build-to-launch`, `gtm-engine`, `pmf-recovery`, and `weekly-operating-rhythm` before branching into ad hoc work.",
-  ].join("\n\n");
 }
 
 function renderCodexSection(bundlePath: string): string {
@@ -248,8 +225,8 @@ function renderOpenClawSection(bundlePath: string, sectionBody: string): string 
     "## Founder Skills OS for OpenClaw",
     `Bundle root: \`${toPosix(bundlePath)}\`.`,
     `AGENTS section source: \`${toPosix(path.posix.join(toPosix(bundlePath), "agents-founder-skills-section.md"))}\`.`,
-    `Lite prompt: \`${toPosix(path.posix.join(toPosix(bundlePath), "founder-skills-lite-CLAUDE.md"))}\`.`,
-    `Full prompt: \`${toPosix(path.posix.join(toPosix(bundlePath), "founder-skills-full-CLAUDE.md"))}\`.`,
+    `Lite prompt: \`${toPosix(path.posix.join(toPosix(bundlePath), "founder-skills-lite.md"))}\`.`,
+    `Full prompt: \`${toPosix(path.posix.join(toPosix(bundlePath), "founder-skills-full.md"))}\`.`,
     `Starter files: \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/starter"))}\`.`,
     sectionBody,
   ].join("\n\n");
