@@ -5,7 +5,7 @@ Moves a scoped product through implementation planning, build handoff, QA, and r
 OpenClaw should use this sequence as a staged spawn workflow.
 
 ## Entrypoint
-- founder-partner
+- co-founder
 
 ## Steps
 1. implementation-planner

@@ -1,6 +1,6 @@
 name: pmf-recovery
 description: Runs a PMF recovery loop across measurement, support signal, churn diagnosis, retention, growth, and experiments.
-entrypoint: founder-partner
+entrypoint: co-founder
 steps:
   - north-star-definer
   - pmf-signal-reader

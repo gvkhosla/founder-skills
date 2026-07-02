@@ -1,6 +1,6 @@
 name: build-to-launch
 description: Carries a founder from implementation planning through launch assets and launch execution.
-entrypoint: founder-partner
+entrypoint: co-founder
 steps:
   - implementation-planner
   - architecture-reviewer

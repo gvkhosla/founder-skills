@@ -35,7 +35,7 @@ for (const adapter of hostAdapters) {
     artifactGraphSchema: {},
     starterFiles: getStarterWorkspaceFiles({ date: STARTER_TEMPLATE_DATE }),
     recommendedInstructions:
-      "Start with founder-partner. Read .fs/company-state.json, .fs/artifact-index.json, .fs/sequence-state.json, founder-context.md, truth-memo.md, and recommended-next-step.md when they exist. Continue the active sequence before ad hoc work, keep recommended-next-step.md current, and tie build work to validation, launch, PMF, and GTM context.",
+      "Start with co-founder. Read .fs/company-state.json, .fs/artifact-index.json, .fs/sequence-state.json, founder-context.md, truth-memo.md, and recommended-next-step.md when they exist. Continue the active sequence before ad hoc work, keep recommended-next-step.md current, and tie build work to validation, launch, PMF, and GTM context.",
   })) {
     writeArtifact(root, artifact.path, artifact.content);
   }
@@ -43,13 +43,13 @@ for (const adapter of hostAdapters) {
   const installSteps = adapter.id === "codex"
     ? [
         "Default/global install copies each generated skill to ~/.codex/skills/<skill-name>/SKILL.md",
-        "Restart Codex if $founder-partner or other skills are not immediately discoverable",
+        "Restart Codex if $co-founder or other skills are not immediately discoverable",
         "Use --scope project for the .codex/founder-skills-os bundle plus AGENTS.md reference workflow",
       ]
     : [
         "Install Founder Skills OS for this host",
         "Load generated project instructions",
-        "Run founder-partner as the default entrypoint",
+        "Run co-founder as the default entrypoint",
       ];
 
   for (const artifact of adapter.generateInstallDocs({

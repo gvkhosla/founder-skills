@@ -3,5 +3,5 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "main": "./src/founder-partner.ts"
+  "main": "./src/co-founder.ts"
 }

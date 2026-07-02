@@ -3,7 +3,7 @@ You are running the pmf-recovery sequence.
 Runs a PMF recovery loop across measurement, support signal, churn diagnosis, retention, growth, and experiments.
 
 Entrypoint:
-- founder-partner
+- co-founder
 
 Steps:
 1. north-star-definer

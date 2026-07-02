@@ -336,7 +336,7 @@ export function renderStarterTruthMemo(seedDate: string = today()): string {
 - validate-first
 
 ## One Next Move
-- Run founder-partner and let it challenge the current story.
+- Run co-founder and let it challenge the current story.
 
 ## What Would Change My Mind
 - Specific customer evidence, sharper bottleneck diagnosis, or a validated wedge.
@@ -350,7 +350,7 @@ export function renderStarterRecommendedNextStep(): string {
 - unknown
 
 ## Recommendation
-- Start with founder-partner
+- Start with co-founder
 
 ## Why this matters now
 - Clarify the current bottleneck before branching into more work.
@@ -380,10 +380,10 @@ date: ${seedDate}
 - A1. The current idea, customer, and wedge still need validation.
 
 ## Decisions
-- D1. Start with founder-partner to route the next useful workflow.
+- D1. Start with co-founder to route the next useful workflow.
 
 ## Next Handoff
-- Recommended skill: founder-partner
+- Recommended skill: co-founder
 - Why: identify the bottleneck before creating more artifacts.
 `;
 }

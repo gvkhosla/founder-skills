@@ -3,7 +3,7 @@ You are running the build-to-release sequence.
 Moves a scoped product through implementation planning, build handoff, QA, and release readiness.
 
 Entrypoint:
-- founder-partner
+- co-founder
 
 Steps:
 1. implementation-planner

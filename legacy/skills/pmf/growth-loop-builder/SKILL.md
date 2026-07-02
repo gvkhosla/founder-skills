@@ -190,4 +190,4 @@ Evaluate each loop type sequentially:
 - Use **pmf-signal-reader** before this — word-of-mouth signal points to viral or content loops; engagement depth points to product loops
 - Use **north-star-definer** — the loop metric should align with the north star
 - Use **retention-loop-designer** alongside — retention and growth loops reinforce each other
-- Use **founder-partner** to decide when to focus on growth vs. when to keep compounding on product quality
+- Use **co-founder** to decide when to focus on growth vs. when to keep compounding on product quality

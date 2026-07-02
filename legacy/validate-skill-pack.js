@@ -89,7 +89,7 @@ function extractSkillOutput(text, skillName) {
     if (implicit) return implicit[1];
   }
 
-  if (skillName === 'founder-partner') {
+  if (skillName === 'co-founder') {
     const implicit = text.match(/Updates?\s+`?(founder-context\.md)`?/i);
     if (implicit) return implicit[1];
   }

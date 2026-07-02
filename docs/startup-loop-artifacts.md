@@ -17,7 +17,7 @@ date: YYYY-MM-DD
 
 | Readiness | Meaning | Typical owner |
 | --- | --- | --- |
-| `hypothesis-only` | Idea exists, but customer/problem evidence is weak | `founder-partner`, `customer-hypothesis` |
+| `hypothesis-only` | Idea exists, but customer/problem evidence is weak | `co-founder`, `customer-hypothesis` |
 | `validation-ready` | Problem, customer, and assumptions are explicit enough to test | `problem-validator`, `assumption-mapper` |
 | `mvp-scoped` | A narrow product wedge and success signal are defined | `mvp-scoper` |
 | `launch-ready` | Build/release work is tied to positioning, QA, and launch motion | `build-to-launch`, `launch-plan-builder` |

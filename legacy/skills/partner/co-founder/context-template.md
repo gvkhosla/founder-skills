@@ -1,7 +1,7 @@
 # founder-context.md Template
 
 Copy this file to your project root as `founder-context.md`.
-The founder-partner skill reads and updates this file every session.
+The co-founder skill reads and updates this file every session.
 Keep it honest. This file is for you and your partner — not for investors or anyone else.
 
 ---

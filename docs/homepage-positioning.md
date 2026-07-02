@@ -42,7 +42,7 @@ Founder Skills keeps startup context alive across sessions so each agent does no
 
 ### Start here
 
-Founder Partner is the default starting point. It reads state and artifacts, identifies the current bottleneck, and routes into the most useful next skill or sequence.
+Co-founder is the default starting point. It reads state and artifacts, identifies the current bottleneck, and routes into the most useful next skill or sequence.
 
 ### Operating areas
 

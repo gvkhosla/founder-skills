@@ -256,4 +256,4 @@ Same output. The pressure test takes ~5 extra minutes in sequential mode.
 - Use **customer-hypothesis** before this to sharpen who you're building for
 - Use **assumption-mapper** after this to identify which parts of this brief are assumptions vs. facts
 - Use **feature-sequencer** (Build phase) when you're ready to plan the build order
-- Use **founder-partner** anytime to check in on where to focus
+- Use **co-founder** anytime to check in on where to focus

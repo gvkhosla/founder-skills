@@ -333,5 +333,5 @@ Same output. Roughly 2x longer since the two branch agents run sequentially inst
 
 - Use **assumption-mapper** before this -- validates whether the bottleneck you're hiring for is real
 - Use **mvp-scoper** before this -- a scoped MVP clarifies what work exists to delegate
-- Use **founder-partner** after this -- to pressure-test the hire brief and identify blind spots
+- Use **co-founder** after this -- to pressure-test the hire brief and identify blind spots
 - Use **build-cycle** after onboarding -- the new hire or agent fits into your build rhythm

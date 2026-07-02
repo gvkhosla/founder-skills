@@ -5,7 +5,7 @@ Runs a PMF recovery loop across measurement, support signal, churn diagnosis, re
 OpenClaw should use this sequence as a staged spawn workflow.
 
 ## Entrypoint
-- founder-partner
+- co-founder
 
 ## Steps
 1. north-star-definer

@@ -1,7 +1,7 @@
 import type { ArtifactIndex } from "../../core/src/types/artifact.js";
 import type { SequenceState } from "../../core/src/types/sequence.js";
 import type { CompanyState } from "../../core/src/types/state.js";
-import { recommendNextMove, type FounderCatalog } from "../../orchestrator/src/founder-partner.js";
+import { recommendNextMove, type FounderCatalog } from "../../orchestrator/src/co-founder.js";
 
 export interface RecommendationScenario {
   name: string;

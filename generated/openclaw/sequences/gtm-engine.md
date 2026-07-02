@@ -5,7 +5,7 @@ Builds the company's core GTM system from positioning through messaging, SEO/GEO
 OpenClaw should use this sequence as a staged spawn workflow.
 
 ## Entrypoint
-- founder-partner
+- co-founder
 
 ## Steps
 1. customer-hypothesis

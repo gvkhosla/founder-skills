@@ -3,7 +3,7 @@
 Moves a founder from validated problem to confident implementation planning.
 
 ## Entrypoint
-- founder-partner
+- co-founder
 
 ## Steps
 1. problem-validator

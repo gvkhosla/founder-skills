@@ -158,4 +158,4 @@ Run each signal category analysis in sequence:
 - Use **north-star-definer** after this — once you see which signal is strongest, define the metric that captures it
 - Use **retention-loop-designer** if retention signal is Faint or Building
 - Use **growth-loop-builder** if word-of-mouth signal is Building or Clear
-- Use **founder-partner** for overall strategic guidance on what the signal means for your next move
+- Use **co-founder** for overall strategic guidance on what the signal means for your next move

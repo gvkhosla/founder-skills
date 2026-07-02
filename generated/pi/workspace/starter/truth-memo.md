@@ -25,7 +25,7 @@
 - validate-first
 
 ## One Next Move
-- Run founder-partner and let it challenge the current story.
+- Run co-founder and let it challenge the current story.
 
 ## What Would Change My Mind
 - Specific customer evidence, sharper bottleneck diagnosis, or a validated wedge.

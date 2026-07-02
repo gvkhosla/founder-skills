@@ -247,5 +247,5 @@ After 10 cycles, you'll have something most founders don't: a clear record of wh
 
 - Use **mpp-evaluator** for a deep-dive MPP scoring session between cycles
 - Use **failure-navigator** when build-cycle detects stagnation (3+ flat cycles)
-- Use **founder-partner** (Partner phase) for the broader PMF journey and beyond
+- Use **co-founder** (Partner phase) for the broader PMF journey and beyond
 - Use **pmf-signal-reader** (PMF phase) when build-cycle shows "Building" PMF signal and you want to understand it deeply

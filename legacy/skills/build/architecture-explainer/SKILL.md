@@ -123,4 +123,4 @@ Every technical term you'll encounter repeatedly is defined in one plain-English
 
 - Use **stack-selector** before this — the stack decision feeds into the architecture explanation
 - Use **integration-picker** before this — integrations are the "services" layer of the architecture
-- Use **founder-partner** when making architectural changes — the partner tracks how the system evolves over time
+- Use **co-founder** when making architectural changes — the partner tracks how the system evolves over time

@@ -19,7 +19,7 @@ docs/founder-learnings/
 ## Core loop
 
 ```text
-founder-partner
+co-founder
   -> choose the bottleneck
   -> route to the next skill or sequence
   -> produce/update artifacts

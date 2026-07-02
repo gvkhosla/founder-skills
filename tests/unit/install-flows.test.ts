@@ -37,11 +37,11 @@ test("codex global install exports top-level invokable skills without touching A
 
   assert.equal(result.bundlePath, skillsDir);
   assert.equal(result.updatedFiles.length, 0);
-  assert.ok(fs.existsSync(path.join(skillsDir, "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(skillsDir, "co-founder", "SKILL.md")));
   assert.ok(fs.existsSync(path.join(skillsDir, "problem-validator", "SKILL.md")));
   assert.ok(!fs.existsSync(path.join(skillsDir, "strategy", "problem-validator", "SKILL.md")));
   assert.ok(!fs.existsSync(path.join(tempDir, "AGENTS.md")));
-  assert.ok(result.notes.some((note) => note.includes("$founder-partner")));
+  assert.ok(result.notes.some((note) => note.includes("$co-founder")));
 });
 
 test("codex project install exports bundle and updates AGENTS.md", () => {
@@ -75,8 +75,8 @@ test("legacy default install writes pi and codex skills", () => {
   }).toString();
 
   assert.match(output, /Installed for both pi and Codex/);
-  assert.ok(fs.existsSync(path.join(tempDir, ".pi", "agent", "skills", "founder-partner", "SKILL.md")));
-  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".pi", "agent", "skills", "co-founder", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "co-founder", "SKILL.md")));
 });
 
 test("legacy setup installs skills and seeds workspace memory", () => {
@@ -89,8 +89,8 @@ test("legacy setup installs skills and seeds workspace memory", () => {
   }).toString();
 
   assert.match(output, /Setup complete/);
-  assert.ok(fs.existsSync(path.join(tempDir, ".pi", "agent", "skills", "founder-partner", "SKILL.md")));
-  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".pi", "agent", "skills", "co-founder", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "co-founder", "SKILL.md")));
   assert.ok(fs.existsSync(path.join(tempDir, ".fs", "company-state.json")));
   assert.ok(fs.existsSync(path.join(tempDir, "docs", "founder-work", "startup-loop.md")));
   assert.ok(fs.readFileSync(path.join(tempDir, "AGENTS.md"), "utf8").includes("Use Founder Skills as the startup operating loop"));
@@ -106,9 +106,9 @@ test("legacy codex install writes top-level global skills", () => {
     stdio: "pipe",
   }).toString();
 
-  assert.match(output, /\$founder-partner/);
+  assert.match(output, /\$co-founder/);
   assert.match(output, /founder-skills doctor --agent codex/);
-  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "co-founder", "SKILL.md")));
   assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "problem-validator", "SKILL.md")));
   assert.ok(!fs.existsSync(path.join(tempDir, "AGENTS.founder-skills.md")));
 
@@ -129,8 +129,8 @@ test("legacy codex project install writes AGENTS reference without global skills
     stdio: "pipe",
   });
 
-  assert.ok(fs.readFileSync(path.join(tempDir, "AGENTS.founder-skills.md"), "utf8").includes("founder-partner"));
-  assert.ok(!fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
+  assert.ok(fs.readFileSync(path.join(tempDir, "AGENTS.founder-skills.md"), "utf8").includes("co-founder"));
+  assert.ok(!fs.existsSync(path.join(tempDir, ".codex", "skills", "co-founder", "SKILL.md")));
 
   const doctorOutput = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "doctor", "--agent", "codex", "--scope", "project", "--project", tempDir], {
     cwd: tempDir,
@@ -205,7 +205,7 @@ test("hermes install exports a bundle without touching project files", () => {
   });
 
   assert.equal(result.updatedFiles.length, 0);
-  assert.ok(fs.existsSync(path.join(bundleDir, "partner", "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(bundleDir, "partner", "co-founder", "SKILL.md")));
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", "founder-context.md")));
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", "truth-memo.md")));
   assert.ok(fs.existsSync(path.join(bundleDir, "install.md")));

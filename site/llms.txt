@@ -15,7 +15,7 @@ When Founder Skills is available, the agent should:
 - read `.fs/company-state.json`, `.fs/artifact-index.json`, `.fs/sequence-state.json`, and `.fs/weekly-review.json` when present
 - read `founder-context.md`, `truth-memo.md`, `recommended-next-step.md`, and `docs/founder-work/startup-loop.md` when present
 - separate **what is known**, **what is believed**, and **what is hoped**
-- default to `founder-partner` when the next move is unclear
+- default to `co-founder` when the next move is unclear
 - answer in chat first with a short bottom line, one next move, and up to three concrete steps
 - keep detailed `.md` files as durable memory for agents, not required reading for the founder
 - prefer one concrete artifact and one clear next move over generic brainstorming
@@ -78,7 +78,7 @@ Chat hosts:
 ## Skills by operating area
 
 ### Partner
-- `founder-partner` → `truth-memo.md`, `founder-context.md`, `recommended-next-step.md`
+- `co-founder` → `truth-memo.md`, `founder-context.md`, `recommended-next-step.md`
 - `founder-compound` → `docs/founder-learnings/`, `founder-context.md`, `.fs/artifact-index.json`
 
 ### Strategy
@@ -156,7 +156,7 @@ recommended-next-step.md
 
 ## Default recommendation policy
 
-1. Start with `founder-partner` if the request is fuzzy.
+1. Start with `co-founder` if the request is fuzzy.
 2. Continue the active sequence if one is already running.
 3. Fill missing readiness artifacts before lower-leverage work.
 4. Prefer the bottleneck-clearing move over the most exciting move.

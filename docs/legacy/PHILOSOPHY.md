@@ -102,7 +102,7 @@ A true partner:
 - Asks the uncomfortable question you're avoiding
 - Detects PMF signals you might miss
 
-The `founder-partner` skill implements this. It reads a `founder-context.md` file you maintain in your project — a living record of your product's story — and uses it to give you the kind of guidance that usually only comes from a co-founder who's been in every room.
+The `co-founder` skill implements this. It reads a `founder-context.md` file you maintain in your project — a living record of your product's story — and uses it to give you the kind of guidance that usually only comes from a co-founder who's been in every room.
 
 ---
 

@@ -26,13 +26,13 @@ That creates universal `AGENTS.md` instructions, seeds startup memory, and adds 
 Then open any coding agent in the repo and run the front-door skill:
 
 ```text
-$founder-partner
+$co-founder
 ```
 
 Or ask:
 
 ```text
-Use founder-partner to help me decide what to do next.
+Use co-founder to help me decide what to do next.
 ```
 
 ---
@@ -81,7 +81,7 @@ The artifacts are the compounding layer. They let future sessions read what happ
 ## 60-second example
 
 ```text
-You: Use founder-partner to help me decide what to do next.
+You: Use co-founder to help me decide what to do next.
 
 Agent:
 ## Founder Brief
@@ -142,7 +142,7 @@ It also includes lifecycle sequences for validation, build, launch, GTM, PMF rec
 
 - [Docs index](docs/README.md)
 - [Positioning](docs/homepage-positioning.md)
-- [Founder Partner details](docs/founder-partner-manifesto.md)
+- [Co-founder details](docs/co-founder-manifesto.md)
 - [Startup loop artifact contract](docs/startup-loop-artifacts.md)
 - [OS install/export flows](docs/founder-skills-os-install-export-flows.md)
 - [Legacy compatibility layer](legacy/README.md)

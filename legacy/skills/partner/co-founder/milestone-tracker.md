@@ -1,7 +1,7 @@
 # Milestone Tracker
 
 The milestones that matter on the journey from idea to PMF and beyond.
-The founder-partner records these in `founder-context.md` when they're crossed.
+The co-founder records these in `founder-context.md` when they're crossed.
 
 ---
 

@@ -35,20 +35,20 @@ jobs:
         run: |
           tmp="$(mktemp -d)"
           HOME="$tmp" npx --yes "file:$PWD" install --agent pi
-          test -f "$tmp/.pi/agent/skills/founder-partner/SKILL.md"
+          test -f "$tmp/.pi/agent/skills/co-founder/SKILL.md"
 
           HOME="$tmp" npx --yes "file:$PWD" install --agent codex
-          test -f "$tmp/.codex/skills/founder-partner/SKILL.md"
+          test -f "$tmp/.codex/skills/co-founder/SKILL.md"
 
       - name: Smoke OS host installs
         run: |
           tmp="$(mktemp -d)"
 
           HOME="$tmp" npm run os:install -- --host pi
-          test -f "$tmp/.pi/agent/skills/founder-skills-os/partner/founder-partner/SKILL.md"
+          test -f "$tmp/.pi/agent/skills/founder-skills-os/partner/co-founder/SKILL.md"
 
           HOME="$tmp" npm run os:install -- --host codex
-          test -f "$tmp/.codex/skills/founder-partner/SKILL.md"
+          test -f "$tmp/.codex/skills/co-founder/SKILL.md"
 
           npm run os:install -- --host codex --scope project --project "$tmp"
           test -f "$tmp/.codex/founder-skills-os/workspace/project-instructions.md"

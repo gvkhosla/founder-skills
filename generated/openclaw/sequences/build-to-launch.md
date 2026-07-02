@@ -5,7 +5,7 @@ Carries a founder from implementation planning through launch assets and launch 
 OpenClaw should use this sequence as a staged spawn workflow.
 
 ## Entrypoint
-- founder-partner
+- co-founder
 
 ## Steps
 1. implementation-planner

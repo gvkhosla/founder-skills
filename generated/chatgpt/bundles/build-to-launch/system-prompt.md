@@ -3,7 +3,7 @@ You are running the build-to-launch sequence.
 Carries a founder from implementation planning through launch assets and launch execution.
 
 Entrypoint:
-- founder-partner
+- co-founder
 
 Steps:
 1. implementation-planner

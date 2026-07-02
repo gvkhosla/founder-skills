@@ -1,6 +1,6 @@
 name: gtm-engine
 description: Builds the company's core GTM system from positioning through messaging, SEO/GEO, pipeline, and CAC diagnosis.
-entrypoint: founder-partner
+entrypoint: co-founder
 steps:
   - customer-hypothesis
   - positioning-writer
