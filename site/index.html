@@ -298,14 +298,14 @@
         <div>
           <div class="eyebrow">Skills for builders</div>
           <h1>Stop starting from scratch.</h1>
-          <p class="hero-copy"><strong>Founder Skills</strong> gives your coding agent startup workflows for the work around the code: choosing an idea, validating the customer, scoping the MVP, planning launch, reading PMF signals, and remembering what changed.</p>
+          <p class="hero-copy"><strong>Founder Skills</strong> gives any repo-aware coding agent startup workflows for the work around the code: choosing an idea, validating the customer, scoping the MVP, planning launch, reading PMF signals, and remembering what changed.</p>
 
           <div class="install" aria-label="Install command">
             <div class="command">
-              <code id="install-command"><span class="prompt">$</span> npx --yes github:gvkhosla/founder-skills install --agent pi</code>
+              <code id="install-command"><span class="prompt">$</span> npx --yes github:gvkhosla/founder-skills setup</code>
               <button class="copy" id="copy-install" type="button">Copy</button>
             </div>
-            <div class="install-note">Then ask: <code>Use founder-partner to help me decide what to do next.</code></div>
+            <div class="install-note">Run it in your repo. Then ask any coding agent: <code>Use founder-partner to help me decide what to do next.</code></div>
           </div>
         </div>
 
@@ -366,7 +366,7 @@ Saved: recommended-next-step.md, truth-memo.md, startup-loop.md</pre>
         <div class="closing">
           <div>
             <h2>Use it when the next move is fuzzy.</h2>
-            <p>Works with pi, Codex, OpenCode, OpenClaw, Hermes, and ChatGPT. Install once, then keep the same startup context alive.</p>
+            <p>Works with any agentic coding tool that can read repo files. Install once, then keep the same startup context alive.</p>
           </div>
           <a class="button" href="https://github.com/gvkhosla/founder-skills" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </div>
@@ -381,7 +381,7 @@ Saved: recommended-next-step.md, truth-memo.md, startup-loop.md</pre>
 
   <script>
     const copyButton = document.getElementById('copy-install');
-    const installCommand = 'npx --yes github:gvkhosla/founder-skills install --agent pi';
+    const installCommand = 'npx --yes github:gvkhosla/founder-skills setup';
 
     copyButton?.addEventListener('click', async () => {
       try {

@@ -15,27 +15,15 @@ Each cycle should make the next cycle easier. A good customer hypothesis sharpen
 
 ## Start in 60 seconds
 
-Install for your agent:
+Run this inside your startup repo:
 
 ```bash
-# Codex, invokable as $founder-partner after restart
-npx --yes github:gvkhosla/founder-skills install --agent codex
-
-# pi
-npx --yes github:gvkhosla/founder-skills install --agent pi
-
-# OpenCode, project-scoped (from a cloned repo)
-npm run os:install -- --host opencode --scope project
+npx --yes github:gvkhosla/founder-skills setup
 ```
 
-Seed startup memory in a repo:
+That creates universal `AGENTS.md` instructions, seeds startup memory, and adds native shortcuts where supported.
 
-```bash
-npx --yes github:gvkhosla/founder-skills init --project . --company "Acme"
-npx --yes github:gvkhosla/founder-skills doctor --project .
-```
-
-Then run the front-door skill:
+Then open any coding agent in the repo and run the front-door skill:
 
 ```text
 $founder-partner
@@ -109,16 +97,18 @@ Details saved: recommended-next-step.md, truth-memo.md, founder-context.md.
 
 | If you want... | Use this | Verify |
 | --- | --- | --- |
-| Quick pi skills | `founder-skills install --agent pi` | `founder-skills doctor --agent pi` |
-| Codex `$skill-name` invocation | `founder-skills install --agent codex` | `founder-skills doctor --agent codex` |
-| Repo memory files | `founder-skills init --project .` | `founder-skills doctor --project .` |
+| Universal setup for any repo-aware agent | `founder-skills setup` | `founder-skills doctor --project .` |
+| Quick pi skills only | `founder-skills install --agent pi` | `founder-skills doctor --agent pi` |
+| Codex `$skill-name` invocation only | `founder-skills install --agent codex` | `founder-skills doctor --agent codex` |
+| Repo memory files only | `founder-skills init --project .` | `founder-skills doctor --project .` |
 | OpenCode/OpenClaw/Hermes beta bundles | clone repo, then `npm run os:install -- --host <host> --project /path/to/startup` | `npm run os:doctor -- --host <host> --project /path/to/startup` |
 
 ## Core commands
 
 ```bash
-founder-skills install --agent codex   # install skills
-founder-skills init --project .        # seed startup memory
+founder-skills setup                   # recommended: universal AGENTS.md + memory + native shortcuts
+founder-skills install --agent codex   # optional: install only Codex skills
+founder-skills init --project .        # optional: seed only startup memory
 founder-skills doctor --agent codex    # verify install
 founder-skills list                    # list available skills
 ```
