@@ -13,13 +13,14 @@ Site: https://fskills.xyz
 
 When Founder Skills is available, the agent should:
 - read `.fs/company-state.json`, `.fs/artifact-index.json`, `.fs/sequence-state.json`, and `.fs/weekly-review.json` when present
-- read `founder-context.md`, `truth-memo.md`, and `recommended-next-step.md` when present
+- read `founder-context.md`, `truth-memo.md`, `recommended-next-step.md`, and `docs/founder-work/startup-loop.md` when present
 - separate **what is known**, **what is believed**, and **what is hoped**
 - default to `founder-partner` when the next move is unclear
 - answer in chat first with a short bottom line, one next move, and up to three concrete steps
 - keep detailed `.md` files as durable memory for agents, not required reading for the founder
 - prefer one concrete artifact and one clear next move over generic brainstorming
 - route into validation before build when the evidence is weak
+- close meaningful cycles with `founder-compound` so learnings become reusable memory
 
 ---
 
@@ -42,7 +43,6 @@ npm run os:gen:all
 npm run os:init -- --project /path/to/startup --stage building --sequence validate-to-build
 npm run os:recommend -- --project /path/to/startup
 npm run os:install -- --host pi
-npm run os:install -- --host claude-code --scope project
 npm run os:install -- --host codex
 npm run os:install -- --host opencode
 npm run os:install -- --host openclaw
@@ -55,7 +55,6 @@ npm run os:doctor -- --project /path/to/startup
 ```bash
 npx --yes github:gvkhosla/founder-skills install --agent pi
 npx --yes github:gvkhosla/founder-skills install --agent codex
-npx --yes github:gvkhosla/founder-skills install --agent claude
 npx --yes github:gvkhosla/founder-skills init --project .
 npx --yes github:gvkhosla/founder-skills doctor --agent codex
 ```
@@ -66,7 +65,6 @@ npx --yes github:gvkhosla/founder-skills doctor --agent codex
 
 Coding hosts:
 - pi
-- Claude Code
 - Codex
 - OpenCode
 - OpenClaw
@@ -74,7 +72,6 @@ Coding hosts:
 
 Chat hosts:
 - ChatGPT
-- Claude
 
 ---
 
@@ -82,6 +79,7 @@ Chat hosts:
 
 ### Partner
 - `founder-partner` → `truth-memo.md`, `founder-context.md`, `recommended-next-step.md`
+- `founder-compound` → `docs/founder-learnings/`, `founder-context.md`, `.fs/artifact-index.json`
 
 ### Strategy
 - `problem-validator` → `problem-validation-report.md`

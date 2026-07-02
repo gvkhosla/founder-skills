@@ -1,0 +1,32 @@
+name: founder-compound
+description: Closes a startup work cycle by capturing what was learned, updating company memory, and making the next cycle easier. Use after customer calls, validation, MVP scoping, launches, PMF reviews, experiments, support reviews, or weekly reviews. Returns a compact Learning Brief plus founder-learning.md, updated founder-context.md, and updated .fs artifact/index state.
+invocations:
+  - Compound what we learned
+  - Capture this startup learning
+  - Close the loop and update memory
+outputs:
+  - docs/founder-learnings/
+  - founder-context.md
+  - .fs/artifact-index.json
+  - .fs/company-state.json
+depends_on:
+  - founder-context.md
+  - truth-memo.md
+  - recommended-next-step.md
+  - .fs/company-state.json
+  - .fs/artifact-index.json
+feeds_into:
+  - founder-partner
+  - weekly-founder-review
+checks:
+  - learning_captured
+  - reusable_pattern_named
+  - memory_updated
+  - next_cycle_easier
+supported_hosts:
+  - pi
+  - codex
+  - opencode
+  - chatgpt
+  - openclaw
+  - hermes

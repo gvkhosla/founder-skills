@@ -6,6 +6,7 @@ Founder Skills OS is the primary product in this repo.
 
 - [Homepage positioning](./homepage-positioning.md)
 - [Founder Partner manifesto](./founder-partner-manifesto.md)
+- [Startup loop artifact contract](./startup-loop-artifacts.md)
 - [OS install and export flows](./founder-skills-os-install-export-flows.md)
 
 ## Internal docs

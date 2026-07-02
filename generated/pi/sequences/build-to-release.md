@@ -12,6 +12,7 @@ Moves a scoped product through implementation planning, build handoff, QA, and r
 4. qa-verifier
 5. release-readiness-auditor
 6. post-ship-review
+7. founder-compound
 
 ## Primary outputs
 - implementation-plan.md
@@ -20,6 +21,7 @@ Moves a scoped product through implementation planning, build handoff, QA, and r
 - qa-report.md
 - release-readiness.md
 - post-ship-review.md
+- docs/founder-learnings/
 
 ## Human-facing response (required)
 Before or alongside any file updates, give the founder a short chat answer first:
@@ -43,3 +45,4 @@ Use this sequence when the founder has moved beyond scoping and needs a discipli
 4. Verify critical flows and quality risks
 5. Audit release readiness honestly
 6. Review outcomes and the highest-leverage follow-up after shipping
+7. Capture the learning with founder-compound so the next cycle starts smarter

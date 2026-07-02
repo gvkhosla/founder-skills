@@ -18,6 +18,7 @@ OpenClaw behavior:
 
 ## Expected outputs
 - mvp-brief.md
+- docs/founder-work/startup-loop.md
 
 ## Human-facing response (required)
 Before or alongside any file updates, give the founder a short chat answer first:
@@ -42,22 +43,92 @@ Keep the chat response under 150 words unless the founder asks for detail. Do no
 ## Workflow
 # MVP Scoper
 
-Read available context first:
+Turn validated pain and a sharp customer into the smallest useful product wedge worth building.
+
+## Phase 0: Read context
+
+Read when available:
+- `docs/founder-work/startup-loop.md`
 - `problem-validation-report.md`
 - `customer-profile.md`
 - `assumptions-map.md`
+- `truth-memo.md`
+- recent founder-learning artifacts
 
-Then produce `mvp-brief.md` with:
-1. The one job this product does
-2. The primary user
-3. The 3 must-have features
-4. Explicit not-in-scope list
-5. Success signal for the MVP
-6. Time-to-build estimate
-7. Recommended next skill
+If problem validation is weak, do not scope a build by default. Recommend returning to `problem-validator` unless the founder explicitly wants a speculative prototype.
 
-Rules:
-- force clear tradeoffs
-- maximum 3 in-scope features
-- optimize for validation speed, not completeness
-- make the cut list explicit and visible
+## Phase 1: Define the one job
+
+Write the MVP around one job:
+- the customer
+- the painful situation
+- the outcome the product creates
+- the success signal that proves usefulness
+
+If you cannot write the job in one sentence, the MVP is not scoped yet.
+
+## Phase 2: Cut scope aggressively
+
+Choose maximum three must-have features.
+
+For each candidate feature, decide:
+- **must-have** — required to produce the success signal
+- **manual / concierge** — can be done by hand for validation
+- **later** — useful but not needed for the first proof
+- **no** — distracts from the wedge
+
+Optimize for validation speed and learning density, not completeness.
+
+## Phase 3: Define the build handoff
+
+Make implementation planning easier by capturing:
+- must-have requirements with stable `M#` IDs
+- explicit non-goals
+- success signal `S#`
+- risky assumptions that should remain visible during build
+- rough complexity / time-to-build estimate
+- recommended next skill
+
+Do not design architecture here. That belongs in `implementation-planner` and `architecture-reviewer`.
+
+## Phase 4: Write artifacts
+
+Write `mvp-brief.md`:
+
+```markdown
+# MVP Brief — YYYY-MM-DD
+
+## One Job
+
+## Primary Customer
+
+## Must-Have Features
+- M1. ...
+- M2. ...
+- M3. ...
+
+## Manual / Concierge For Now
+
+## Explicitly Not In Scope
+
+## Success Signal
+
+## Risky Assumptions
+
+## Time-to-Build Estimate
+
+## Recommended Next Skill
+```
+
+Also update `docs/founder-work/startup-loop.md` when present:
+- set `artifact_readiness: mvp-scoped` when scope and success signal are clear
+- add or update `M#`, `S#`, `A#`, and `D#` entries
+- keep the Goal Capsule current
+
+## Chat response
+
+Return:
+- the one job
+- the three must-haves or fewer
+- the visible cut list
+- recommended next skill

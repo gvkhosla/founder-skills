@@ -10,6 +10,7 @@ steps:
   - pipeline-reviewer
   - seo-geo-strategist
   - cac-diagnostician
+  - founder-compound
 primary_outputs:
   - customer-profile.md
   - positioning.md
@@ -19,5 +20,6 @@ primary_outputs:
   - pipeline-review.md
   - seo-geo-plan.md
   - cac-diagnosis.md
+  - docs/founder-learnings/
 success_signal:
   - founder_has_one_clear_message_and_channel_system

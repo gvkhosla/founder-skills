@@ -25,8 +25,8 @@ npx --yes github:gvkhosla/founder-skills install --agent codex
 # pi
 npx --yes github:gvkhosla/founder-skills install --agent pi
 
-# Claude Code, project-scoped
-npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
+# OpenCode, project-scoped (from a cloned repo)
+npm run os:install -- --host opencode --scope project
 ```
 
 Seed startup memory in a repo:
@@ -112,7 +112,6 @@ Details saved: recommended-next-step.md, truth-memo.md, founder-context.md.
 | --- | --- | --- |
 | Quick pi skills | `founder-skills install --agent pi` | `founder-skills doctor --agent pi` |
 | Codex `$skill-name` invocation | `founder-skills install --agent codex` | `founder-skills doctor --agent codex` |
-| Claude Code project skills | `founder-skills install --agent claude --scope project` | `founder-skills doctor --agent claude --scope project` |
 | Repo memory files | `founder-skills init --project .` | `founder-skills doctor --project .` |
 | OpenCode/OpenClaw/Hermes beta bundles | clone repo, then `npm run os:install -- --host <host> --project /path/to/startup` | `npm run os:doctor -- --host <host> --project /path/to/startup` |
 
@@ -137,9 +136,9 @@ npm test
 
 ## Included workflows
 
-Founder Skills includes 29 canonical skills across:
+Founder Skills includes 30 canonical skills across:
 
-- **Partner** — route the next move
+- **Partner** — route the next move and compound learnings
 - **Strategy** — problem validation, customer hypothesis, MVP scope, assumptions
 - **Engineering + Product** — implementation planning, architecture, QA, release readiness
 - **Launch** — positioning, landing page copy, pricing, launch plans
@@ -148,13 +147,14 @@ Founder Skills includes 29 canonical skills across:
 - **Operations** — focus, experiments, weekly review
 - **Support + Scale** — support insights, first hire briefs
 
-It also includes lifecycle sequences for validation, build, launch, GTM, PMF recovery, and weekly operating rhythm.
+It also includes lifecycle sequences for validation, build, launch, GTM, PMF recovery, and weekly operating rhythm. Meaningful cycles close with `founder-compound` so learnings become reusable memory.
 
 ## Docs
 
 - [Docs index](docs/README.md)
 - [Positioning](docs/homepage-positioning.md)
 - [Founder Partner details](docs/founder-partner-manifesto.md)
+- [Startup loop artifact contract](docs/startup-loop-artifacts.md)
 - [OS install/export flows](docs/founder-skills-os-install-export-flows.md)
 - [Legacy compatibility layer](legacy/README.md)
 - [Changelog](CHANGELOG.md)

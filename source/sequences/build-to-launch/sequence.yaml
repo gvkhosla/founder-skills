@@ -11,6 +11,7 @@ steps:
   - pricing-model-framer
   - landing-page-copywriter
   - launch-plan-builder
+  - founder-compound
 primary_outputs:
   - implementation-plan.md
   - architecture-overview.md
@@ -21,5 +22,6 @@ primary_outputs:
   - pricing-model.md
   - landing-page-copy.md
   - launch-plan.md
+  - docs/founder-learnings/
 success_signal:
   - founder_can_ship_with_build_and_launch_assets_aligned

@@ -5,6 +5,7 @@ invocations:
   - Is this problem real enough?
 outputs:
   - problem-validation-report.md
+  - docs/founder-work/startup-loop.md
 feeds_into:
   - customer-profile.md
   - mvp-brief.md
@@ -13,10 +14,8 @@ checks:
   - recommendation_present
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - chatgpt
-  - claude-chat
   - openclaw
   - hermes

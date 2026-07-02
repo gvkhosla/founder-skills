@@ -8,6 +8,7 @@ steps:
   - implementation-planner
   - architecture-reviewer
   - release-readiness-auditor
+  - founder-compound
 primary_outputs:
   - problem-validation-report.md
   - customer-profile.md
@@ -15,5 +16,6 @@ primary_outputs:
   - implementation-plan.md
   - architecture-overview.md
   - release-readiness.md
+  - docs/founder-learnings/
 success_signal:
   - founder_can_start_build_with_no_major_ambiguity

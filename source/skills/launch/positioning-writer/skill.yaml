@@ -20,10 +20,8 @@ checks:
 readiness_gate: launch-readiness
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - chatgpt
-  - claude-chat
   - openclaw
   - hermes

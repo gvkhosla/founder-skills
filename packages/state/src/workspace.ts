@@ -20,6 +20,7 @@ export const WEEKLY_REVIEW_FILE = path.join(FS_DIRNAME, "weekly-review.json");
 export const FOUNDER_CONTEXT_FILE = "founder-context.md";
 export const TRUTH_MEMO_FILE = "truth-memo.md";
 export const RECOMMENDED_NEXT_FILE = "recommended-next-step.md";
+export const STARTUP_LOOP_FILE = path.join("docs", "founder-work", "startup-loop.md");
 
 export interface WorkspaceCatalog {
   skills: CanonicalSkill[];
@@ -322,14 +323,14 @@ export function renderStarterTruthMemo(seedDate: string = today()): string {
 ## What We Hope
 - A real bottleneck, wedge, and next move will emerge quickly.
 
-## The Hard Truth
+## Current Bottleneck
 - You do not have enough written evidence yet to trust your own story.
 
 ## Contradictions / Weak Assumptions
 - Unknown until the first partner session runs.
 
-## Current Bottleneck
-- unknown
+## Main Contradiction
+- Unknown until the first partner session runs.
 
 ## Verdict
 - validate-first
@@ -353,6 +354,37 @@ export function renderStarterRecommendedNextStep(): string {
 
 ## Why this matters now
 - Clarify the current bottleneck before branching into more work.
+`;
+}
+
+export function renderStarterStartupLoop(seedDate: string = today()): string {
+  return `---
+artifact_contract: founder-skills/startup-loop/v1
+artifact_readiness: hypothesis-only
+stage: idea
+date: ${seedDate}
+---
+
+# Startup Loop
+
+## Goal Capsule
+**Customer:** unknown
+**Problem:** unknown
+**Current bottleneck:** problem-clarity
+**Success signal:** unknown
+
+## Evidence Ledger
+- E1. Workspace initialized; no startup evidence captured yet.
+
+## Assumptions
+- A1. The current idea, customer, and wedge still need validation.
+
+## Decisions
+- D1. Start with founder-partner to route the next useful workflow.
+
+## Next Handoff
+- Recommended skill: founder-partner
+- Why: identify the bottleneck before creating more artifacts.
 `;
 }
 
@@ -395,6 +427,10 @@ export function getStarterWorkspaceFiles(options: { date?: string } = {}): Array
     {
       path: path.posix.join("workspace", "starter", RECOMMENDED_NEXT_FILE),
       content: `${renderStarterRecommendedNextStep()}\n`,
+    },
+    {
+      path: path.posix.join("workspace", "starter", STARTUP_LOOP_FILE),
+      content: `${renderStarterStartupLoop(seedDate)}\n`,
     },
   ];
 }
@@ -587,6 +623,13 @@ export function ensureFounderWorkspace(
   if (!fs.existsSync(weeklyReviewPath)) {
     writeJson(weeklyReviewPath, defaultWeeklyReviewState());
     createdFiles.push(WEEKLY_REVIEW_FILE);
+  }
+
+  const startupLoopPath = path.join(projectDir, STARTUP_LOOP_FILE);
+  if (!fs.existsSync(startupLoopPath)) {
+    fs.mkdirSync(path.dirname(startupLoopPath), { recursive: true });
+    fs.writeFileSync(startupLoopPath, `${renderStarterStartupLoop()}\n`, "utf8");
+    createdFiles.push(STARTUP_LOOP_FILE);
   }
 
   const sequenceStatePath = path.join(projectDir, SEQUENCE_STATE_FILE);

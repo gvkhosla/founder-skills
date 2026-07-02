@@ -5,6 +5,7 @@ invocations:
   - Who is my first customer?
 outputs:
   - customer-profile.md
+  - docs/founder-work/startup-loop.md
 feeds_into:
   - mvp-brief.md
   - positioning.md
@@ -13,10 +14,8 @@ checks:
   - recommendation_present
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - chatgpt
-  - claude-chat
   - openclaw
   - hermes

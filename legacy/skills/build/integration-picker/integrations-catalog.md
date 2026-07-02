@@ -115,7 +115,7 @@ Quick-reference for the most common integrations a non-technical founder needs t
 | Tool | Best For | Cost | Complexity |
 |------|----------|------|-----------|
 | **OpenAI API** | GPT-4o, embeddings, vision | Pay per token | ★★☆ Medium |
-| **Anthropic API** | Claude 3.5 Sonnet, long context | Pay per token | ★★☆ Medium |
+| **Anthropic API** | Long-context model API | Pay per token | ★★☆ Medium |
 | **Vercel AI SDK** | Unified wrapper for all LLMs in Next.js | Free | ★☆☆ Very easy |
 | **Replicate** | Open source models, image generation | Pay per run | ★★☆ Medium |
 

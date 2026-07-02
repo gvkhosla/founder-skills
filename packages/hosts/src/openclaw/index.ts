@@ -45,7 +45,7 @@ export class OpenClawAdapter implements HostAdapter {
         ].join("\n\n"),
       },
       {
-        path: "generated/openclaw/founder-skills-lite-CLAUDE.md",
+        path: "generated/openclaw/founder-skills-lite.md",
         kind: "project-instructions",
         content: [
           "# Founder Skills OS Lite",
@@ -56,7 +56,7 @@ export class OpenClawAdapter implements HostAdapter {
         ].join("\n"),
       },
       {
-        path: "generated/openclaw/founder-skills-full-CLAUDE.md",
+        path: "generated/openclaw/founder-skills-full.md",
         kind: "project-instructions",
         content: [
           "# Founder Skills OS Full",
@@ -89,8 +89,8 @@ export class OpenClawAdapter implements HostAdapter {
         content: [
           `# ${input.hostName} install`,
           "- Paste agents-founder-skills-section.md into your OpenClaw AGENTS.md",
-          "- Use founder-skills-lite-CLAUDE.md for medium tasks",
-          "- Use founder-skills-full-CLAUDE.md for full product/build sequences",
+          "- Use founder-skills-lite.md for medium tasks",
+          "- Use founder-skills-full.md for full product/build sequences",
           "- Spawn coding sessions with the right working directory and artifact context",
         ].join("\n"),
       },

@@ -1,124 +1,30 @@
-# Legacy Compatibility Guide
+# Legacy Compatibility
 
-The original Founder Skills pack now lives under `legacy/skills/`.
+The legacy compatibility layer now supports **pi** and **Codex**.
 
-These legacy skills are designed to work across **pi**, **Claude**, and **Codex** without modification. This document explains how, and what to expect from each agent.
-
----
-
-## Compatibility Matrix
-
-| Feature | pi | Claude | Codex |
-|---------|-----|------------|-------|
-| SKILL.md format | ✅ Native | ✅ Native | ✅ Markdown read |
-| Auto-discovery by description | ✅ | ✅ | Manual |
-| File read (`founder-context.md`) | ✅ | ✅ | ✅ |
-| Spawn parallel subagents | ✅ | ✅ | ⚠️ Sequential |
-| Background knowledge loading | ✅ | ✅ | ❌ |
-
-**Key rule:** Skills describe their parallel intent. pi and Claude execute it natively. Codex runs the same steps sequentially — same output, longer time.
-
----
-
-## Install Paths Per Agent
-
-### pi
+## Install
 
 ```bash
-# Install all skills
-npx --yes github:gvkhosla/founder-skills install --agent pi
-
-# Install one phase
-npx --yes github:gvkhosla/founder-skills install --agent pi --phase strategy
+founder-skills install --agent pi
+founder-skills install --agent codex
+founder-skills install --agent codex --scope project --out ./AGENTS.founder-skills.md
 ```
 
-Skills install to `~/.pi/agent/skills/[skill-name]/`. Global across all projects.
+## Behavior
 
-**To invoke:** Say the trigger phrase described in the skill's `description:` field, or `/skill [skill-name]`.
+| Feature | pi | Codex |
+| --- | --- | --- |
+| Native skill folders | yes | yes, global `~/.codex/skills/<skill>/SKILL.md` |
+| Project instructions | no | yes, via generated AGENTS file |
+| Parallel intent | native when available | described as sequential steps |
+| Workspace memory | reads/writes repo files | reads/writes repo files |
 
----
-
-### Claude
+## Doctor
 
 ```bash
-# Install globally (all projects)
-npx --yes github:gvkhosla/founder-skills install --agent claude
-
-# Install to current project only
-npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
+founder-skills doctor --agent pi
+founder-skills doctor --agent codex
+founder-skills doctor --agent codex --scope project --project .
 ```
 
-Global skills: `~/.claude/skills/[skill-name]/`
-Project skills: `.claude/skills/[skill-name]/` (takes precedence over global)
-
-**To invoke:** Say "Use the [skill-name] skill" or describe what you need.
-
----
-
-### Codex
-
-```bash
-# Install global Codex skills for $skill-name invocation
-npx --yes github:gvkhosla/founder-skills install --agent codex
-
-# Optional project/reference AGENTS bundle
-npx --yes github:gvkhosla/founder-skills install --agent codex --scope project --out ./AGENTS.founder-skills.md
-```
-
-Global install writes each skill to `~/.codex/skills/[skill-name]/SKILL.md`. Restart Codex if `$founder-partner` is not immediately discoverable.
-
-Project/reference mode generates `AGENTS.founder-skills.md` (or your custom `--out` path). Add its contents to your project's `AGENTS.md`.
-
-**To invoke:** `$skill-name` for global installs, or "Use the [skill-name] skill" in project/reference mode.
-
-**Note:** Codex runs parallel phases sequentially. Same output, ~2–3× longer time.
-
-Legacy clone-based installer remains available as `bash scripts/install.sh ...` for fully offline/manual workflows. The command stays the same; the implementation now lives under `legacy/`.
-
----
-
-## `founder-context.md` — Cross-Agent Persistence
-
-The `founder-partner` skill reads `founder-context.md` from the project root. This works in all agents — it's just a file read.
-
-**Location:** `[your-project-root]/founder-context.md`
-
-Copy `legacy/skills/partner/founder-partner/context-template.md` to your project root as `founder-context.md` to start. The partner skill will update it at the end of every session.
-
----
-
-## Parallel Execution Details
-
-### pi and Claude
-
-Skills that describe parallel subagent spawning will execute in parallel — multiple independent agents run simultaneously, then the orchestrator synthesizes. This is the intended experience.
-
-### Codex
-
-Codex agents read the "Sequential Fallback" section that every parallelized skill includes. Same steps, same output, run one at a time. The quality is identical; only the speed differs.
-
----
-
-## Known Agent-Specific Quirks
-
-### pi
-- Skills in `~/.pi/agent/skills/` load globally across all projects
-- `founder-partner` works best here — context loads automatically at session start
-
-### Claude
-- Project-level skills (`.claude/skills/`) take precedence over global (`~/.claude/skills/`) with the same name
-- `founder-context.md` must be in the working directory where Claude is running
-
-### Codex
-- No native skill format — use AGENTS.md or system prompt injection
-- Skills work as structured prompt templates when read at session start
-- Re-inject `founder-context.md` content manually if context resets mid-session
-
----
-
-## Versioning
-
-Each skill has a `version` field in its frontmatter:
-- **Patch (1.0.x):** Wording improvements — safe to auto-update
-- **Minor (1.x.0):** Framework changes — review before updating
-- **Major (x.0.0):** Output format changed — update `founder-context.md` schema too
+For new work, prefer the OS host bundles and generated skills under `generated/`.

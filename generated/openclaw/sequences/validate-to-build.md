@@ -14,6 +14,7 @@ OpenClaw should use this sequence as a staged spawn workflow.
 4. implementation-planner
 5. architecture-reviewer
 6. release-readiness-auditor
+7. founder-compound
 
 ## Primary outputs
 - problem-validation-report.md
@@ -22,6 +23,7 @@ OpenClaw should use this sequence as a staged spawn workflow.
 - implementation-plan.md
 - architecture-overview.md
 - release-readiness.md
+- docs/founder-learnings/
 
 ## Human-facing response (required)
 Before or alongside any file updates, give the founder a short chat answer first:
@@ -45,3 +47,4 @@ Use this sequence when the founder has conviction around the problem and now nee
 4. Turn scope into a concrete implementation plan
 5. Review architecture and technical risk
 6. Audit release readiness before shipping
+7. Capture the learning with founder-compound so the next cycle starts smarter

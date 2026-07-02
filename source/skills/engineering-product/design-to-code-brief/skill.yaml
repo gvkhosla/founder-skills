@@ -15,7 +15,6 @@ checks:
   - states_and_interactions_present
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - openclaw

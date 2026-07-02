@@ -15,6 +15,7 @@ Steps:
 7. pricing-model-framer
 8. landing-page-copywriter
 9. launch-plan-builder
+10. founder-compound
 
 Primary outputs:
 - implementation-plan.md
@@ -26,6 +27,7 @@ Primary outputs:
 - pricing-model.md
 - landing-page-copy.md
 - launch-plan.md
+- docs/founder-learnings/
 
 ## Human-facing response (required)
 Before or alongside any file updates, give the founder a short chat answer first:
@@ -48,5 +50,6 @@ Flow:
 3. verify quality and release readiness
 4. turn the product into a sellable offer
 5. prepare the launch motion
+6. Capture the learning with founder-compound so the next cycle starts smarter
 
 Do not skip the release-readiness step just because the launch work feels more urgent.

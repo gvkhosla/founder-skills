@@ -10,6 +10,7 @@ steps:
   - growth-loop-builder
   - experiment-planner
   - weekly-founder-review
+  - founder-compound
 primary_outputs:
   - north-star.md
   - pmf-assessment.md
@@ -19,5 +20,6 @@ primary_outputs:
   - growth-loop.md
   - experiment-plan.md
   - weekly-review.md
+  - docs/founder-learnings/
 success_signal:
   - founder_has_a_clear_pmf_recovery_plan

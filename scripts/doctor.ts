@@ -26,6 +26,7 @@ const groups: Record<string, string[]> = {
     "docs/founder-partner-manifesto.md",
     "docs/homepage-positioning.md",
     "docs/founder-skills-os-install-export-flows.md",
+    "docs/startup-loop-artifacts.md",
   ],
   workspace: ["package.json", "package-lock.json", "tsconfig.base.json", "tsconfig.json"],
   core: [
@@ -51,6 +52,7 @@ const groups: Record<string, string[]> = {
     "source/skills/ads/cac-diagnostician/skill.yaml",
     "source/skills/pmf/pmf-signal-reader/skill.yaml",
     "source/skills/partner/founder-partner/reference.md",
+    "source/skills/partner/founder-compound/skill.yaml",
     "source/skills/scale/first-hire-brief/skill.yaml",
     "source/skills/sales/pipeline-reviewer/skill.yaml",
     "source/sequences/validate-to-build/sequence.yaml",
@@ -106,7 +108,7 @@ function parseArgs(argv: string[]) {
     throw new Error(`Unknown option: ${token}`);
   }
 
-  if (host && !["pi", "claude-code", "codex", "opencode", "openclaw", "hermes"].includes(host)) {
+  if (host && !["pi", "codex", "opencode", "openclaw", "hermes"].includes(host)) {
     throw new Error(`Unknown host '${host}'.`);
   }
   if (scope && scope !== "global" && scope !== "project") {
@@ -125,7 +127,7 @@ function checkHostInstall(host: CodingHostId, scope: InstallScope, projectDir: s
   } else {
     requiredFiles.push(path.join(bundlePath, "workspace", "project-instructions.md"));
     if (host === "openclaw") {
-      requiredFiles.push(path.join(bundlePath, "founder-skills-full-CLAUDE.md"));
+      requiredFiles.push(path.join(bundlePath, "founder-skills-full.md"));
       requiredFiles.push(path.join(bundlePath, "skills", "founder-partner", "SKILL.md"));
     } else {
       requiredFiles.push(path.join(bundlePath, "partner", "founder-partner", "SKILL.md"));
@@ -176,7 +178,7 @@ function checkWorkspaceState(projectDir: string) {
     console.log(`✓ ${label}`);
   }
 
-  for (const relPath of [FOUNDER_CONTEXT_FILE, TRUTH_MEMO_FILE, RECOMMENDED_NEXT_FILE]) {
+  for (const relPath of [FOUNDER_CONTEXT_FILE, TRUTH_MEMO_FILE, RECOMMENDED_NEXT_FILE, path.join("docs", "founder-work", "startup-loop.md")]) {
     const absPath = path.join(projectDir, relPath);
     if (fs.existsSync(absPath)) {
       console.log(`✓ ${relPath}`);

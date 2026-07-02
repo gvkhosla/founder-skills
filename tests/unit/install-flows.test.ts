@@ -143,26 +143,6 @@ test("OS install defaults use documented golden layouts", () => {
   assert.equal(getDefaultBundlePath("hermes", "global", tempDir), path.join(os.homedir(), ".hermes", "skills", "founder-skills-os"));
 });
 
-test("claude project install exports bundle and updates CLAUDE.md", () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-claude-"));
-  const bundleDir = path.join(tempDir, ".claude", "skills", "founder-skills-os");
-
-  installGeneratedHostBundle({
-    rootDir: root,
-    host: "claude-code",
-    scope: "project",
-    projectDir: tempDir,
-    dest: bundleDir,
-  });
-
-  const claudeFile = path.join(tempDir, "CLAUDE.md");
-  assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "project-instructions.md")));
-  assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", ".fs", "artifact-index.json")));
-  assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", "truth-memo.md")));
-  assert.ok(fs.readFileSync(claudeFile, "utf8").includes("Founder Skills OS"));
-  assert.ok(fs.readFileSync(claudeFile, "utf8").includes("build-to-launch"));
-});
-
 test("openclaw install exports bundle and updates AGENTS.md", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-openclaw-"));
   const bundleDir = path.join(tempDir, ".openclaw", "founder-skills-os");
@@ -175,7 +155,7 @@ test("openclaw install exports bundle and updates AGENTS.md", () => {
   });
 
   const agentsFile = path.join(tempDir, "AGENTS.md");
-  assert.ok(fs.existsSync(path.join(bundleDir, "founder-skills-lite-CLAUDE.md")));
+  assert.ok(fs.existsSync(path.join(bundleDir, "founder-skills-lite.md")));
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", ".fs", "sequence-state.json")));
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", "truth-memo.md")));
   assert.ok(fs.readFileSync(agentsFile, "utf8").includes("Founder Skills OS for OpenClaw"));

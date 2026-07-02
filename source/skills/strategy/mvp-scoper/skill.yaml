@@ -5,6 +5,7 @@ invocations:
   - What should I build first?
 outputs:
   - mvp-brief.md
+  - docs/founder-work/startup-loop.md
 depends_on:
   - customer-profile.md
   - problem-validation-report.md
@@ -18,10 +19,8 @@ checks:
 readiness_gate: build-readiness
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - chatgpt
-  - claude-chat
   - openclaw
   - hermes

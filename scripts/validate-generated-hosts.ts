@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const hosts = ["pi", "claude-code", "codex", "opencode", "openclaw", "hermes"];
+const hosts = ["pi", "codex", "opencode", "openclaw", "hermes"];
 const errors: string[] = [];
 
 for (const host of hosts) {
@@ -53,8 +53,8 @@ for (const host of hosts) {
   if (host === "openclaw") {
     const required = [
       "generated/openclaw/agents-founder-skills-section.md",
-      "generated/openclaw/founder-skills-lite-CLAUDE.md",
-      "generated/openclaw/founder-skills-full-CLAUDE.md",
+      "generated/openclaw/founder-skills-lite.md",
+      "generated/openclaw/founder-skills-full.md",
     ];
     for (const rel of required) {
       if (!fs.existsSync(path.join(root, rel))) errors.push(`openclaw: missing ${rel}`);

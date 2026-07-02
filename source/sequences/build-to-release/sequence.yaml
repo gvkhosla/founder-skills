@@ -8,6 +8,7 @@ steps:
   - qa-verifier
   - release-readiness-auditor
   - post-ship-review
+  - founder-compound
 primary_outputs:
   - implementation-plan.md
   - architecture-overview.md
@@ -15,5 +16,6 @@ primary_outputs:
   - qa-report.md
   - release-readiness.md
   - post-ship-review.md
+  - docs/founder-learnings/
 success_signal:
   - founder_can_build_and_ship_with_clear_quality_gates

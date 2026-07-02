@@ -16,7 +16,6 @@ checks:
   - next_move_present
 supported_hosts:
   - pi
-  - claude-code
   - codex
   - opencode
   - openclaw

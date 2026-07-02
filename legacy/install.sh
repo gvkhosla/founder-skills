@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # Founder Skills — Universal Installer
-# Supports: pi, Claude, Codex
+# Supports: pi, Codex
 # Usage: bash scripts/install.sh [agent] [phase]
 # Compatibility implementation lives in legacy/.
 #
 # Examples:
 #   bash scripts/install.sh pi          # Install all skills for pi
-#   bash scripts/install.sh claude      # Install all skills for Claude (global)
-#   bash scripts/install.sh claude .    # Install all skills for Claude (project)
 #   bash scripts/install.sh codex       # Generate Codex AGENTS.md entry
 #   bash scripts/install.sh pi strategy # Install only the strategy phase for pi
 
@@ -30,13 +28,11 @@ NC='\033[0m'
 print_usage() {
   echo "Usage: bash scripts/install.sh [agent] [phase]"
   echo ""
-  echo "Agents:  pi | claude | codex"
+  echo "Agents:  pi | codex"
   echo "Phases:  all (default) | strategy | design | build | launch | compound | pmf | scale | partner"
   echo ""
   echo "Examples:"
   echo "  bash scripts/install.sh pi              # All skills for pi"
-  echo "  bash scripts/install.sh claude          # All skills for Claude (global ~/.claude/)"
-  echo "  bash scripts/install.sh claude .        # All skills for Claude (project .claude/)"
   echo "  bash scripts/install.sh codex           # Generate legacy/codex/AGENTS.md"
   echo "  bash scripts/install.sh pi strategy     # Only Strategy phase for pi"
 }
@@ -90,46 +86,6 @@ install_pi() {
   echo "To use a skill in pi, say:"
   echo "  /skill [skill-name]"
   echo "  or simply describe what you need — pi will route to the right skill"
-}
-
-# ─── CLAUDE CODE INSTALL ──────────────────────────────────────────────────────
-install_claude() {
-  local scope="${2:---global}"
-  local claude_dir
-
-  if [ "$scope" = "." ] || [ "$scope" = "--local" ]; then
-    claude_dir="$(pwd)/.claude/skills"
-    echo -e "${BLUE}Installing for Claude → .claude/skills/ (project scope)${NC}"
-  else
-    claude_dir="$HOME/.claude/skills"
-    echo -e "${BLUE}Installing for Claude → ~/.claude/skills/ (global scope)${NC}"
-  fi
-
-  mkdir -p "$claude_dir"
-  echo ""
-
-  local count=0
-  while IFS= read -r skill_dir; do
-    local skill_name
-    skill_name=$(basename "$skill_dir")
-    local dest="$claude_dir/$skill_name"
-
-    if [ -d "$dest" ]; then
-      echo -e "  ${YELLOW}↺ updating${NC} $skill_name"
-    else
-      echo -e "  ${GREEN}+ installing${NC} $skill_name"
-    fi
-
-    mkdir -p "$dest"
-    cp -r "$skill_dir"/. "$dest/"
-    count=$((count + 1))
-  done < <(get_skill_dirs "$PHASE")
-
-  echo ""
-  echo -e "${GREEN}✓ $count skills installed for Claude${NC}"
-  echo ""
-  echo "To use a skill, say: 'Use the [skill-name] skill'"
-  echo "or describe what you need — Claude will reference the SKILL.md"
 }
 
 # ─── CODEX INSTALL ───────────────────────────────────────────────────────────
@@ -188,9 +144,6 @@ AGENTS_HEADER
 case "$AGENT" in
   pi)
     install_pi
-    ;;
-  claude)
-    install_claude "$PHASE" "${2:-}"
     ;;
   codex|openai)
     install_codex

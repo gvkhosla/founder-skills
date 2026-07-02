@@ -5,7 +5,7 @@ const os = require('node:os');
 const path = require('node:path');
 
 const PHASES = ['strategy', 'design', 'build', 'launch', 'compound', 'pmf', 'scale', 'partner'];
-const AGENTS = ['pi', 'claude', 'codex'];
+const AGENTS = ['pi', 'codex'];
 
 const packageRoot = path.resolve(__dirname, '..');
 const packageJson = JSON.parse(
@@ -16,17 +16,17 @@ function usage() {
   console.log(`Founder Skills legacy compatibility CLI v${packageJson.version}
 
 Usage:
-  founder-skills install --agent <pi|claude|codex> [options]
+  founder-skills install --agent <pi|codex> [options]
   founder-skills install <agent> [phase|project]
   founder-skills init [--project <path>] [--company <name>] [--stage <stage>]
-  founder-skills doctor [--agent <pi|claude|codex>] [--scope <global|project>] [--project <path>]
+  founder-skills doctor [--agent <pi|codex>] [--scope <global|project>] [--project <path>]
   founder-skills list [--phase <phase>]
   founder-skills version
 
 Install options:
-  --agent, -a   Agent target (pi | claude | codex)
+  --agent, -a   Agent target (pi | codex)
   --phase, -p   all | strategy | design | build | launch | compound | pmf | scale | partner
-  --scope, -s   (claude/codex) global | project (codex global installs ~/.codex/skills)
+  --scope, -s   (codex only) global | project (codex global installs ~/.codex/skills)
   --out, -o     (codex only) also write an AGENTS file for project-mode/reference use
   --project     Project directory for init/doctor project checks (default: cwd)
   --company     Company name for init
@@ -35,8 +35,6 @@ Install options:
 Examples:
   npx --yes github:gvkhosla/founder-skills install --agent pi
   npx --yes github:gvkhosla/founder-skills install --agent pi --phase strategy
-  npx --yes github:gvkhosla/founder-skills install claude project
-  npx --yes github:gvkhosla/founder-skills install --agent claude --scope project --phase pmf
   npx --yes github:gvkhosla/founder-skills install --agent codex
   npx --yes github:gvkhosla/founder-skills init --project . --company "Acme"
   npx --yes github:gvkhosla/founder-skills install --agent codex --scope project --out ./AGENTS.md
@@ -185,8 +183,6 @@ function printPostInstall({ agent, scope, targetRoot, skillCount, agentsFile }) 
     console.log('Try next: restart Codex, then type `$founder-partner`.');
   } else if (agent === 'codex') {
     console.log('Try next: add/reference the AGENTS file, then ask Codex to use founder-partner.');
-  } else if (agent === 'claude') {
-    console.log('Try next: ask Claude Code, "Use the founder-partner skill."');
   } else {
     console.log('Try next: ask pi, "Use founder-partner."');
   }
@@ -207,23 +203,6 @@ function installPi(skillDirs) {
   }
 
   printPostInstall({ agent: 'pi', scope: 'global', targetRoot, skillCount: skillDirs.length });
-}
-
-function installClaude(skillDirs, scope) {
-  const targetRoot =
-    scope === 'project'
-      ? path.join(process.cwd(), '.claude', 'skills')
-      : path.join(os.homedir(), '.claude', 'skills');
-
-  fs.mkdirSync(targetRoot, { recursive: true });
-
-  for (const skillDir of skillDirs) {
-    const skillName = path.basename(skillDir);
-    const dest = path.join(targetRoot, skillName);
-    copyDirContents(skillDir, dest);
-  }
-
-  printPostInstall({ agent: 'claude', scope, targetRoot, skillCount: skillDirs.length });
 }
 
 function installCodexSkills(skillDirs) {
@@ -312,7 +291,7 @@ function resolveInstallArgs(options, positionals) {
   }
 
   if (!config.agent) {
-    throw new Error('Missing agent. Use --agent <pi|claude|codex>.');
+    throw new Error('Missing agent. Use --agent <pi|codex>.');
   }
 
   if (!AGENTS.includes(config.agent)) {
@@ -321,8 +300,8 @@ function resolveInstallArgs(options, positionals) {
 
   config.phase = ensurePhase(config.phase);
 
-  if (config.agent !== 'claude' && config.agent !== 'codex' && options.scope) {
-    throw new Error('--scope is only valid for --agent claude or --agent codex');
+  if (config.agent !== 'codex' && options.scope) {
+    throw new Error('--scope is only valid for --agent codex');
   }
 
   if (config.scope !== 'global' && config.scope !== 'project') {
@@ -349,10 +328,6 @@ function runInstall(options, positionals) {
     return;
   }
 
-  if (config.agent === 'claude') {
-    installClaude(skillDirs, config.scope);
-    return;
-  }
 
   if (config.scope === 'project') {
     generateCodexAgents(skillDirs, config.out);
@@ -469,13 +444,6 @@ function checkAgentInstall(agent, scope, projectDir) {
     return [checkSkillFile('pi', path.join(os.homedir(), '.pi', 'agent', 'skills', 'founder-partner', 'SKILL.md'))];
   }
 
-  if (agent === 'claude') {
-    const root = scope === 'project'
-      ? path.join(projectDir, '.claude', 'skills')
-      : path.join(os.homedir(), '.claude', 'skills');
-    return [checkSkillFile(`claude ${scope}`, path.join(root, 'founder-partner', 'SKILL.md'))];
-  }
-
   if (agent === 'codex' && scope === 'project') {
     return [checkCodexProject(projectDir)];
   }
@@ -491,6 +459,7 @@ function checkWorkspace(projectDir, required = false) {
     path.join('.fs', 'company-state.json'),
     path.join('.fs', 'artifact-index.json'),
     path.join('.fs', 'sequence-state.json'),
+    path.join('docs', 'founder-work', 'startup-loop.md'),
   ];
   const found = files.filter((rel) => fs.existsSync(path.join(projectDir, rel)));
   const missing = files.filter((rel) => !fs.existsSync(path.join(projectDir, rel)));
