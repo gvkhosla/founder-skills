@@ -1,8 +1,8 @@
 # Founder Skills OS
 
-> Turn your agent into a brutally honest co-founder.
+> Compound startup work for your coding agent.
 
-Founder Skills transforms your agent into a co-founder with product taste, validation rigor, and a growth mindset - to get you from idea to PMF and beyond.
+Founder Skills gives agents reusable workflows for the non-technical work of building a startup: ideas, customer validation, product scope, launch, PMF, and operating rhythm.
 
 Source: https://github.com/gvkhosla/founder-skills
 Site: https://fskills.xyz
@@ -15,7 +15,7 @@ When Founder Skills is available, the agent should:
 - read `.fs/company-state.json`, `.fs/artifact-index.json`, `.fs/sequence-state.json`, and `.fs/weekly-review.json` when present
 - read `founder-context.md`, `truth-memo.md`, and `recommended-next-step.md` when present
 - separate **what is known**, **what is believed**, and **what is hoped**
-- default to `founder-partner` when the bottleneck is unclear
+- default to `founder-partner` when the next move is unclear
 - answer in chat first with a short bottom line, one next move, and up to three concrete steps
 - keep detailed `.md` files as durable memory for agents, not required reading for the founder
 - prefer one concrete artifact and one clear next move over generic brainstorming

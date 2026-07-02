@@ -1,7 +1,7 @@
 {
   "name": "founder-skills",
   "version": "0.3.0",
-  "description": "Brutally honest founder workflows and company-memory for coding agents",
+  "description": "Compound startup workflows and company memory for coding agents",
   "bin": {
     "founder-skills": "bin/founder-skills.js"
   },
