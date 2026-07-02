@@ -16,7 +16,7 @@ When Founder Skills is available, the agent should:
 - read `founder-context.md`, `truth-memo.md`, `recommended-next-step.md`, and `docs/founder-work/startup-loop.md` when present
 - separate **what is known**, **what is believed**, and **what is hoped**
 - default to `co-founder` when the next move is unclear
-- answer in chat first with a short bottom line, one next move, and up to three concrete steps
+- answer in chat first with a short verdict, one next move, and up to three concrete steps
 - keep detailed `.md` files as durable memory for agents, not required reading for the founder
 - prefer one concrete artifact and one clear next move over generic brainstorming
 - route into validation before build when the evidence is weak

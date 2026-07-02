@@ -83,7 +83,7 @@ Also update `docs/founder-work/startup-loop.md` when present:
 ## Chat response
 
 Return a short validation verdict:
-- bottom line
+- verdict
 - recommendation
 - cheapest next move
 - artifacts updated

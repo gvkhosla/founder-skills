@@ -11,7 +11,7 @@ version: 3.0.0
 
 ## Human-First Response
 
-Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Default: answer in chat first with **Verdict**, **Do this now**, and **Details saved**.
 Keep chat under 150 words unless asked; do not paste the full artifact.
 Write/update the requested `.md` file as the durable record for agents.
 
@@ -36,7 +36,7 @@ A `truth-memo.md` containing:
 And an updated `founder-context.md` containing the current truth stack, focus, open questions, and session history.
 
 > **Example output excerpt:**
-> **Bottom line:** You have interest, not demand. Three people said the workflow is annoying, but nobody changed behavior or offered money.
+> **Verdict:** You have interest, not demand. Three people said the workflow is annoying, but nobody changed behavior or offered money.
 > **Verdict:** `validate-first`
 > **One next move:** Run **customer-hypothesis** for one exact buyer, then have 5 live conversations about the current workaround before building anything else.
 
@@ -221,7 +221,7 @@ Write `truth-memo.md` in this structure:
 ```md
 # Truth Memo — [date]
 
-## Bottom line
+## Verdict
 
 ## What we know
 

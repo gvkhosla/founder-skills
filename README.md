@@ -73,7 +73,7 @@ Founder Skills is especially useful before and around coding, when the important
 
 Founder Skills is **human-first in chat**:
 
-- a short bottom line
+- a short verdict
 - one recommended move
 - up to three concrete steps
 - saved `.md` artifacts for agent memory and follow-up work
@@ -87,7 +87,7 @@ You: Use co-founder to help me decide what to do next.
 
 Agent:
 ## Founder Brief
-Bottom line: The idea is plausible, but the customer and painful moment are still too broad to guide product decisions.
+Verdict: The idea is plausible, but the customer and painful moment are still too broad to guide product decisions.
 Do this now: turn the idea into a specific customer hypothesis before building.
 1. Pick one exact buyer and use case.
 2. Write the current workaround and why it is painful.

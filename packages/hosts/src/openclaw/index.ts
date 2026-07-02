@@ -65,7 +65,7 @@ export class OpenClawAdapter implements HostAdapter {
           "3. Continue the active sequence if one is in progress and update recommended-next-step.md.",
           "4. For build work: implementation-plan → architecture-review → QA → release readiness.",
           "5. For GTM work: customer clarity → positioning → messaging → launch / SEO / ads depending on the bottleneck.",
-          "6. Report back with a short human-facing bottom line, the next action, and artifact paths. Keep detailed markdown as supporting memory.",
+          "6. Report back with a short human-facing verdict, the next action, and artifact paths. Keep detailed markdown as supporting memory.",
         ].join("\n"),
       },
       {
