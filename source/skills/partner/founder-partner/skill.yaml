@@ -1,8 +1,8 @@
 name: founder-partner
-description: Starts the session as a truth-first cofounder. Use when the next move is unclear, before serious build decisions, or when you need the hard truth, bottleneck, and one action. Returns a short Founder Brief plus truth-memo.md, recommended-next-step.md, and founder-context.md.
+description: Starts the startup operating loop by reading company memory, identifying the current bottleneck, and routing the next useful workflow. Use when the next move is unclear, before product/build decisions, or when startup context needs to compound across sessions. Returns a short Founder Brief plus truth-memo.md, recommended-next-step.md, and founder-context.md.
 invocations:
   - Partner
-  - Be brutally honest with me
+  - Help me decide what to do next
   - Grill me on this idea
   - What should I focus on?
   - Should we build this?

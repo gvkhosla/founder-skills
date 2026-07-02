@@ -404,7 +404,7 @@ function initWorkspace(options) {
   } else {
     for (const relPath of created) console.log(`✓ created ${relPath}`);
   }
-  console.log('Try next: ask your agent, "Use founder-partner and be brutally honest with me."');
+  console.log('Try next: ask your agent, "Use founder-partner to help me decide what to do next."');
   console.log(`Verify later: founder-skills doctor --project ${projectDir}`);
 }
 
