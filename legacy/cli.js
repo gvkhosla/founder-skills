@@ -18,6 +18,7 @@ function usage() {
 Usage:
   founder-skills install --agent <pi|claude|codex> [options]
   founder-skills install <agent> [phase|project]
+  founder-skills doctor [--agent <pi|claude|codex>] [--scope <global|project>] [--project <path>]
   founder-skills list [--phase <phase>]
   founder-skills version
 
@@ -26,6 +27,7 @@ Install options:
   --phase, -p   all | strategy | design | build | launch | compound | pmf | scale | partner
   --scope, -s   (claude/codex) global | project (codex global installs ~/.codex/skills)
   --out, -o     (codex only) also write an AGENTS file for project-mode/reference use
+  --project     Project directory to inspect for doctor project checks (default: cwd)
 
 Examples:
   npx --yes github:gvkhosla/founder-skills install --agent pi
@@ -34,6 +36,7 @@ Examples:
   npx --yes github:gvkhosla/founder-skills install --agent claude --scope project --phase pmf
   npx --yes github:gvkhosla/founder-skills install --agent codex
   npx --yes github:gvkhosla/founder-skills install --agent codex --scope project --out ./AGENTS.md
+  npx --yes github:gvkhosla/founder-skills doctor --agent codex
   npx --yes github:gvkhosla/founder-skills list
 `);
 }
@@ -70,6 +73,12 @@ function parseArgs(argv) {
 
     if (token === '--out' || token === '-o') {
       options.out = argv[i + 1];
+      i += 1;
+      continue;
+    }
+
+    if (token === '--project') {
+      options.project = argv[i + 1];
       i += 1;
       continue;
     }
@@ -148,6 +157,29 @@ function copyDirContents(src, dest) {
   fs.cpSync(src, dest, { recursive: true });
 }
 
+function printPostInstall({ agent, scope, targetRoot, skillCount, agentsFile }) {
+  console.log('');
+  console.log('Founder Skills is ready.');
+  console.log(`✓ Installed ${skillCount} skill(s)`);
+
+  if (targetRoot) console.log(`✓ Location: ${targetRoot}`);
+  if (agentsFile) console.log(`✓ Project instructions: ${agentsFile}`);
+
+  if (agent === 'codex' && scope !== 'project') {
+    console.log('Try next: restart Codex, then type `$founder-partner`.');
+  } else if (agent === 'codex') {
+    console.log('Try next: add/reference the AGENTS file, then ask Codex to use founder-partner.');
+  } else if (agent === 'claude') {
+    console.log('Try next: ask Claude Code, "Use the founder-partner skill."');
+  } else {
+    console.log('Try next: ask pi, "Use founder-partner."');
+  }
+
+  const doctorBits = ['founder-skills doctor', '--agent', agent];
+  if (scope === 'project') doctorBits.push('--scope', 'project');
+  console.log(`Verify later: ${doctorBits.join(' ')}`);
+}
+
 function installPi(skillDirs) {
   const targetRoot = path.join(os.homedir(), '.pi', 'agent', 'skills');
   fs.mkdirSync(targetRoot, { recursive: true });
@@ -158,7 +190,7 @@ function installPi(skillDirs) {
     copyDirContents(skillDir, dest);
   }
 
-  console.log(`Installed ${skillDirs.length} skill(s) for pi → ${targetRoot}`);
+  printPostInstall({ agent: 'pi', scope: 'global', targetRoot, skillCount: skillDirs.length });
 }
 
 function installClaude(skillDirs, scope) {
@@ -175,9 +207,7 @@ function installClaude(skillDirs, scope) {
     copyDirContents(skillDir, dest);
   }
 
-  console.log(
-    `Installed ${skillDirs.length} skill(s) for Claude (${scope}) → ${targetRoot}`,
-  );
+  printPostInstall({ agent: 'claude', scope, targetRoot, skillCount: skillDirs.length });
 }
 
 function installCodexSkills(skillDirs) {
@@ -190,8 +220,7 @@ function installCodexSkills(skillDirs) {
     copyDirContents(skillDir, dest);
   }
 
-  console.log(`Installed ${skillDirs.length} skill(s) for Codex → ${targetRoot}`);
-  console.log('Next: restart Codex if $founder-partner or other skills are not immediately discoverable.');
+  printPostInstall({ agent: 'codex', scope: 'global', targetRoot, skillCount: skillDirs.length });
 }
 
 function generateCodexAgents(skillDirs, outPath) {
@@ -231,8 +260,7 @@ Each skill below can be invoked by name. When invoking a skill:
   fs.mkdirSync(path.dirname(resolvedOut), { recursive: true });
   fs.writeFileSync(resolvedOut, body, 'utf8');
 
-  console.log(`Generated Codex AGENTS file with ${skillDirs.length} skill(s) → ${resolvedOut}`);
-  console.log('Next: append it to your project AGENTS.md or reference it in your system prompt.');
+  printPostInstall({ agent: 'codex', scope: 'project', agentsFile: resolvedOut, skillCount: skillDirs.length });
 }
 
 function resolveInstallArgs(options, positionals) {
@@ -319,6 +347,114 @@ function runInstall(options, positionals) {
   if (config.out) generateCodexAgents(skillDirs, config.out);
 }
 
+function resolveDoctorArgs(options) {
+  const scope = options.scope || 'global';
+  if (options.agent && !AGENTS.includes(options.agent)) {
+    throw new Error(`Unknown agent '${options.agent}'. Valid agents: ${AGENTS.join(', ')}`);
+  }
+  if (scope !== 'global' && scope !== 'project') {
+    throw new Error(`Unknown scope '${scope}'. Use global or project.`);
+  }
+  return {
+    agent: options.agent,
+    scope,
+    projectDir: path.resolve(process.cwd(), options.project || '.'),
+  };
+}
+
+function readTextIfExists(filePath) {
+  return fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : '';
+}
+
+function checkSkillFile(label, filePath) {
+  if (!fs.existsSync(filePath)) {
+    return { ok: false, message: `✗ ${label}: missing ${filePath}` };
+  }
+
+  const text = fs.readFileSync(filePath, 'utf8');
+  if (!text.includes('name: founder-partner')) {
+    return { ok: false, message: `✗ ${label}: ${filePath} does not look like founder-partner` };
+  }
+
+  if (!text.includes('Human-First Response')) {
+    return { ok: false, message: `✗ ${label}: installed founder-partner is missing the human-first response section; reinstall` };
+  }
+
+  return { ok: true, message: `✓ ${label}: ${filePath}` };
+}
+
+function checkCodexProject(projectDir) {
+  const candidates = [
+    path.join(projectDir, 'AGENTS.md'),
+    path.join(projectDir, 'AGENTS.founder-skills.md'),
+  ];
+  const found = candidates.find((filePath) => readTextIfExists(filePath).includes('founder-partner'));
+  if (!found) {
+    return { ok: false, message: `✗ codex project: no AGENTS file mentioning founder-partner in ${projectDir}` };
+  }
+  return { ok: true, message: `✓ codex project: ${found}` };
+}
+
+function checkAgentInstall(agent, scope, projectDir) {
+  if (agent === 'pi') {
+    return [checkSkillFile('pi', path.join(os.homedir(), '.pi', 'agent', 'skills', 'founder-partner', 'SKILL.md'))];
+  }
+
+  if (agent === 'claude') {
+    const root = scope === 'project'
+      ? path.join(projectDir, '.claude', 'skills')
+      : path.join(os.homedir(), '.claude', 'skills');
+    return [checkSkillFile(`claude ${scope}`, path.join(root, 'founder-partner', 'SKILL.md'))];
+  }
+
+  if (agent === 'codex' && scope === 'project') {
+    return [checkCodexProject(projectDir)];
+  }
+
+  return [checkSkillFile('codex', path.join(os.homedir(), '.codex', 'skills', 'founder-partner', 'SKILL.md'))];
+}
+
+function checkWorkspaceHints(projectDir) {
+  const files = [
+    'founder-context.md',
+    'truth-memo.md',
+    'recommended-next-step.md',
+    path.join('.fs', 'company-state.json'),
+  ];
+  const found = files.filter((rel) => fs.existsSync(path.join(projectDir, rel)));
+  if (found.length === 0) {
+    console.log(`- Optional workspace memory not initialized in ${projectDir}`);
+    console.log('  Run Founder Partner once, or use the OS init flow from a cloned repo when you want persistent company state.');
+    return;
+  }
+  console.log(`✓ Workspace memory: ${found.join(', ')}`);
+}
+
+function runDoctor(options) {
+  const { agent, scope, projectDir } = resolveDoctorArgs(options);
+  const agentsToCheck = agent ? [agent] : AGENTS;
+  let failed = false;
+
+  console.log('Founder Skills doctor');
+  for (const candidate of agentsToCheck) {
+    const checks = checkAgentInstall(candidate, scope, projectDir);
+    for (const check of checks) {
+      console.log(check.message);
+      if (!check.ok) failed = true;
+    }
+  }
+
+  checkWorkspaceHints(projectDir);
+
+  if (failed) {
+    console.log('');
+    console.log('Suggested fix: run `founder-skills install --agent <agent>` and restart your agent if needed.');
+    process.exit(1);
+  }
+
+  console.log('Founder Skills install looks healthy.');
+}
+
 function runList(options) {
   const phase = ensurePhase(options.phase || 'all');
   const skillDirs = listSkillDirs(phase);
@@ -368,6 +504,16 @@ function main() {
       return;
     }
     runInstall(options, positionals);
+    return;
+  }
+
+  if (command === 'doctor') {
+    const { options } = parseArgs(argv.slice(1));
+    if (options.help) {
+      usage();
+      return;
+    }
+    runDoctor(options);
     return;
   }
 

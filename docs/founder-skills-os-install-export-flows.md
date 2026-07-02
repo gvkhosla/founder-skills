@@ -37,9 +37,11 @@ npm run os:install -- --host hermes
 npm run os:install -- --host all
 ```
 
-After install, validate the workspace state and wiring with:
+After install, validate host wiring and workspace state with:
 
 ```bash
+npm run os:doctor -- --host codex
+npm run os:doctor -- --host opencode --scope project --project /path/to/startup
 npm run os:doctor -- --project /path/to/startup
 ```
 

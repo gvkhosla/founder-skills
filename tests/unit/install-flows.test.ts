@@ -41,6 +41,7 @@ test("codex global install exports top-level invokable skills without touching A
   assert.ok(fs.existsSync(path.join(skillsDir, "problem-validator", "SKILL.md")));
   assert.ok(!fs.existsSync(path.join(skillsDir, "strategy", "problem-validator", "SKILL.md")));
   assert.ok(!fs.existsSync(path.join(tempDir, "AGENTS.md")));
+  assert.ok(result.notes.some((note) => note.includes("$founder-partner")));
 });
 
 test("codex project install exports bundle and updates AGENTS.md", () => {
@@ -67,15 +68,24 @@ test("codex project install exports bundle and updates AGENTS.md", () => {
 test("legacy codex install writes top-level global skills", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-codex-"));
 
-  execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "install", "--agent", "codex"], {
+  const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "install", "--agent", "codex"], {
     cwd: tempDir,
     env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
     stdio: "pipe",
-  });
+  }).toString();
 
+  assert.match(output, /\$founder-partner/);
+  assert.match(output, /founder-skills doctor --agent codex/);
   assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
   assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "problem-validator", "SKILL.md")));
   assert.ok(!fs.existsSync(path.join(tempDir, "AGENTS.founder-skills.md")));
+
+  const doctorOutput = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "doctor", "--agent", "codex"], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  }).toString();
+  assert.match(doctorOutput, /Founder Skills install looks healthy/);
 });
 
 test("legacy codex project install writes AGENTS reference without global skills", () => {
@@ -89,6 +99,13 @@ test("legacy codex project install writes AGENTS reference without global skills
 
   assert.ok(fs.readFileSync(path.join(tempDir, "AGENTS.founder-skills.md"), "utf8").includes("founder-partner"));
   assert.ok(!fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
+
+  const doctorOutput = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "doctor", "--agent", "codex", "--scope", "project", "--project", tempDir], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  }).toString();
+  assert.match(doctorOutput, /codex project/);
 });
 
 test("claude project install exports bundle and updates CLAUDE.md", () => {
