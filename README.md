@@ -1,52 +1,52 @@
-<p align="center">
-  <img src="site/assets/hero-invader.png" alt="Founder Skills invader" width="720" />
-</p>
-
-<p align="center">
-  <a href="https://fskills.xyz">fskills.xyz</a>
-</p>
-
 # Founder Skills OS
 
-**Turn your agent into a brutally honest co-founder.**
+**A truth-first startup operator for your coding agent.**
 
-Founder Skills gives coding agents startup operating workflows: they read company context, separate evidence from optimism, name the current bottleneck, and return one useful next move.
+Founder Skills helps your agent read company context, separate evidence from optimism, name the current bottleneck, and give you one useful next move.
 
-Use it when the real blocker is not code — it is clarity, validation, scope, launch, PMF, or focus.
+<p>
+  <a href="https://fskills.xyz">Website</a> ·
+  <a href="docs/founder-partner-manifesto.md">Manifesto</a> ·
+  <a href="CHANGELOG.md">Changelog</a>
+</p>
 
-## Start here
+---
+
+## Start in 60 seconds
 
 Install for your agent:
 
 ```bash
-# pi
-npx --yes github:gvkhosla/founder-skills install --agent pi
-
 # Codex, invokable as $founder-partner after restart
 npx --yes github:gvkhosla/founder-skills install --agent codex
+
+# pi
+npx --yes github:gvkhosla/founder-skills install --agent pi
 
 # Claude Code, project-scoped
 npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
 ```
 
-Optional, but recommended inside a startup repo:
+Seed memory in a startup repo:
 
 ```bash
 npx --yes github:gvkhosla/founder-skills init --project . --company "Acme"
 npx --yes github:gvkhosla/founder-skills doctor --project .
 ```
 
-Then ask your agent:
+Then run the front-door skill:
+
+```text
+$founder-partner
+```
+
+Or ask:
 
 ```text
 Use founder-partner and be brutally honest with me.
 ```
 
-If you are in Codex, use:
-
-```text
-$founder-partner
-```
+---
 
 ## What you get
 
