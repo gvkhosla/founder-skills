@@ -16,15 +16,18 @@ function usage() {
   console.log(`Founder Skills legacy compatibility CLI v${packageJson.version}
 
 Usage:
-  founder-skills install --agent <pi|codex> [options]
+  founder-skills setup [--project <path>] [--company <name>] [--stage <stage>]
+  founder-skills install [--agent <pi|codex>] [options]
   founder-skills install <agent> [phase|project]
   founder-skills init [--project <path>] [--company <name>] [--stage <stage>]
   founder-skills doctor [--agent <pi|codex>] [--scope <global|project>] [--project <path>]
   founder-skills list [--phase <phase>]
   founder-skills version
 
+Setup is the recommended first run: writes universal AGENTS.md guidance, seeds workspace memory, and adds native shortcuts where supported.
+
 Install options:
-  --agent, -a   Agent target (pi | codex)
+  --agent, -a   Optional native shortcut target (pi | codex). Omit to install both.
   --phase, -p   all | strategy | design | build | launch | compound | pmf | scale | partner
   --scope, -s   (codex only) global | project (codex global installs ~/.codex/skills)
   --out, -o     (codex only) also write an AGENTS file for project-mode/reference use
@@ -33,6 +36,9 @@ Install options:
   --stage       idea | validating | building | launched | revenue | growing
 
 Examples:
+  npx --yes github:gvkhosla/founder-skills setup
+  npx --yes github:gvkhosla/founder-skills setup --project . --company "Acme"
+  npx --yes github:gvkhosla/founder-skills install
   npx --yes github:gvkhosla/founder-skills install --agent pi
   npx --yes github:gvkhosla/founder-skills install --agent pi --phase strategy
   npx --yes github:gvkhosla/founder-skills install --agent codex
@@ -291,10 +297,10 @@ function resolveInstallArgs(options, positionals) {
   }
 
   if (!config.agent) {
-    throw new Error('Missing agent. Use --agent <pi|codex>.');
+    config.agent = 'all';
   }
 
-  if (!AGENTS.includes(config.agent)) {
+  if (config.agent !== 'all' && !AGENTS.includes(config.agent)) {
     throw new Error(`Unknown agent '${config.agent}'. Valid agents: ${AGENTS.join(', ')}`);
   }
 
@@ -312,6 +318,10 @@ function resolveInstallArgs(options, positionals) {
     throw new Error('--out is only valid for --agent codex');
   }
 
+  if (config.agent === 'all' && config.scope === 'project') {
+    throw new Error('Project-scoped install is only valid with --agent codex');
+  }
+
   return config;
 }
 
@@ -323,11 +333,18 @@ function runInstall(options, positionals) {
     throw new Error(`No skills found for phase '${config.phase}'`);
   }
 
+  if (config.agent === 'all') {
+    installPi(skillDirs);
+    installCodexSkills(skillDirs);
+    console.log('');
+    console.log('Installed for both pi and Codex.');
+    return;
+  }
+
   if (config.agent === 'pi') {
     installPi(skillDirs);
     return;
   }
-
 
   if (config.scope === 'project') {
     generateCodexAgents(skillDirs, config.out);
@@ -381,6 +398,55 @@ function initWorkspace(options) {
   }
   console.log('Try next: ask your agent, "Use founder-partner to help me decide what to do next."');
   console.log(`Verify later: founder-skills doctor --project ${projectDir}`);
+}
+
+function upsertManagedSection(existing, marker, body) {
+  const begin = `<!-- BEGIN ${marker} -->`;
+  const end = `<!-- END ${marker} -->`;
+  const section = `${begin}\n${body.trim()}\n${end}`;
+  const pattern = new RegExp(`${begin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?${end.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'm');
+
+  if (pattern.test(existing)) return existing.replace(pattern, section);
+  const trimmed = existing.trim();
+  return trimmed ? `${trimmed}\n\n${section}\n` : `${section}\n`;
+}
+
+function renderUniversalAgentsSection() {
+  return [
+    '## Founder Skills',
+    'Use Founder Skills as the startup operating loop for work around the code: ideas, validation, scope, launch, PMF, and weekly focus.',
+    'Read these files when they exist before giving startup/product advice:',
+    '- `.fs/company-state.json`',
+    '- `.fs/artifact-index.json`',
+    '- `.fs/sequence-state.json`',
+    '- `founder-context.md`',
+    '- `truth-memo.md`',
+    '- `recommended-next-step.md`',
+    '- `docs/founder-work/startup-loop.md`',
+    'Start with `founder-partner` when the next move is unclear. Keep chat short: bottom line, one next move, and up to three steps. Keep detailed markdown files as supporting memory. Close meaningful cycles with `founder-compound` so the next session starts smarter.',
+  ].join('\n');
+}
+
+function writeUniversalAgentsFile(projectDir) {
+  const agentsFile = path.join(projectDir, 'AGENTS.md');
+  const existing = fs.existsSync(agentsFile) ? fs.readFileSync(agentsFile, 'utf8') : '';
+  const next = upsertManagedSection(existing, 'FOUNDER-SKILLS', renderUniversalAgentsSection());
+  fs.writeFileSync(agentsFile, next, 'utf8');
+  return agentsFile;
+}
+
+function runSetup(options) {
+  const projectDir = path.resolve(process.cwd(), options.project || '.');
+  console.log('Founder Skills setup');
+  console.log('Creating universal agent instructions and workspace memory...');
+  initWorkspace(options);
+  const agentsFile = writeUniversalAgentsFile(projectDir);
+  console.log(`✓ updated ${agentsFile}`);
+  console.log('Adding native shortcuts for supported local agents...');
+  runInstall({ phase: options.phase || 'all' }, []);
+  console.log('');
+  console.log('Setup complete.');
+  console.log('Next: open any coding agent in this repo and ask: "Use founder-partner to help me decide what to do next."');
 }
 
 function* walkFiles(dir) {
@@ -547,6 +613,16 @@ function main() {
   if (AGENTS.includes(command)) {
     const { options, positionals } = parseArgs(argv.slice(1));
     runInstall(options, [command, ...positionals]);
+    return;
+  }
+
+  if (command === 'setup') {
+    const { options } = parseArgs(argv.slice(1));
+    if (options.help) {
+      usage();
+      return;
+    }
+    runSetup(options);
     return;
   }
 

@@ -65,6 +65,38 @@ test("codex project install exports bundle and updates AGENTS.md", () => {
   assert.ok(fs.readFileSync(agentsFile, "utf8").includes("Founder Skills OS for Codex"));
 });
 
+test("legacy default install writes pi and codex skills", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-default-install-"));
+
+  const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "install"], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  }).toString();
+
+  assert.match(output, /Installed for both pi and Codex/);
+  assert.ok(fs.existsSync(path.join(tempDir, ".pi", "agent", "skills", "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
+});
+
+test("legacy setup installs skills and seeds workspace memory", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-setup-"));
+
+  const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "setup", "--project", tempDir, "--company", "Acme"], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  }).toString();
+
+  assert.match(output, /Setup complete/);
+  assert.ok(fs.existsSync(path.join(tempDir, ".pi", "agent", "skills", "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "founder-partner", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tempDir, ".fs", "company-state.json")));
+  assert.ok(fs.existsSync(path.join(tempDir, "docs", "founder-work", "startup-loop.md")));
+  assert.ok(fs.readFileSync(path.join(tempDir, "AGENTS.md"), "utf8").includes("Use Founder Skills as the startup operating loop"));
+  assert.equal(JSON.parse(fs.readFileSync(path.join(tempDir, ".fs", "company-state.json"), "utf8")).company.name, "Acme");
+});
+
 test("legacy codex install writes top-level global skills", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-codex-"));
 
