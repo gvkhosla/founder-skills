@@ -8,136 +8,104 @@ Edit this file to change wording before syncing it back into `site/index.html`.
 - Founder Skills
 
 **Meta description / OG description / Twitter description**
-- Turn your agent into a brutally honest co-founder.
+- Compound startup work for your coding agent.
 
 **OG image alt**
 - Founder Skills social preview inspired by a Paris invader mosaic
 
-## Hero
+## Top bar
 
-**Headline**
-- Turn your agent into a brutally honest co-founder.
-
-**Subhead**
-- Founder Skills transforms your agent into a co-founder with product taste, validation rigor, and a growth mindset - to get you from idea to PMF and beyond.
+**Brand**
+- Founder Skills
 
 **Links**
+- How it works
+- Example
 - GitHub
-- Get started
-- Operating areas
 
-**Install behavior**
-- Show the pi command by default.
-- Highlight pi in the logo row below.
-- Let users click any logo below to switch the command.
-- For OpenCode, OpenClaw, and Hermes, the command should include `/path/to/startup`.
+## Hero
 
-**Compatibility label**
-- Works with
+**Kicker**
+- Skills for builders
 
-**Supported harnesses shown**
-- pi
-- Codex
-- OpenCode
-- OpenClaw
-- Hermes
+**Headline**
+- Stop starting from scratch.
 
-## About section
+**Subhead**
+- Founder Skills gives any repo-aware coding agent startup workflows for the work around the code: choosing an idea, validating the customer, scoping the MVP, planning launch, reading PMF signals, and remembering what changed.
 
-**Label**
-- Why it works
+**Install command**
+- `npx --yes github:gvkhosla/founder-skills setup`
 
-**Title**
-- Reads the state. Tells the truth. Calls the next move.
+**Install note**
+- Run it in your repo. Then ask any coding agent: `Use founder-partner to help me decide what to do next.`
 
-**Paragraph 1**
-- Founder Skills reads company memory before it speaks.
+## Hero image
 
-**Paragraph 2**
-- It separates what you know, think, and hope. Then it writes the artifact and names the next move.
+**Alt**
+- Invader mosaic on a Paris wall
 
-### Feature list
+**Caption (left)**
+- Each cycle leaves a tile for the next one.
 
-**Reads company memory**
-- `.fs/`, `founder-context.md`, `truth-memo.md`, and `recommended-next-step.md`.
+**Caption (right)**
+- Compound startup work, not one-off prompts.
 
-**Gives a verdict**
-- A clear call: validate, narrow, build, or stop.
-
-**Leaves artifacts**
-- `truth-memo.md`, `implementation-plan.md`, `landing-page-copy.md`, and more.
-
-## Operating areas section
-
-**Label**
-- Operating areas
+## What it actually does
 
 **Title**
-- Ten operating areas.
+- What it actually does.
 
-**Supporting line**
-- Plus 6 sequences.
+**Intro**
+- It turns loose founder work into a simple loop your agent can follow and improve over time.
 
-### 01. Partner
-- Description: Start here when the bottleneck is unclear.
-- Skills: founder-partner
+### Steps
 
-### 02. Strategy
-- Description: Problem, customer, scope, and assumptions.
-- Skills: problem-validator, customer-hypothesis, mvp-scoper, assumption-mapper
+**Find the bottleneck**
+- `founder-partner` reads company memory, separates facts from assumptions, and chooses the next useful workflow.
 
-### 03. Engineering + Product
-- Description: Build plan, architecture, QA, release, and post-ship review.
-- Skills: implementation-planner, architecture-reviewer, design-to-code-brief, qa-verifier, release-readiness-auditor, post-ship-review
+**Create the artifact**
+- Validation reports, customer hypotheses, MVP briefs, launch plans, PMF reviews, and weekly focus docs.
 
-### 04. Launch
-- Description: Positioning, pricing, landing page copy, and launch plan.
-- Skills: positioning-writer, landing-page-copywriter, launch-plan-builder, pricing-model-framer
+**Compound the learning**
+- `founder-compound` captures what changed so the next session starts with sharper context.
 
-### 05. Marketing
-- Description: Messaging, SEO/GEO, and CAC.
-- Skills: messaging-architect, seo-geo-strategist, cac-diagnostician
-
-### 06. Sales
-- Description: Pipeline review.
-- Skills: pipeline-reviewer
-
-### 07. PMF
-- Description: PMF signal, north star, churn, retention, and growth.
-- Skills: pmf-signal-reader, north-star-definer, churn-diagnostician, retention-loop-designer, growth-loop-builder
-
-### 08. Operations
-- Description: Focus, experiments, and weekly review.
-- Skills: focus-planner, experiment-planner, weekly-founder-review
-
-### 09. Support
-- Description: Support into product decisions.
-- Skills: support-insights-reader
-
-### 10. Scale
-- Description: Decide the next hire.
-- Skills: first-hire-brief
-
-## For agents section
-
-**Label**
-- For agents
+## Example
 
 **Title**
-- Paste this into your agent once.
+- The chat stays short.
+
+**Intro**
+- The founder gets the bottom line. The agent keeps the supporting markdown as memory.
+
+**You ask**
+- Use founder-partner to help me decide what to do next.
+
+**Agent answers**
+```
+Bottom line: the idea is plausible, but the customer and painful moment are still too broad.
+
+Do this now: validate one narrow customer before building.
+1. Pick the exact buyer and situation.
+2. Document the current workaround.
+3. Run problem-validator before scoping the MVP.
+
+Saved: recommended-next-step.md, truth-memo.md, startup-loop.md
+```
+
+## Call to action
+
+**Title**
+- Use it when the next move is fuzzy.
 
 **Body**
-- One setup prompt. Better defaults.
+- Works with any agentic coding tool that can read repo files. Install once, then keep the same startup context alive.
 
-**Prompt**
-- Use Founder Skills in this conversation.
-- First, read https://fskills.xyz/llms.txt.
-- If this is a startup repo, also read `founder-context.md`, `truth-memo.md`, `recommended-next-step.md`, and `.fs/` state files when they exist.
-- Start with `/founder-partner` if the bottleneck is unclear.
-- Prefer one clear verdict, one concrete artifact, and one next move.
-- Stay in this same thread and keep the company context alive.
+**Button**
+- View on GitHub
 
 ## Footer
 
-- Made by khosla lab
+- Founder Skills by khosla lab
 - Link: https://khoslalab.com
+- Changelog: https://github.com/gvkhosla/founder-skills/blob/main/CHANGELOG.md
