@@ -123,8 +123,8 @@
       color: var(--muted);
       display: inline-grid;
       place-items: center;
-      width: 34px;
-      height: 34px;
+      width: 38px;
+      height: 38px;
       padding: 0;
       font: 760 .92rem var(--sans);
       cursor: pointer;
@@ -198,7 +198,7 @@
 
     .command-row {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
       gap: 12px;
     }
@@ -224,8 +224,8 @@
       color: var(--paper);
       display: inline-grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       padding: 0;
       font: 760 .9rem var(--sans);
       cursor: pointer;
@@ -425,8 +425,8 @@
     @media (max-width: 620px) {
       .page { width: min(var(--max), calc(100% - 24px)); padding-top: 18px; }
       .topbar { align-items: flex-start; flex-direction: column; margin-bottom: 44px; }
-      .command-row { grid-template-columns: 1fr; }
-      .copy { width: 100%; }
+      .command-row { grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; }
+      .copy { width: 48px; height: 48px; }
       .photo { margin-left: -12px; margin-right: -12px; }
       .photo figcaption { flex-direction: column; gap: 4px; }
       .list li { grid-template-columns: 1fr; gap: 5px; }
