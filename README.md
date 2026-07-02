@@ -76,6 +76,8 @@ Be brutally honest with me.
 
 If the bottleneck is unclear, start with **`founder-partner`**.
 
+Founder Skills are designed to be **human-first in chat**: you should get a short bottom line, one next move, and concrete steps immediately. The `.md` files are durable memory for agents and follow-up work, not required reading before you can act.
+
 ## Install by host
 
 ### Legacy compatibility install

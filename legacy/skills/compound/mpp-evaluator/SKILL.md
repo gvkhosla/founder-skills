@@ -19,6 +19,12 @@ You've hit MPP when:
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Evaluate my MPP"** or **"Run the MPP scorecard"** or **"Am I proud of this?"**
 
 Output: `mpp-scorecard.md` — five criteria scored by independent agents, composite score, one gap named.

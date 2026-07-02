@@ -3,6 +3,7 @@ import type { CanonicalSkill } from "../../../core/src/types/skill.js";
 import type { GeneratedArtifact } from "../../../core/src/types/host.js";
 import { capabilityMatrix } from "../base/capability-matrix.js";
 import type { HostAdapter, HostValidationResult, InstallBundle, WorkspaceBundle } from "../base/host-adapter.js";
+import { HUMAN_FIRST_RESPONSE_CONTRACT } from "../base/response-ux.js";
 
 export class OpenClawAdapter implements HostAdapter {
   id = "openclaw";
@@ -64,7 +65,7 @@ export class OpenClawAdapter implements HostAdapter {
           "3. Continue the active sequence if one is in progress and update recommended-next-step.md.",
           "4. For build work: implementation-plan → architecture-review → QA → release readiness.",
           "5. For GTM work: customer clarity → positioning → messaging → launch / SEO / ads depending on the bottleneck.",
-          "6. Report back with artifact paths, key decisions, and the next recommended move.",
+          "6. Report back with a short human-facing bottom line, the next action, and artifact paths. Keep detailed markdown as supporting memory.",
         ].join("\n"),
       },
       {
@@ -114,6 +115,7 @@ export class OpenClawAdapter implements HostAdapter {
       ].join("\n"),
       `## When to invoke\n${skill.invocations.map((invocation) => `- ${invocation}`).join("\n")}`,
       `## Expected outputs\n${skill.outputs.map((output) => `- ${output}`).join("\n")}`,
+      HUMAN_FIRST_RESPONSE_CONTRACT,
     ];
 
     if (skill.dependsOn.length > 0) {
@@ -145,6 +147,7 @@ export class OpenClawAdapter implements HostAdapter {
       `## Entrypoint\n- ${sequence.entrypoint}`,
       `## Steps\n${sequence.steps.map((step, index) => `${index + 1}. ${step}`).join("\n")}`,
       `## Primary outputs\n${sequence.primaryOutputs.map((output) => `- ${output}`).join("\n")}`,
+      HUMAN_FIRST_RESPONSE_CONTRACT,
     ];
 
     if (sequence.successSignal.length > 0) {

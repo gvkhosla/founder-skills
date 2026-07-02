@@ -18,9 +18,11 @@ for (const host of hosts) {
     continue;
   }
 
+  const skillFiles = files.filter((file) => file.endsWith("SKILL.md"));
+  const sequenceFiles = files.filter((file) => file.includes(`${path.sep}sequences${path.sep}`) && file.endsWith(".md"));
   const hasInstall = files.some((file) => file.endsWith("install.md"));
-  const hasSequence = files.some((file) => file.includes(`${path.sep}sequences${path.sep}`));
-  const hasSkill = files.some((file) => file.endsWith("SKILL.md"));
+  const hasSequence = sequenceFiles.length > 0;
+  const hasSkill = skillFiles.length > 0;
   const hasWorkspace = files.some((file) => file.includes(`${path.sep}workspace${path.sep}`));
   const starterStatePaths = [
     path.join("workspace", "starter", ".fs", "company-state.json"),
@@ -35,6 +37,13 @@ for (const host of hosts) {
   if (!hasSequence) errors.push(`${host}: no sequences generated`);
   if (!hasSkill) errors.push(`${host}: no skill files generated`);
   if (!hasWorkspace) errors.push(`${host}: no workspace instructions generated`);
+
+  for (const file of [...skillFiles, ...sequenceFiles]) {
+    const text = fs.readFileSync(file, "utf8");
+    if (!text.includes("## Human-facing response (required)")) {
+      errors.push(`${host}: ${path.relative(root, file)} missing human-facing response contract`);
+    }
+  }
   for (const starterPath of starterStatePaths) {
     if (!files.some((file) => file.includes(starterPath))) {
       errors.push(`${host}: starter file missing (${starterPath})`);

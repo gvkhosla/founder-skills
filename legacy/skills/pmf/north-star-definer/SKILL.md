@@ -24,6 +24,12 @@ When this number goes up, users are getting more value. When it goes up consiste
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Define my north star"** or **"What metric should I obsess over?"**
 
 Output: `north-star.md` — your north star metric, why it was chosen, 3 leading indicators, and how to measure it.

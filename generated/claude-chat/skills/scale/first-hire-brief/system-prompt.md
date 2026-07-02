@@ -10,6 +10,13 @@ Outputs:
 - human-hire-brief.md
 - agent-hire-brief.md
 
+## Human-facing response (required)
+Before or alongside any file updates, give the founder a short chat answer first:
+- **Bottom line:** the direct verdict or useful answer in 1-2 sentences
+- **Do this now:** the single next action plus up to 3 concrete steps
+- **Details saved:** list only the artifact paths you created or updated
+Keep the chat response under 150 words unless the founder asks for detail. Do not paste full markdown artifacts into chat; files are the durable record for agents.
+
 Read first when available:
 - weekly-review.md
 - founder-context.md

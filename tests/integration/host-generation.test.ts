@@ -45,6 +45,8 @@ test("openclaw and hermes adapters emit coding-harness artifacts", () => {
   assert.ok(openclawArtifacts.some((artifact) => artifact.content.includes("specific_recommendation")));
   assert.ok(openclawArtifacts.some((artifact) => artifact.content.includes("Be direct.")));
   assert.ok(hermesArtifacts.some((artifact) => artifact.path.includes("generated/hermes/engineering-product/implementation-planner/SKILL.md")));
+  assert.ok(hermesArtifacts.some((artifact) => artifact.content.includes("## Human-facing response (required)")));
+  assert.ok(hermesArtifacts.some((artifact) => artifact.content.includes("Bottom line")));
   assert.ok(hermesArtifacts.some((artifact) => artifact.content.includes("## Depends on")));
   assert.ok(hermesArtifacts.some((artifact) => artifact.content.includes("## Quality checks")));
   assert.ok(hermesArtifacts.some((artifact) => artifact.content.includes("Be direct.")));
@@ -71,9 +73,11 @@ test("host adapters include sequence routing metadata in generated bundles", () 
   const chatSequence = chatgpt!.generateSequence(sampleSequence)[0];
 
   assert.ok(piSequence.content.includes("## Entrypoint"));
+  assert.ok(piSequence.content.includes("## Human-facing response (required)"));
   assert.ok(piSequence.content.includes("## Success signals"));
   assert.ok(piSequence.content.includes("Move from validation into implementation planning."));
   assert.ok(chatSequence.content.includes("Entrypoint:"));
+  assert.ok(chatSequence.content.includes("## Human-facing response (required)"));
   assert.ok(chatSequence.content.includes("Success signals:"));
   assert.ok(chatSequence.content.includes("Move from validation into implementation planning."));
 });

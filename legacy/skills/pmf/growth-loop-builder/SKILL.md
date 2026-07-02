@@ -17,6 +17,12 @@ The opposite of a growth loop: a funnel. Funnels require constant top-of-funnel 
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Build my growth loop"** or **"How do I grow without paid ads?"** or **"Design a growth loop for me"**
 
 Output: `growth-loop.md` — the highest-potential loop type, specific design, implementation steps, and the metric that tells you the loop is working.

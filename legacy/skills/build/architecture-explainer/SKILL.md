@@ -9,6 +9,12 @@ version: 1.0.0
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Explain my architecture"** or **"Help me understand how this is built"**
 
 Describe your stack or share your `stack-decision.md`. Total time: 10 minutes.

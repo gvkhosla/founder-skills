@@ -271,6 +271,9 @@ function main() {
     const text = fs.readFileSync(file, 'utf8');
     const lines = text.split('\n').length;
     if (lines > 350) fail(`${rel}: exceeds 350 lines (${lines})`);
+    if (!text.includes('## Human-First Response')) {
+      fail(`${rel}: missing Human-First Response section`);
+    }
 
     const fm = parseFrontmatter(text, rel);
     if (!fm) continue;

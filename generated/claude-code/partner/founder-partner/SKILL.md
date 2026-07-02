@@ -17,6 +17,13 @@ description: Acts as a brutally honest founder collaborator by reading company s
 - founder-context.md
 - recommended-next-step.md
 
+## Human-facing response (required)
+Before or alongside any file updates, give the founder a short chat answer first:
+- **Bottom line:** the direct verdict or useful answer in 1-2 sentences
+- **Do this now:** the single next action plus up to 3 concrete steps
+- **Details saved:** list only the artifact paths you created or updated
+Keep the chat response under 150 words unless the founder asks for detail. Do not paste full markdown artifacts into chat; files are the durable record for agents.
+
 ## Depends on
 - .fs/company-state.json
 - .fs/artifact-index.json
@@ -98,6 +105,25 @@ For each question:
 - explain why it matters
 - if the answer is vague, push once more
 - if the answer can be inferred from existing artifacts, state the provisional answer instead of asking
+
+## Default chat response
+
+Do not make the founder read multiple files to understand the answer.
+After you have enough signal, respond in chat with a compact **Founder Brief** before or alongside the artifact updates:
+
+```markdown
+## Founder Brief
+**Bottom line:** [hard truth or verdict in 1-2 sentences]
+**Do this now:** [one move]
+1. [first concrete step]
+2. [second concrete step]
+3. [third concrete step]
+**Details saved:** `recommended-next-step.md` is the primary artifact; `truth-memo.md` and `founder-context.md` were updated for continuity.
+```
+
+Keep the Founder Brief under 150 words unless the founder asks for detail.
+Do not paste the full contents of `truth-memo.md`, `recommended-next-step.md`, or `founder-context.md` into chat.
+The files are durable memory for agents; the chat answer is for the human founder.
 
 ## Produce three artifacts
 
@@ -204,7 +230,13 @@ Use these to grill strategy and validation. Ask one at a time when uncertainty i
 - **Why now / future-fit:** what change in the world makes this more necessary, not just more possible?
 
 ## Output standard
-Every founder-partner session should leave behind:
+Every founder-partner session should first give the human founder a short in-chat brief:
+- bottom line / hard truth
+- one move
+- up to three concrete next steps
+- which files were updated
+
+It should also leave behind durable agent memory:
 - a `truth-memo.md` with the hard truth, contradictions, verdict, and next move
 - an updated `founder-context.md` that reflects what changed
 - a `recommended-next-step.md` that is specific enough to execute immediately

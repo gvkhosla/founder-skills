@@ -19,6 +19,12 @@ Churn is the product telling you something specific. This skill reads that signa
 
 ## Quick Start
 
+## Human-First Response
+
+Default: answer in chat first with **Bottom line**, **Do this now**, and **Details saved**.
+Keep chat under 150 words unless asked; do not paste the full artifact.
+Write/update the requested `.md` file as the durable record for agents.
+
 Say: **"Why are users churning?"** or **"Help me reduce churn"** or **"Diagnose my churn"**
 
 Output: `churn-diagnosis.md` — root cause with confidence level, the specific experiment to run, and what success looks like.
