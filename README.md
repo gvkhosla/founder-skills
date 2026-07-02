@@ -97,6 +97,9 @@ npx --yes github:gvkhosla/founder-skills install --agent codex --scope project -
 ```
 
 Verify:
+- `founder-skills doctor --agent pi`
+- `founder-skills doctor --agent claude --scope project`
+- `founder-skills doctor --agent codex`
 - pi → `~/.pi/agent/skills/founder-partner/SKILL.md`
 - Claude Code → `.claude/skills/founder-partner/SKILL.md`
 - Codex global → `~/.codex/skills/founder-partner/SKILL.md`
@@ -123,6 +126,8 @@ npm run os:install -- --host hermes --project /path/to/startup
 You can also use the OS install flow for pi, Claude Code, and Codex.
 
 Verify OS installs with:
+- `npm run os:doctor -- --host codex`
+- `npm run os:doctor -- --host opencode --scope project --project /path/to/startup`
 - Codex global → `~/.codex/skills/founder-partner/SKILL.md`
 - Codex project (`--scope project`) → `.codex/founder-skills-os/workspace/project-instructions.md`
 - OpenCode → `.opencode/founder-skills-os/workspace/project-instructions.md`

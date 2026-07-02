@@ -89,6 +89,8 @@ export function installGeneratedHostBundle(options: InstallGeneratedHostOptions)
     notes.push(`Updated ${agentsFile} with an OpenClaw bundle section`);
   }
 
+  notes.push(...renderPostInstallNotes(options.host, scope, projectDir));
+
   return {
     host: options.host,
     bundlePath,
@@ -98,7 +100,7 @@ export function installGeneratedHostBundle(options: InstallGeneratedHostOptions)
 }
 
 export function defaultScopeForHost(host: CodingHostId): InstallScope {
-  return host === "claude-code" ? "project" : "global";
+  return host === "claude-code" || host === "opencode" || host === "openclaw" ? "project" : "global";
 }
 
 export function getDefaultBundlePath(host: CodingHostId, scope: InstallScope, projectDir: string): string {
@@ -185,6 +187,27 @@ function findSkillDirs(rootDir: string): string[] {
   }
 
   return out;
+}
+
+function renderPostInstallNotes(host: CodingHostId, scope: InstallScope, projectDir: string): string[] {
+  const doctor = `npm run os:doctor -- --host ${host}${scope === "project" ? ` --scope project --project ${toPosix(projectDir)}` : ""}`;
+
+  switch (host) {
+    case "codex":
+      return scope === "global"
+        ? ["Try next: restart Codex, then type `$founder-partner`.", `Verify later: ${doctor}`]
+        : ["Try next: ask Codex to use founder-partner from the managed AGENTS.md instructions.", `Verify later: ${doctor}`];
+    case "claude-code":
+      return ["Try next: ask Claude Code, \"Use the founder-partner skill.\"", `Verify later: ${doctor}`];
+    case "pi":
+      return ["Try next: ask pi, \"Use founder-partner.\"", `Verify later: ${doctor}`];
+    case "hermes":
+      return ["Try next: run `hermes skills list`, then ask Hermes to use founder-partner.", `Verify later: ${doctor}`];
+    case "opencode":
+      return ["Try next: ask OpenCode to use founder-partner from AGENTS.md.", `Verify later: ${doctor}`];
+    case "openclaw":
+      return ["Try next: ask OpenClaw to route through founder-partner from AGENTS.md.", `Verify later: ${doctor}`];
+  }
 }
 
 function renderClaudeProjectSection(bundlePath: string): string {

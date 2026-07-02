@@ -16,7 +16,7 @@ Usage:
 
 Options:
   --host <id>         Target host (default: all)
-  --scope <mode>      global | project (codex default: global; claude-code default: project)
+  --scope <mode>      global | project (codex/pi/hermes default: global; claude-code/opencode/openclaw default: project)
   --project <path>    Project directory for project-scoped hosts (default: cwd)
   --dest <path>       Override destination bundle/install path for a single host install
 

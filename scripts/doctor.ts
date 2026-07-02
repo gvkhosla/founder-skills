@@ -11,6 +11,7 @@ import {
   readCompanyState,
   readSequenceState,
 } from "../packages/state/src/workspace.js";
+import { defaultScopeForHost, getDefaultBundlePath, type CodingHostId, type InstallScope } from "../packages/hosts/src/install/export-bundles.js";
 
 const root = process.cwd();
 const groups: Record<string, string[]> = {
@@ -78,11 +79,13 @@ const groups: Record<string, string[]> = {
 
 function parseArgs(argv: string[]) {
   let projectDir: string | undefined;
+  let host: CodingHostId | undefined;
+  let scope: InstallScope | undefined;
 
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     if (token === "--help" || token === "-h") {
-      console.log(`Founder Skills OS doctor\n\nUsage:\n  npm run os:doctor\n  npm run os:doctor -- --project /path/to/startup\n`);
+      console.log(`Founder Skills OS doctor\n\nUsage:\n  npm run os:doctor\n  npm run os:doctor -- --project /path/to/startup\n  npm run os:doctor -- --host codex\n  npm run os:doctor -- --host codex --scope project --project /path/to/startup\n`);
       process.exit(0);
     }
     if (token === "--project") {
@@ -90,10 +93,67 @@ function parseArgs(argv: string[]) {
       index += 1;
       continue;
     }
+    if (token === "--host") {
+      host = argv[index + 1] as CodingHostId;
+      index += 1;
+      continue;
+    }
+    if (token === "--scope") {
+      scope = argv[index + 1] as InstallScope;
+      index += 1;
+      continue;
+    }
     throw new Error(`Unknown option: ${token}`);
   }
 
-  return { projectDir };
+  if (host && !["pi", "claude-code", "codex", "opencode", "openclaw", "hermes"].includes(host)) {
+    throw new Error(`Unknown host '${host}'.`);
+  }
+  if (scope && scope !== "global" && scope !== "project") {
+    throw new Error(`Unknown scope '${scope}'. Use global or project.`);
+  }
+
+  return { projectDir, host, scope };
+}
+
+function checkHostInstall(host: CodingHostId, scope: InstallScope, projectDir: string) {
+  const bundlePath = getDefaultBundlePath(host, scope, projectDir);
+  const requiredFiles: string[] = [];
+
+  if (host === "codex" && scope === "global") {
+    requiredFiles.push(path.join(bundlePath, "founder-partner", "SKILL.md"));
+  } else {
+    requiredFiles.push(path.join(bundlePath, "workspace", "project-instructions.md"));
+    if (host === "openclaw") {
+      requiredFiles.push(path.join(bundlePath, "founder-skills-full-CLAUDE.md"));
+      requiredFiles.push(path.join(bundlePath, "skills", "founder-partner", "SKILL.md"));
+    } else {
+      requiredFiles.push(path.join(bundlePath, "partner", "founder-partner", "SKILL.md"));
+    }
+  }
+
+  let failed = false;
+  console.log(`Checking ${host} ${scope} install at ${bundlePath}`);
+  for (const filePath of requiredFiles) {
+    if (fs.existsSync(filePath)) {
+      console.log(`✓ ${filePath}`);
+    } else {
+      console.log(`- missing ${filePath}`);
+      failed = true;
+    }
+  }
+
+  if ((host === "codex" || host === "opencode" || host === "openclaw") && scope === "project") {
+    const agentsFile = path.join(projectDir, "AGENTS.md");
+    if (fs.existsSync(agentsFile) && fs.readFileSync(agentsFile, "utf8").includes("Founder Skills OS")) {
+      console.log(`✓ ${agentsFile}`);
+    } else {
+      console.log(`- missing managed Founder Skills OS section in ${agentsFile}`);
+      failed = true;
+    }
+  }
+
+  if (failed) throw new Error(`${host} install validation failed`);
 }
 
 function checkWorkspaceState(projectDir: string) {
@@ -132,7 +192,8 @@ function checkWorkspaceState(projectDir: string) {
 }
 
 try {
-  const { projectDir } = parseArgs(process.argv.slice(2));
+  const { projectDir, host, scope } = parseArgs(process.argv.slice(2));
+  const resolvedProjectDir = path.resolve(projectDir ?? process.cwd());
   let failed = false;
   for (const [group, relPaths] of Object.entries(groups)) {
     const missing = relPaths.filter((rel) => !fs.existsSync(path.join(root, rel)));
@@ -145,13 +206,17 @@ try {
     for (const rel of missing) console.log(`  - missing: ${rel}`);
   }
 
-  if (projectDir) {
-    console.log(`Checking workspace state in ${path.resolve(projectDir)}`);
-    checkWorkspaceState(path.resolve(projectDir));
+  if (host) {
+    checkHostInstall(host, scope ?? defaultScopeForHost(host), resolvedProjectDir);
+  }
+
+  if (projectDir && !host) {
+    console.log(`Checking workspace state in ${resolvedProjectDir}`);
+    checkWorkspaceState(resolvedProjectDir);
   }
 
   if (failed) process.exit(1);
-  console.log(projectDir ? "Founder Skills OS bootstrap and workspace look healthy." : "Founder Skills OS bootstrap looks healthy.");
+  console.log(projectDir || host ? "Founder Skills OS bootstrap and requested checks look healthy." : "Founder Skills OS bootstrap looks healthy.");
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exit(1);
