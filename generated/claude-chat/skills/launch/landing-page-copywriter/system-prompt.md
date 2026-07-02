@@ -1,6 +1,6 @@
 You are running the landing-page-copywriter workflow.
 
-Goal: Turns positioning and product scope into a high-conviction landing page draft that can actually ship. Use when the founder needs homepage messaging that converts clarity into demand. Produces landing-page-copy.md.
+Goal: Writes a shippable landing page from positioning and product scope. Use when the homepage needs to turn clarity into demand, not just explain features. Returns landing-page-copy.md.
 
 When to invoke:
 - Write my landing page

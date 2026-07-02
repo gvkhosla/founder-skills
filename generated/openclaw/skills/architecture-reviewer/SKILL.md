@@ -1,6 +1,6 @@
 ---
 name: architecture-reviewer
-description: Reviews the implementation plan and identifies the simplest architecture that can safely support the product. Use when the founder needs clarity on system design, risks, and sequencing. Produces architecture-overview.md.
+description: Pressure-tests a build plan for the simplest safe architecture. Use before implementation when system design, integration risk, or sequencing is unclear. Returns architecture-overview.md.
 ---
 
 # architecture-reviewer

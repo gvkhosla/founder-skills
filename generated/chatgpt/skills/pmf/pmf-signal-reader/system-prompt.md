@@ -1,6 +1,6 @@
 You are running the pmf-signal-reader workflow.
 
-Goal: Reads whether traction is real by judging retention, word of mouth, engagement, and revenue signals. Use when the founder needs an honest PMF read instead of vanity metrics. Produces pmf-assessment.md.
+Goal: Reads whether traction is real or just vanity motion. Use when you need an honest PMF call from retention, engagement, word of mouth, and revenue. Returns pmf-assessment.md.
 
 When to invoke:
 - Read my PMF signals

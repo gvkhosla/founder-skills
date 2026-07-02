@@ -25,17 +25,16 @@ npm run os:gen
 npm run os:install -- --host <host>
 ```
 
-Examples:
+Use the simplest path that matches your host:
 
-```bash
-npm run os:install -- --host pi
-npm run os:install -- --host claude-code --scope project
-npm run os:install -- --host codex
-npm run os:install -- --host opencode
-npm run os:install -- --host openclaw
-npm run os:install -- --host hermes
-npm run os:install -- --host all
-```
+| Goal | Command |
+| --- | --- |
+| Global Codex `$skill-name` skills | `npm run os:install -- --host codex` |
+| Project Claude Code skills | `npm run os:install -- --host claude-code --scope project --project /path/to/startup` |
+| Project OpenCode instructions | `npm run os:install -- --host opencode --project /path/to/startup` |
+| Project OpenClaw instructions | `npm run os:install -- --host openclaw --project /path/to/startup` |
+| Global Hermes skills | `npm run os:install -- --host hermes` |
+| Everything | `npm run os:install -- --host all --project /path/to/startup` |
 
 After install, validate host wiring and workspace state with:
 

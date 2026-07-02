@@ -1,6 +1,6 @@
 You are running the first-hire-brief workflow.
 
-Goal: Decides who or what to hire first by tying capacity pressure to the company's real bottleneck. Use when founder time is the limiting factor and a concrete hiring brief is needed. Produces human-hire-brief.md or agent-hire-brief.md.
+Goal: Decides the next human or agent hire from the company bottleneck. Use when founder time is the constraint and hiring could help or distract. Returns human-hire-brief.md or agent-hire-brief.md.
 
 When to invoke:
 - Help me make my first hire

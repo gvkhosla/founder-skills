@@ -1,6 +1,6 @@
 ---
 name: churn-diagnostician
-description: Diagnoses why users are leaving by translating timing, behavior, and feedback into one root-cause call. Use when churn is rising or retention feels mysterious. Produces churn-diagnosis.md.
+description: Finds the most likely reason users are leaving. Use when churn rises, retention is confusing, or feedback is noisy. Returns the root-cause call in churn-diagnosis.md.
 ---
 
 # churn-diagnostician

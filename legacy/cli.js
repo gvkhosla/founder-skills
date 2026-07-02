@@ -18,6 +18,7 @@ function usage() {
 Usage:
   founder-skills install --agent <pi|claude|codex> [options]
   founder-skills install <agent> [phase|project]
+  founder-skills init [--project <path>] [--company <name>] [--stage <stage>]
   founder-skills doctor [--agent <pi|claude|codex>] [--scope <global|project>] [--project <path>]
   founder-skills list [--phase <phase>]
   founder-skills version
@@ -27,7 +28,9 @@ Install options:
   --phase, -p   all | strategy | design | build | launch | compound | pmf | scale | partner
   --scope, -s   (claude/codex) global | project (codex global installs ~/.codex/skills)
   --out, -o     (codex only) also write an AGENTS file for project-mode/reference use
-  --project     Project directory to inspect for doctor project checks (default: cwd)
+  --project     Project directory for init/doctor project checks (default: cwd)
+  --company     Company name for init
+  --stage       idea | validating | building | launched | revenue | growing
 
 Examples:
   npx --yes github:gvkhosla/founder-skills install --agent pi
@@ -35,6 +38,7 @@ Examples:
   npx --yes github:gvkhosla/founder-skills install claude project
   npx --yes github:gvkhosla/founder-skills install --agent claude --scope project --phase pmf
   npx --yes github:gvkhosla/founder-skills install --agent codex
+  npx --yes github:gvkhosla/founder-skills init --project . --company "Acme"
   npx --yes github:gvkhosla/founder-skills install --agent codex --scope project --out ./AGENTS.md
   npx --yes github:gvkhosla/founder-skills doctor --agent codex
   npx --yes github:gvkhosla/founder-skills list
@@ -79,6 +83,18 @@ function parseArgs(argv) {
 
     if (token === '--project') {
       options.project = argv[i + 1];
+      i += 1;
+      continue;
+    }
+
+    if (token === '--company') {
+      options.company = argv[i + 1];
+      i += 1;
+      continue;
+    }
+
+    if (token === '--stage') {
+      options.stage = argv[i + 1];
       i += 1;
       continue;
     }
@@ -347,6 +363,59 @@ function runInstall(options, positionals) {
   if (config.out) generateCodexAgents(skillDirs, config.out);
 }
 
+function copyStarterFile(src, dest) {
+  if (fs.existsSync(dest)) return false;
+  let content = fs.readFileSync(src, 'utf8').replaceAll('YYYY-MM-DD', new Date().toISOString().slice(0, 10));
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.writeFileSync(dest, content, 'utf8');
+  return true;
+}
+
+function initWorkspace(options) {
+  const validStages = ['idea', 'validating', 'building', 'launched', 'revenue', 'growing'];
+  if (options.stage && !validStages.includes(options.stage)) {
+    throw new Error(`Unknown stage '${options.stage}'. Valid stages: ${validStages.join(', ')}`);
+  }
+
+  const projectDir = path.resolve(process.cwd(), options.project || '.');
+  const starterDir = path.join(packageRoot, 'generated', 'pi', 'workspace', 'starter');
+  if (!fs.existsSync(starterDir)) {
+    throw new Error(`Missing starter workspace at ${starterDir}.`);
+  }
+
+  const created = [];
+  for (const filePath of walkFiles(starterDir)) {
+    const relPath = path.relative(starterDir, filePath);
+    const dest = path.join(projectDir, relPath);
+    if (copyStarterFile(filePath, dest)) created.push(relPath);
+  }
+
+  const companyStatePath = path.join(projectDir, '.fs', 'company-state.json');
+  const companyState = JSON.parse(fs.readFileSync(companyStatePath, 'utf8'));
+  companyState.company.name = options.company || companyState.company.name || path.basename(projectDir);
+  if (options.stage) companyState.company.stage = options.stage;
+  companyState.stateMeta.lastUpdated = new Date().toISOString().slice(0, 10);
+  companyState.stateMeta.lastReviewed = new Date().toISOString().slice(0, 10);
+  fs.writeFileSync(companyStatePath, `${JSON.stringify(companyState, null, 2)}\n`, 'utf8');
+
+  console.log(`Initialized Founder Skills workspace in ${projectDir}`);
+  if (created.length === 0) {
+    console.log('✓ Workspace files already existed; left existing files in place.');
+  } else {
+    for (const relPath of created) console.log(`✓ created ${relPath}`);
+  }
+  console.log('Try next: ask your agent, "Use founder-partner and be brutally honest with me."');
+  console.log(`Verify later: founder-skills doctor --project ${projectDir}`);
+}
+
+function* walkFiles(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const absPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) yield* walkFiles(absPath);
+    else yield absPath;
+  }
+}
+
 function resolveDoctorArgs(options) {
   const scope = options.scope || 'global';
   if (options.agent && !AGENTS.includes(options.agent)) {
@@ -414,20 +483,31 @@ function checkAgentInstall(agent, scope, projectDir) {
   return [checkSkillFile('codex', path.join(os.homedir(), '.codex', 'skills', 'founder-partner', 'SKILL.md'))];
 }
 
-function checkWorkspaceHints(projectDir) {
+function checkWorkspace(projectDir, required = false) {
   const files = [
     'founder-context.md',
     'truth-memo.md',
     'recommended-next-step.md',
     path.join('.fs', 'company-state.json'),
+    path.join('.fs', 'artifact-index.json'),
+    path.join('.fs', 'sequence-state.json'),
   ];
   const found = files.filter((rel) => fs.existsSync(path.join(projectDir, rel)));
-  if (found.length === 0) {
-    console.log(`- Optional workspace memory not initialized in ${projectDir}`);
-    console.log('  Run Founder Partner once, or use the OS init flow from a cloned repo when you want persistent company state.');
-    return;
+  const missing = files.filter((rel) => !fs.existsSync(path.join(projectDir, rel)));
+
+  if (missing.length === 0) {
+    console.log(`✓ Workspace memory in ${projectDir}`);
+    return true;
   }
-  console.log(`✓ Workspace memory: ${found.join(', ')}`);
+
+  if (found.length === 0 && !required) {
+    console.log(`- Optional workspace memory not initialized in ${projectDir}`);
+    console.log('  Run `founder-skills init --project .` when you want persistent company state.');
+    return true;
+  }
+
+  for (const rel of missing) console.log(`✗ workspace missing ${rel}`);
+  return false;
 }
 
 function runDoctor(options) {
@@ -436,23 +516,27 @@ function runDoctor(options) {
   let failed = false;
 
   console.log('Founder Skills doctor');
-  for (const candidate of agentsToCheck) {
-    const checks = checkAgentInstall(candidate, scope, projectDir);
-    for (const check of checks) {
-      console.log(check.message);
-      if (!check.ok) failed = true;
-    }
-  }
 
-  checkWorkspaceHints(projectDir);
+  if (options.project && !agent) {
+    failed = !checkWorkspace(projectDir, true);
+  } else {
+    for (const candidate of agentsToCheck) {
+      const checks = checkAgentInstall(candidate, scope, projectDir);
+      for (const check of checks) {
+        console.log(check.message);
+        if (!check.ok) failed = true;
+      }
+    }
+    checkWorkspace(projectDir, false);
+  }
 
   if (failed) {
     console.log('');
-    console.log('Suggested fix: run `founder-skills install --agent <agent>` and restart your agent if needed.');
+    console.log('Suggested fix: run `founder-skills install --agent <agent>` for install issues or `founder-skills init --project .` for workspace memory.');
     process.exit(1);
   }
 
-  console.log('Founder Skills install looks healthy.');
+  console.log('Founder Skills checks look healthy.');
 }
 
 function runList(options) {
@@ -504,6 +588,16 @@ function main() {
       return;
     }
     runInstall(options, positionals);
+    return;
+  }
+
+  if (command === 'init') {
+    const { options } = parseArgs(argv.slice(1));
+    if (options.help) {
+      usage();
+      return;
+    }
+    initWorkspace(options);
     return;
   }
 

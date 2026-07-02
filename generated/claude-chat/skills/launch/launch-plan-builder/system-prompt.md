@@ -1,6 +1,6 @@
 You are running the launch-plan-builder workflow.
 
-Goal: Builds a concrete launch plan across owned, rented, and borrowed channels. Use when the product and message are defined and the founder needs a realistic launch motion. Produces launch-plan.md.
+Goal: Builds a realistic launch plan across channels, assets, and timing. Use when product and message are ready but launch motion is vague. Returns launch-plan.md.
 
 When to invoke:
 - Build my launch plan

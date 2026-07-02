@@ -1,6 +1,6 @@
 You are running the mvp-scoper workflow.
 
-Goal: Defines exactly what is in and out of scope for the MVP. Use when the product idea is clear but scope keeps expanding. Produces mvp-brief.md.
+Goal: Draws the hard line between MVP and distraction. Use when the idea is clear but scope keeps expanding. Returns mvp-brief.md.
 
 When to invoke:
 - Help me scope my MVP

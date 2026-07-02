@@ -1,6 +1,6 @@
 You are running the implementation-planner workflow.
 
-Goal: Turns a scoped MVP into a concrete, founder-readable implementation plan. Use when scope is defined but build confidence is low. Produces implementation-plan.md.
+Goal: Turns a scoped MVP into a concrete build plan. Use when the founder knows what should exist but lacks sequencing, risk, or implementation confidence. Returns implementation-plan.md.
 
 When to invoke:
 - Help me plan the build

@@ -1,6 +1,6 @@
 ---
 name: pipeline-reviewer
-description: Diagnoses pipeline weakness and identifies the highest-leverage fix in founder-led sales. Use when demos are happening but closes are weak. Produces pipeline-review.md.
+description: Diagnoses the biggest leak in founder-led sales. Use when demos, leads, or conversations are happening but closes are weak. Returns pipeline-review.md.
 ---
 
 # pipeline-reviewer

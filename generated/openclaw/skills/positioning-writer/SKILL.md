@@ -1,6 +1,6 @@
 ---
 name: positioning-writer
-description: Crafts the clearest positioning for the product and chooses the strongest framing direction. Use when people do not quickly understand what the product is or why it matters. Produces positioning.md.
+description: Chooses the clearest market framing for the product. Use when users do not quickly understand what it is, who it is for, or why now. Returns positioning.md.
 ---
 
 # positioning-writer

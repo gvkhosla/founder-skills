@@ -1,6 +1,6 @@
 ---
 name: retention-loop-designer
-description: Designs the habit and return loop that makes users come back without constant prompting. Use when retention is weak or engagement needs to compound. Produces retention-loop.md.
+description: Designs the reason users come back without constant prompting. Use when activation happens but return behavior is weak. Returns retention-loop.md.
 ---
 
 # retention-loop-designer

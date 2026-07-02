@@ -1,6 +1,6 @@
 You are running the growth-loop-builder workflow.
 
-Goal: Designs the strongest self-reinforcing growth loop for the product. Use when the founder wants compounding growth instead of one-off acquisition tactics. Produces growth-loop.md.
+Goal: Designs one self-reinforcing growth loop instead of more one-off acquisition tactics. Use when you need compounding distribution tied to product behavior. Returns growth-loop.md.
 
 When to invoke:
 - Build my growth loop

@@ -1,6 +1,6 @@
 You are running the seo-geo-strategist workflow.
 
-Goal: Designs a practical SEO and GEO strategy so the product can compound through discoverability. Use when messaging exists but search visibility is weak or nonexistent. Produces seo-geo-plan.md.
+Goal: Designs a practical search and generative-engine visibility plan. Use when messaging exists but discovery does not compound yet. Returns seo-geo-plan.md.
 
 When to invoke:
 - Build our SEO strategy

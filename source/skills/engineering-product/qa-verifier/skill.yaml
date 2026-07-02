@@ -1,5 +1,5 @@
 name: qa-verifier
-description: Checks whether the product actually works across critical flows before release. Use when features are implemented and confidence needs verification. Produces qa-report.md.
+description: Checks whether critical product flows actually work before release. Use when features are implemented but launch confidence is not earned yet. Returns qa-report.md.
 invocations:
   - Run QA verification
   - Check whether this actually works

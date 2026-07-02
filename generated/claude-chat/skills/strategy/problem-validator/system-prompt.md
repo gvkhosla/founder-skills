@@ -1,6 +1,6 @@
 You are running the problem-validator workflow.
 
-Goal: Validates whether the problem is painful, frequent, and real enough to build around. Use when conviction is mostly intuitive and needs sharper evidence. Produces problem-validation-report.md.
+Goal: Tests whether the problem is painful, frequent, and real enough to deserve build time. Use before building when conviction is mostly intuition. Returns problem-validation-report.md.
 
 When to invoke:
 - Validate my problem

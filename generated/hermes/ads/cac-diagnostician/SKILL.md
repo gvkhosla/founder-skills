@@ -1,6 +1,6 @@
 ---
 name: cac-diagnostician
-description: Diagnoses why paid acquisition efficiency is weak before more budget gets spent. Use when CAC is rising, conversion is weak, or paid traffic quality is unclear. Produces cac-diagnosis.md.
+description: Finds why paid acquisition is inefficient before you spend more. Use when CAC is rising, paid traffic is low quality, or conversion is weak. Returns the CAC bottleneck and next test in cac-diagnosis.md.
 ---
 
 # cac-diagnostician

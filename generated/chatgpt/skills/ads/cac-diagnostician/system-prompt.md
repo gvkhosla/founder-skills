@@ -1,6 +1,6 @@
 You are running the cac-diagnostician workflow.
 
-Goal: Diagnoses why paid acquisition efficiency is weak before more budget gets spent. Use when CAC is rising, conversion is weak, or paid traffic quality is unclear. Produces cac-diagnosis.md.
+Goal: Finds why paid acquisition is inefficient before you spend more. Use when CAC is rising, paid traffic is low quality, or conversion is weak. Returns the CAC bottleneck and next test in cac-diagnosis.md.
 
 When to invoke:
 - Diagnose my CAC

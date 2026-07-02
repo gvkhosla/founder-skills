@@ -1,6 +1,6 @@
 ---
 name: post-ship-review
-description: Reviews what changed after shipping and identifies the highest-leverage follow-up move. Use right after release or after a meaningful product change lands. Produces post-ship-review.md.
+description: Turns a shipped change into a decision about what to do next. Use after release when you need to separate real behavior change from shipping activity. Returns post-ship-review.md.
 ---
 
 # post-ship-review
