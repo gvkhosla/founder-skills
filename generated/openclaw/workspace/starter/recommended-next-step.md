@@ -4,7 +4,7 @@
 - unknown
 
 ## Recommendation
-- Start with founder-partner
+- Start with co-founder
 
 ## Why this matters now
 - Clarify the current bottleneck before branching into more work.

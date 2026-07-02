@@ -146,4 +146,4 @@ Same output. ~4× longer.
 
 - **build-cycle** uses this skill's criteria in Phase 3 (abbreviated in-cycle version)
 - **failure-navigator** — if MPP score is flat across 3+ cycles, run this next
-- **founder-partner** (Partner phase) — uses MPP trajectory as a key health signal
+- **co-founder** (Partner phase) — uses MPP trajectory as a key health signal

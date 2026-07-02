@@ -210,4 +210,4 @@ Same output. ~3x longer.
 - Use **mvp-scoper** after this — once the problem is validated, scope what to build
 - Use **customer-hypothesis** in parallel — sharpens who exactly has this problem
 - Use **assumption-mapper** after this — maps your remaining unknowns to validation methods
-- Use **founder-partner** if your score is Medium and you're not sure whether to build or validate more
+- Use **co-founder** if your score is Medium and you're not sure whether to build or validate more

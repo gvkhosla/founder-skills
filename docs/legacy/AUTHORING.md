@@ -118,7 +118,7 @@ skip this and what goes wrong when they do.]
 
 - Use **[skill-name]** before this if you haven't [prerequisite] yet
 - Use **[skill-name]** after this to [next natural step]
-- Use **founder-partner** anytime to get oriented on where to focus
+- Use **co-founder** anytime to get oriented on where to focus
 ```
 
 ---
@@ -193,7 +193,7 @@ These skills should surface uncomfortable truths. The `build-cycle` skill should
 Be conservative with PMF signals. False positives are more damaging than missing the signal. Teach founders to see what's actually there, not what they want to see.
 
 ### Partner skills
-The `founder-partner` reads `founder-context.md`. All other partner-adjacent skills should update it. The file is the persistent memory — treat it as sacred.
+The `co-founder` reads `founder-context.md`. All other partner-adjacent skills should update it. The file is the persistent memory — treat it as sacred.
 
 ---
 

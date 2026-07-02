@@ -54,7 +54,7 @@ test("host adapters include sequence routing metadata in generated bundles", () 
   const sampleSequence = {
     name: "validate-to-build",
     description: "Sample sequence",
-    entrypoint: "founder-partner",
+    entrypoint: "co-founder",
     steps: ["problem-validator", "customer-hypothesis"],
     primaryOutputs: ["problem-validation-report.md"],
     successSignal: ["founder_can_start_build_with_no_major_ambiguity"],

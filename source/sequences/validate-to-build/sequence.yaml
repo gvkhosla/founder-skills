@@ -1,6 +1,6 @@
 name: validate-to-build
 description: Moves a founder from validated problem to confident implementation planning.
-entrypoint: founder-partner
+entrypoint: co-founder
 steps:
   - problem-validator
   - customer-hypothesis

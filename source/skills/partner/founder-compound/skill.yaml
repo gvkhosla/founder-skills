@@ -16,7 +16,7 @@ depends_on:
   - .fs/company-state.json
   - .fs/artifact-index.json
 feeds_into:
-  - founder-partner
+  - co-founder
   - weekly-founder-review
 checks:
   - learning_captured

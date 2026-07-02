@@ -201,4 +201,4 @@ Same output. ~5× longer.
 
 - Triggered by **build-cycle** at 3+ flat cycles
 - Use **mpp-evaluator** alongside — MPP score trajectory is key diagnostic evidence
-- Use **founder-partner** (Partner phase) for the broader strategic context when pivoting
+- Use **co-founder** (Partner phase) for the broader strategic context when pivoting

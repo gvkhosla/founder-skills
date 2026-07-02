@@ -1,6 +1,6 @@
 name: build-to-release
 description: Moves a scoped product through implementation planning, build handoff, QA, and release readiness.
-entrypoint: founder-partner
+entrypoint: co-founder
 steps:
   - implementation-planner
   - architecture-reviewer

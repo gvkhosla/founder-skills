@@ -339,4 +339,4 @@ The founder pivoted from building a scoping calculator to building a guided prop
 - Use **assumption-mapper** before this — identifies which assumptions need interview-based validation
 - Use **problem-validator** after this — validates the core problem using your interview findings as evidence
 - Use **mvp-scoper** after this — scope the MVP based on what users actually need, not what you guessed
-- Use **founder-partner** throughout — to process what you are hearing and decide what to do next
+- Use **co-founder** throughout — to process what you are hearing and decide what to do next

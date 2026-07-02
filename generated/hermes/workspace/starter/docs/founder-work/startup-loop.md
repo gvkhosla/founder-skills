@@ -20,9 +20,9 @@ date: YYYY-MM-DD
 - A1. The current idea, customer, and wedge still need validation.
 
 ## Decisions
-- D1. Start with founder-partner to route the next useful workflow.
+- D1. Start with co-founder to route the next useful workflow.
 
 ## Next Handoff
-- Recommended skill: founder-partner
+- Recommended skill: co-founder
 - Why: identify the bottleneck before creating more artifacts.
 

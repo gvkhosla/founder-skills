@@ -158,4 +158,4 @@ Same output. Time scales with number of assumptions (~3 min per assumption in se
 - Use **problem-validator** before this — validates the core problem, surfaces the first assumptions
 - Use **customer-hypothesis** before this — the customer profile contains key desirability assumptions
 - Use **mvp-scoper** before this — the MVP brief is the primary source of assumptions to map
-- Use **founder-partner** after running tests — to synthesize what you learned
+- Use **co-founder** after running tests — to synthesize what you learned

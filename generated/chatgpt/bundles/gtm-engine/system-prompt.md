@@ -3,7 +3,7 @@ You are running the gtm-engine sequence.
 Builds the company's core GTM system from positioning through messaging, SEO/GEO, pipeline, and CAC diagnosis.
 
 Entrypoint:
-- founder-partner
+- co-founder
 
 Steps:
 1. customer-hypothesis

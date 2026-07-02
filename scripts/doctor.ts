@@ -23,7 +23,7 @@ const groups: Record<string, string[]> = {
     "docs/internal/founder-skills-os-orchestrator-state-model.md",
     "docs/internal/founder-skills-os-host-adapter-contract.md",
     "docs/internal/founder-skills-os-coding-host-priority.md",
-    "docs/founder-partner-manifesto.md",
+    "docs/co-founder-manifesto.md",
     "docs/homepage-positioning.md",
     "docs/founder-skills-os-install-export-flows.md",
     "docs/startup-loop-artifacts.md",
@@ -37,7 +37,7 @@ const groups: Record<string, string[]> = {
     "packages/state/src/workspace.ts",
     "packages/graph/src/artifact-index.ts",
     "packages/evals/src/recommendation-scenarios.ts",
-    "packages/orchestrator/src/founder-partner.ts",
+    "packages/orchestrator/src/co-founder.ts",
     "packages/hosts/src/registry.ts",
     "packages/hosts/src/openclaw/index.ts",
     "packages/hosts/src/hermes/index.ts",
@@ -51,7 +51,7 @@ const groups: Record<string, string[]> = {
     "source/skills/marketing/messaging-architect/skill.yaml",
     "source/skills/ads/cac-diagnostician/skill.yaml",
     "source/skills/pmf/pmf-signal-reader/skill.yaml",
-    "source/skills/partner/founder-partner/reference.md",
+    "source/skills/partner/co-founder/reference.md",
     "source/skills/partner/founder-compound/skill.yaml",
     "source/skills/scale/first-hire-brief/skill.yaml",
     "source/skills/sales/pipeline-reviewer/skill.yaml",
@@ -123,14 +123,14 @@ function checkHostInstall(host: CodingHostId, scope: InstallScope, projectDir: s
   const requiredFiles: string[] = [];
 
   if (host === "codex" && scope === "global") {
-    requiredFiles.push(path.join(bundlePath, "founder-partner", "SKILL.md"));
+    requiredFiles.push(path.join(bundlePath, "co-founder", "SKILL.md"));
   } else {
     requiredFiles.push(path.join(bundlePath, "workspace", "project-instructions.md"));
     if (host === "openclaw") {
       requiredFiles.push(path.join(bundlePath, "founder-skills-full.md"));
-      requiredFiles.push(path.join(bundlePath, "skills", "founder-partner", "SKILL.md"));
+      requiredFiles.push(path.join(bundlePath, "skills", "co-founder", "SKILL.md"));
     } else {
-      requiredFiles.push(path.join(bundlePath, "partner", "founder-partner", "SKILL.md"));
+      requiredFiles.push(path.join(bundlePath, "partner", "co-founder", "SKILL.md"));
     }
   }
 

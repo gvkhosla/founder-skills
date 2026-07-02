@@ -1,11 +1,11 @@
 ---
-name: founder-partner
+name: co-founder
 description: Startup operating partner for deciding what matters next. Reads founder-context.md, recent cycles, and relevant artifacts before routing the next useful workflow. Separates known facts, working beliefs, and open assumptions; gives one verdict and one next move. Use when deciding whether to validate, narrow, build, launch, or stop. Produces truth-memo.md and updates founder-context.md.
 phase: partner
 version: 3.0.0
 ---
 
-# Founder Partner
+# Co-founder
 
 ## Quick Start
 

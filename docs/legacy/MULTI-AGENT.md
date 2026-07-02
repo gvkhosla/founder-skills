@@ -15,4 +15,4 @@ If the host cannot run parallel subagents, execute the same reviewer/research st
 
 ## Recommended path
 
-For new workflows, use the generated OS bundles and `founder-partner` as the router. Legacy skills remain for compatibility only.
+For new workflows, use the generated OS bundles and `co-founder` as the router. Legacy skills remain for compatibility only.

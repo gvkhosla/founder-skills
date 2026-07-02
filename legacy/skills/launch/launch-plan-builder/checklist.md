@@ -90,4 +90,4 @@ Run this before using `launch-plan-builder`. If you can't check everything in ea
 
 **Gaps in Capture Readiness:** Fix now. These are low-effort, high-regret if missed.
 
-**Gaps in Mindset Readiness:** Talk to the founder-partner.
+**Gaps in Mindset Readiness:** Talk to the co-founder.

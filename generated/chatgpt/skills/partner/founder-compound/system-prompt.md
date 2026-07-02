@@ -28,7 +28,7 @@ Read first when available:
 - .fs/artifact-index.json
 
 Likely next artifacts:
-- founder-partner
+- co-founder
 - weekly-founder-review
 
 Quality checks:
@@ -47,7 +47,7 @@ Use this after any meaningful work cycle:
 - MVP scoping or build decision
 - launch, pricing, messaging, sales, or growth experiment
 - PMF, churn, retention, support, or weekly operating review
-- a founder-partner session that produced a new decision or contradiction
+- a co-founder session that produced a new decision or contradiction
 
 ## Operating principle
 

@@ -1,6 +1,6 @@
 import path from "node:path";
 import { loadAllCanonicalSequences, loadAllCanonicalSkills } from "../../../core/src/loaders/index.js";
-import { recommendNextMove } from "../../../orchestrator/src/founder-partner.js";
+import { recommendNextMove } from "../../../orchestrator/src/co-founder.js";
 import {
   ensureFounderWorkspace,
   readArtifactIndex,

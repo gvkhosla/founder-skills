@@ -1,6 +1,6 @@
-# Founder Partner Operating Notes
+# Co-founder Operating Notes
 
-Founder Partner is the front door to Founder Skills.
+Co-founder is the front door to Founder Skills.
 
 It reads company memory, identifies the current bottleneck, and routes the founder into the next useful workflow. Its job is to make startup context compound across sessions, including routing completed cycles into `founder-compound`.
 
@@ -38,7 +38,7 @@ Use these to make ambiguous startup work concrete. Ask one at a time when uncert
 
 ## Output standard
 
-Every founder-partner session should first give the human founder a short in-chat brief:
+Every co-founder session should first give the human founder a short in-chat brief:
 
 - bottom line / current bottleneck
 - one move

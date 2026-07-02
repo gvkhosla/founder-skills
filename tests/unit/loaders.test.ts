@@ -7,7 +7,7 @@ const root = process.cwd();
 test("canonical skills load from source/skills", () => {
   const skills = loadAllCanonicalSkills(root);
   assert.ok(skills.length >= 25);
-  assert.ok(skills.some((skill) => skill.name === "founder-partner"));
+  assert.ok(skills.some((skill) => skill.name === "co-founder"));
   assert.ok(skills.some((skill) => skill.name === "implementation-planner"));
   assert.ok(skills.some((skill) => skill.name === "messaging-architect"));
   assert.ok(skills.some((skill) => skill.name === "pmf-signal-reader"));

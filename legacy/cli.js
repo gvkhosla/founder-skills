@@ -186,11 +186,11 @@ function printPostInstall({ agent, scope, targetRoot, skillCount, agentsFile }) 
   if (agentsFile) console.log(`✓ Project instructions: ${agentsFile}`);
 
   if (agent === 'codex' && scope !== 'project') {
-    console.log('Try next: restart Codex, then type `$founder-partner`.');
+    console.log('Try next: restart Codex, then type `$co-founder`.');
   } else if (agent === 'codex') {
-    console.log('Try next: add/reference the AGENTS file, then ask Codex to use founder-partner.');
+    console.log('Try next: add/reference the AGENTS file, then ask Codex to use co-founder.');
   } else {
-    console.log('Try next: ask pi, "Use founder-partner."');
+    console.log('Try next: ask pi, "Use co-founder."');
   }
 
   const doctorBits = ['founder-skills doctor', '--agent', agent];
@@ -396,7 +396,7 @@ function initWorkspace(options) {
   } else {
     for (const relPath of created) console.log(`✓ created ${relPath}`);
   }
-  console.log('Try next: ask your agent, "Use founder-partner to help me decide what to do next."');
+  console.log('Try next: ask your agent, "Use co-founder to help me decide what to do next."');
   console.log(`Verify later: founder-skills doctor --project ${projectDir}`);
 }
 
@@ -423,7 +423,7 @@ function renderUniversalAgentsSection() {
     '- `truth-memo.md`',
     '- `recommended-next-step.md`',
     '- `docs/founder-work/startup-loop.md`',
-    'Start with `founder-partner` when the next move is unclear. Keep chat short: bottom line, one next move, and up to three steps. Keep detailed markdown files as supporting memory. Close meaningful cycles with `founder-compound` so the next session starts smarter.',
+    'Start with `co-founder` when the next move is unclear. Keep chat short: bottom line, one next move, and up to three steps. Keep detailed markdown files as supporting memory. Close meaningful cycles with `founder-compound` so the next session starts smarter.',
   ].join('\n');
 }
 
@@ -446,7 +446,7 @@ function runSetup(options) {
   runInstall({ phase: options.phase || 'all' }, []);
   console.log('');
   console.log('Setup complete.');
-  console.log('Next: open any coding agent in this repo and ask: "Use founder-partner to help me decide what to do next."');
+  console.log('Next: open any coding agent in this repo and ask: "Use co-founder to help me decide what to do next."');
 }
 
 function* walkFiles(dir) {
@@ -482,12 +482,12 @@ function checkSkillFile(label, filePath) {
   }
 
   const text = fs.readFileSync(filePath, 'utf8');
-  if (!text.includes('name: founder-partner')) {
-    return { ok: false, message: `✗ ${label}: ${filePath} does not look like founder-partner` };
+  if (!text.includes('name: co-founder')) {
+    return { ok: false, message: `✗ ${label}: ${filePath} does not look like co-founder` };
   }
 
   if (!text.includes('Human-First Response')) {
-    return { ok: false, message: `✗ ${label}: installed founder-partner is missing the human-first response section; reinstall` };
+    return { ok: false, message: `✗ ${label}: installed co-founder is missing the human-first response section; reinstall` };
   }
 
   return { ok: true, message: `✓ ${label}: ${filePath}` };
@@ -498,23 +498,23 @@ function checkCodexProject(projectDir) {
     path.join(projectDir, 'AGENTS.md'),
     path.join(projectDir, 'AGENTS.founder-skills.md'),
   ];
-  const found = candidates.find((filePath) => readTextIfExists(filePath).includes('founder-partner'));
+  const found = candidates.find((filePath) => readTextIfExists(filePath).includes('co-founder'));
   if (!found) {
-    return { ok: false, message: `✗ codex project: no AGENTS file mentioning founder-partner in ${projectDir}` };
+    return { ok: false, message: `✗ codex project: no AGENTS file mentioning co-founder in ${projectDir}` };
   }
   return { ok: true, message: `✓ codex project: ${found}` };
 }
 
 function checkAgentInstall(agent, scope, projectDir) {
   if (agent === 'pi') {
-    return [checkSkillFile('pi', path.join(os.homedir(), '.pi', 'agent', 'skills', 'founder-partner', 'SKILL.md'))];
+    return [checkSkillFile('pi', path.join(os.homedir(), '.pi', 'agent', 'skills', 'co-founder', 'SKILL.md'))];
   }
 
   if (agent === 'codex' && scope === 'project') {
     return [checkCodexProject(projectDir)];
   }
 
-  return [checkSkillFile('codex', path.join(os.homedir(), '.codex', 'skills', 'founder-partner', 'SKILL.md'))];
+  return [checkSkillFile('codex', path.join(os.homedir(), '.codex', 'skills', 'co-founder', 'SKILL.md'))];
 }
 
 function checkWorkspace(projectDir, required = false) {

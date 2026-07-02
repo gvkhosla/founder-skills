@@ -134,7 +134,7 @@ const bottleneckDefaults: Record<Bottleneck, { type: "skill" | "sequence"; name:
   },
   "founder-focus": {
     type: "skill",
-    name: "founder-partner",
+    name: "co-founder",
     reason: "The founder needs focus and prioritization more than another isolated artifact.",
   },
 };

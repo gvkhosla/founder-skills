@@ -185,16 +185,16 @@ function renderPostInstallNotes(host: CodingHostId, scope: InstallScope, project
   switch (host) {
     case "codex":
       return scope === "global"
-        ? ["Try next: restart Codex, then type `$founder-partner`.", `Verify later: ${doctor}`]
-        : ["Try next: ask Codex to use founder-partner from the managed AGENTS.md instructions.", `Verify later: ${doctor}`];
+        ? ["Try next: restart Codex, then type `$co-founder`.", `Verify later: ${doctor}`]
+        : ["Try next: ask Codex to use co-founder from the managed AGENTS.md instructions.", `Verify later: ${doctor}`];
     case "pi":
-      return ["Try next: ask pi, \"Use founder-partner.\"", `Verify later: ${doctor}`];
+      return ["Try next: ask pi, \"Use co-founder.\"", `Verify later: ${doctor}`];
     case "hermes":
-      return ["Try next: run `hermes skills list`, then ask Hermes to use founder-partner.", `Verify later: ${doctor}`];
+      return ["Try next: run `hermes skills list`, then ask Hermes to use co-founder.", `Verify later: ${doctor}`];
     case "opencode":
-      return ["Try next: ask OpenCode to use founder-partner from AGENTS.md.", `Verify later: ${doctor}`];
+      return ["Try next: ask OpenCode to use co-founder from AGENTS.md.", `Verify later: ${doctor}`];
     case "openclaw":
-      return ["Try next: ask OpenClaw to route through founder-partner from AGENTS.md.", `Verify later: ${doctor}`];
+      return ["Try next: ask OpenClaw to route through co-founder from AGENTS.md.", `Verify later: ${doctor}`];
   }
 }
 
@@ -205,7 +205,7 @@ function renderCodexSection(bundlePath: string): string {
     `Primary workspace instructions: \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/project-instructions.md"))}\`.`,
     `Starter state files live under \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/starter"))}\`.`,
     `Skills live under \`${toPosix(bundlePath)}/<domain>/<skill>/SKILL.md\` and sequences under \`${toPosix(bundlePath)}/sequences/\`.`,
-    "Route uncertain requests through `founder-partner`, identify the current bottleneck explicitly, and keep build work tied to launch and GTM context.",
+    "Route uncertain requests through `co-founder`, identify the current bottleneck explicitly, and keep build work tied to launch and GTM context.",
   ].join("\n\n");
 }
 
@@ -215,7 +215,7 @@ function renderOpenCodeSection(bundlePath: string): string {
     `Use the generated Founder Skills OS bundle at \`${toPosix(bundlePath)}\`.`,
     `Project instructions: \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/project-instructions.md"))}\`.`,
     `Starter files: \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/starter"))}\`.`,
-    "Treat `founder-partner` as the default router when the next move is unclear.",
+    "Treat `co-founder` as the default router when the next move is unclear.",
     "Prefer the generated sequences for validate → build, build → launch, GTM, PMF recovery, and the weekly operating rhythm.",
   ].join("\n\n");
 }

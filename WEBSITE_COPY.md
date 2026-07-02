@@ -38,7 +38,7 @@ Edit this file to change wording before syncing it back into `site/index.html`.
 - `npx --yes github:gvkhosla/founder-skills setup`
 
 **Install note**
-- Run it in your repo. Then ask any coding agent: `Use founder-partner to help me decide what to do next.`
+- Run it in your repo. Then ask any coding agent: `Use co-founder to help me decide what to do next.`
 
 ## Hero image
 
@@ -62,7 +62,7 @@ Edit this file to change wording before syncing it back into `site/index.html`.
 ### Steps
 
 **Find the bottleneck**
-- `founder-partner` reads company memory, separates facts from assumptions, and chooses the next useful workflow.
+- `co-founder` reads company memory, separates facts from assumptions, and chooses the next useful workflow.
 
 **Create the artifact**
 - Validation reports, customer hypotheses, MVP briefs, launch plans, PMF reviews, and weekly focus docs.
@@ -79,7 +79,7 @@ Edit this file to change wording before syncing it back into `site/index.html`.
 - The founder gets the bottom line. The agent keeps the supporting markdown as memory.
 
 **You ask**
-- Use founder-partner to help me decide what to do next.
+- Use co-founder to help me decide what to do next.
 
 **Agent answers**
 ```

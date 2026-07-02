@@ -1,8 +1,8 @@
 name: weekly-operating-rhythm
 description: Runs the founder’s weekly operating cadence across bottleneck review, execution focus, and learning.
-entrypoint: founder-partner
+entrypoint: co-founder
 steps:
-  - founder-partner
+  - co-founder
   - weekly-founder-review
   - focus-planner
   - experiment-planner

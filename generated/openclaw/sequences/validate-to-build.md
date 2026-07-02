@@ -5,7 +5,7 @@ Moves a founder from validated problem to confident implementation planning.
 OpenClaw should use this sequence as a staged spawn workflow.
 
 ## Entrypoint
-- founder-partner
+- co-founder
 
 ## Steps
 1. problem-validator

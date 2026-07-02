@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { loadAllCanonicalSequences, loadAllCanonicalSkills } from "../../packages/core/src/loaders/index.js";
 import { defaultCompanyState, updateBottleneck } from "../../packages/state/src/company-state.js";
 import { defaultArtifactIndex } from "../../packages/graph/src/artifact-index.js";
-import { recommendNextMove } from "../../packages/orchestrator/src/founder-partner.js";
+import { recommendNextMove } from "../../packages/orchestrator/src/co-founder.js";
 
 const root = process.cwd();
 const catalog = {
@@ -11,7 +11,7 @@ const catalog = {
   sequences: loadAllCanonicalSequences(root),
 };
 
-test("founder-partner recommends implementation planning for build-confidence", () => {
+test("co-founder recommends implementation planning for build-confidence", () => {
   const state = updateBottleneck(
     {
       ...defaultCompanyState,
@@ -24,7 +24,7 @@ test("founder-partner recommends implementation planning for build-confidence", 
   assert.equal(recommendation.type, "skill");
 });
 
-test("founder-partner routes PMF uncertainty into the PMF recovery sequence", () => {
+test("co-founder routes PMF uncertainty into the PMF recovery sequence", () => {
   const state = {
     ...defaultCompanyState,
     company: {
@@ -53,7 +53,7 @@ test("founder-partner routes PMF uncertainty into the PMF recovery sequence", ()
   ]);
 });
 
-test("founder-partner continues the active sequence before ad hoc routing", () => {
+test("co-founder continues the active sequence before ad hoc routing", () => {
   const state = {
     ...defaultCompanyState,
     company: {
@@ -98,7 +98,7 @@ test("founder-partner continues the active sequence before ad hoc routing", () =
   assert.equal(recommendation.activeSequence, "validate-to-build");
 });
 
-test("founder-partner routes GTM bottlenecks through launch-readiness gaps first", () => {
+test("co-founder routes GTM bottlenecks through launch-readiness gaps first", () => {
   const state = {
     ...defaultCompanyState,
     company: {
