@@ -8,7 +8,6 @@ Each cycle should make the next cycle easier. A good customer hypothesis sharpen
 
 <p>
   <a href="https://fskills.xyz">Website</a> ·
-  <a href="docs/homepage-positioning.md">Positioning</a> ·
   <a href="CHANGELOG.md">Changelog</a>
 </p>
 
