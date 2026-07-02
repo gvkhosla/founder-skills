@@ -5,6 +5,7 @@ const path = require('node:path');
 
 const root = process.cwd();
 const skillsRoot = path.join(root, 'legacy', 'skills');
+const sourceSkillsRoot = path.join(root, 'source', 'skills');
 
 const errors = [];
 const warnings = [];
@@ -35,6 +36,43 @@ function readFile(relPath) {
   } catch (error) {
     fail(`Missing required file: ${relPath}`);
     return '';
+  }
+}
+
+function listCanonicalSkillFiles() {
+  const files = [];
+  if (!fs.existsSync(sourceSkillsRoot)) {
+    fail('source/skills/ directory not found');
+    return files;
+  }
+
+  for (const file of walkFiles(sourceSkillsRoot)) {
+    if (path.basename(file) === 'skill.yaml') files.push(file);
+  }
+
+  return files.sort();
+}
+
+function listGeneratedSkillFiles(host = 'pi') {
+  const generatedRoot = path.join(root, 'generated', host);
+  const files = [];
+  if (!fs.existsSync(generatedRoot)) {
+    fail(`generated/${host}/ directory not found`);
+    return files;
+  }
+
+  for (const file of walkFiles(generatedRoot)) {
+    if (path.basename(file) === 'SKILL.md') files.push(file);
+  }
+
+  return files.sort();
+}
+
+function* walkFiles(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const abs = path.join(dir, entry.name);
+    if (entry.isDirectory()) yield* walkFiles(abs);
+    else yield abs;
   }
 }
 
@@ -223,7 +261,7 @@ function assertNpmReadiness() {
     fail('package.json: missing bin entry founder-skills -> bin/founder-skills.js');
   }
 
-  const requiredFilesEntries = ['bin', 'legacy', 'README.md', 'LICENSE'];
+  const requiredFilesEntries = ['bin', 'cli', 'legacy', 'README.md', 'LICENSE'];
   const files = Array.isArray(packageJson.files) ? packageJson.files : [];
   for (const entry of requiredFilesEntries) {
     if (!files.includes(entry)) {
@@ -231,7 +269,7 @@ function assertNpmReadiness() {
     }
   }
 
-  const requiredPaths = ['bin/founder-skills.js', 'README.md', 'LICENSE'];
+  const requiredPaths = ['bin/founder-skills.js', 'cli/founder-skills.js', 'README.md', 'LICENSE'];
   for (const rel of requiredPaths) {
     if (!fs.existsSync(path.join(root, rel))) {
       fail(`Missing required npm artifact: ${rel}`);
@@ -257,9 +295,27 @@ function assertNpmReadiness() {
 }
 
 function main() {
+  const canonicalSkillFiles = listCanonicalSkillFiles();
+  const generatedSkillFiles = listGeneratedSkillFiles('pi');
   const skillFiles = listSkillFiles();
-  if (skillFiles.length !== 27) {
-    fail(`Expected 27 skills, found ${skillFiles.length}`);
+
+  if (canonicalSkillFiles.length === 0) {
+    fail('No canonical source skills found');
+  }
+
+  if (generatedSkillFiles.length !== canonicalSkillFiles.length) {
+    fail(`generated/pi skill count mismatch (generated ${generatedSkillFiles.length}, source ${canonicalSkillFiles.length})`);
+  }
+
+  for (const file of canonicalSkillFiles) {
+    const rel = path.relative(root, file);
+    const text = fs.readFileSync(file, 'utf8');
+    const name = text.match(/^name:\s*([^\n]+)/m)?.[1]?.trim();
+    const description = text.match(/^description:\s*([^\n]+)/m)?.[1]?.trim();
+    const dirName = path.basename(path.dirname(file));
+    if (!name) fail(`${rel}: missing name`);
+    if (!description) fail(`${rel}: missing description`);
+    if (name && name !== dirName) fail(`${rel}: name '${name}' does not match directory '${dirName}'`);
   }
 
   const canonicalOutputs = new Map();
@@ -352,7 +408,7 @@ function main() {
   }
 
   console.log('Validation passed ✅');
-  console.log(`- Skills checked: ${skillFiles.length}`);
+  console.log(`- Skills checked: ${canonicalSkillFiles.length} canonical (${skillFiles.length} legacy compatibility)`);
   console.log('- README/site/llms outputs are in sync with SKILL.md artifacts');
   console.log('- No stale cycle-reflector or founder-skill-pack references in key files');
   console.log('- NPM metadata + CLI install paths are present and wired');

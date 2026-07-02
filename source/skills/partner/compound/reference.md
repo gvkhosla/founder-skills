@@ -1,6 +1,6 @@
-# Founder Compound Reference
+# Compound Reference
 
-Founder Compound is the closer for the Founder Skills loop. It exists because startup work compounds only when lessons are captured in a reusable shape.
+Compound is the closer for the Founder Skills loop. It exists because startup work compounds only when lessons are captured in a reusable shape.
 
 ## What qualifies as a learning
 
@@ -26,7 +26,7 @@ Do not capture generic summaries. Capture decisions, evidence, patterns, invalid
 ## Artifact index guidance
 
 When updating `.fs/artifact-index.json`, add the new learning with:
-- `createdBy: founder-compound`
+- `createdBy: compound`
 - `dependsOn`: source artifacts used
 - `feedsInto`: the next skill, sequence, or artifact it should inform
 - `recommendedNext`: one or two next workflows

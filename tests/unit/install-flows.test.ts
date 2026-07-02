@@ -65,8 +65,8 @@ test("codex project install exports bundle and updates AGENTS.md", () => {
   assert.ok(fs.readFileSync(agentsFile, "utf8").includes("Founder Skills OS for Codex"));
 });
 
-test("legacy default install writes pi and codex skills", () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-default-install-"));
+test("public default install writes current pi and codex skills", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-default-install-"));
 
   const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "install"], {
     cwd: tempDir,
@@ -74,13 +74,13 @@ test("legacy default install writes pi and codex skills", () => {
     stdio: "pipe",
   }).toString();
 
-  assert.match(output, /Installed for both pi and Codex/);
+  assert.match(output, /Installed current generated skills for both pi and Codex/);
   assert.ok(fs.existsSync(path.join(tempDir, ".pi", "agent", "skills", "co-founder", "SKILL.md")));
   assert.ok(fs.existsSync(path.join(tempDir, ".codex", "skills", "co-founder", "SKILL.md")));
 });
 
-test("legacy setup installs skills and seeds workspace memory", () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-setup-"));
+test("public setup installs skills and seeds workspace memory", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-setup-"));
 
   const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "setup", "--project", tempDir, "--company", "Acme"], {
     cwd: tempDir,
@@ -97,8 +97,8 @@ test("legacy setup installs skills and seeds workspace memory", () => {
   assert.equal(JSON.parse(fs.readFileSync(path.join(tempDir, ".fs", "company-state.json"), "utf8")).company.name, "Acme");
 });
 
-test("legacy codex install writes top-level global skills", () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-codex-"));
+test("public codex install writes top-level global skills", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-codex-"));
 
   const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "install", "--agent", "codex"], {
     cwd: tempDir,
@@ -120,8 +120,8 @@ test("legacy codex install writes top-level global skills", () => {
   assert.match(doctorOutput, /Founder Skills checks look healthy/);
 });
 
-test("legacy codex project install writes AGENTS reference without global skills", () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-codex-project-"));
+test("public codex project install writes AGENTS reference without global skills", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-codex-project-"));
 
   execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "install", "--agent", "codex", "--scope", "project", "--out", "./AGENTS.founder-skills.md"], {
     cwd: tempDir,
@@ -140,8 +140,8 @@ test("legacy codex project install writes AGENTS reference without global skills
   assert.match(doctorOutput, /codex project/);
 });
 
-test("legacy init seeds workspace memory files", () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-legacy-init-"));
+test("public init seeds workspace memory files", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-init-"));
 
   const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "init", "--project", tempDir, "--company", "Acme", "--stage", "building"], {
     cwd: tempDir,

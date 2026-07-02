@@ -8,7 +8,7 @@ steps:
   - qa-verifier
   - release-readiness-auditor
   - post-ship-review
-  - founder-compound
+  - compound
 primary_outputs:
   - implementation-plan.md
   - architecture-overview.md

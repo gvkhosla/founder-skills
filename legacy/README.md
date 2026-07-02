@@ -2,14 +2,14 @@
 
 Founder Skills OS is the primary product in this repo.
 
-This `legacy/` subtree keeps the original 27-skill pack available so older install flows still work while the OS continues to harden.
+This `legacy/` subtree keeps the original 27-skill pack available for compatibility. The public CLI now lives in `cli/` and installs current generated skills by default.
 
 ## What lives here
 
 - `legacy/skills/` — the original skill-pack source
-- `legacy/cli.js` — compatibility CLI used by `bin/founder-skills.js`
+- `legacy/cli.js` — compatibility shim that forwards to `cli/founder-skills.js`
 - `legacy/install.sh` — compatibility installer used by `scripts/install.sh`
-- `legacy/validate-skill-pack.js` — legacy-pack validation used by `npm run validate`
+- `legacy/validate-skill-pack.js` — compatibility validation plus canonical source/generated skill count checks
 
 ## Compatibility entrypoints
 
@@ -21,7 +21,7 @@ bash scripts/install.sh pi
 node scripts/validate-skill-pack.js
 ```
 
-The repo-root files are now thin wrappers that forward into `legacy/`.
+The repo-root validation/install shell wrappers still preserve older command paths, but `bin/founder-skills.js` now forwards to `cli/founder-skills.js`.
 
 ## Rule of thumb
 

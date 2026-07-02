@@ -52,7 +52,7 @@ const groups: Record<string, string[]> = {
     "source/skills/ads/cac-diagnostician/skill.yaml",
     "source/skills/pmf/pmf-signal-reader/skill.yaml",
     "source/skills/partner/co-founder/reference.md",
-    "source/skills/partner/founder-compound/skill.yaml",
+    "source/skills/partner/compound/skill.yaml",
     "source/skills/scale/first-hire-brief/skill.yaml",
     "source/skills/sales/pipeline-reviewer/skill.yaml",
     "source/sequences/validate-to-build/sequence.yaml",

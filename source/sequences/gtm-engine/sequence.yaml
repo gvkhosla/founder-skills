@@ -10,7 +10,7 @@ steps:
   - pipeline-reviewer
   - seo-geo-strategist
   - cac-diagnostician
-  - founder-compound
+  - compound
 primary_outputs:
   - customer-profile.md
   - positioning.md

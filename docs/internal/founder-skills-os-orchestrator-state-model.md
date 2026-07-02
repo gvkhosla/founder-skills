@@ -23,7 +23,7 @@ co-founder
   -> choose the bottleneck
   -> route to the next skill or sequence
   -> produce/update artifacts
-  -> founder-compound captures the learning
+  -> compound captures the learning
   -> next session reads better context
 ```
 
@@ -50,4 +50,4 @@ Stable IDs let later skills cite prior decisions:
 
 ## Routing rule
 
-Continue an active sequence before ad hoc work unless new evidence invalidates it. Close meaningful cycles with `founder-compound` so context compounds.
+Continue an active sequence before ad hoc work unless new evidence invalidates it. Close meaningful cycles with `compound` so context compounds.

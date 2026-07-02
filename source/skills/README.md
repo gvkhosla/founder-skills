@@ -31,5 +31,5 @@ Prefer CE-style workflow structure over thin prompts:
 - define phases explicitly: read context, classify state, produce/update artifacts, hand off
 - use `docs/founder-work/startup-loop.md` as the compact cross-skill handoff when available
 - preserve stable IDs (`C#`, `P#`, `A#`, `E#`, `D#`, `M#`, `S#`, `L#`) across skills
-- end meaningful cycles with `founder-compound` so learnings become reusable memory
+- end meaningful cycles with `compound` so learnings become reusable memory
 - keep skill-specific reports human-readable, but make the startup-loop artifact the first thing future agents can scan

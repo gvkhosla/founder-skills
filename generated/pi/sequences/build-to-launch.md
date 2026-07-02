@@ -15,7 +15,7 @@ Carries a founder from implementation planning through launch assets and launch 
 7. pricing-model-framer
 8. landing-page-copywriter
 9. launch-plan-builder
-10. founder-compound
+10. compound
 
 ## Primary outputs
 - implementation-plan.md
@@ -50,6 +50,6 @@ Flow:
 3. verify quality and release readiness
 4. turn the product into a sellable offer
 5. prepare the launch motion
-6. Capture the learning with founder-compound so the next cycle starts smarter
+6. Capture the learning with compound so the next cycle starts smarter
 
 Do not skip the release-readiness step just because the launch work feels more urgent.

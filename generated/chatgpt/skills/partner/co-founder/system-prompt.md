@@ -100,7 +100,7 @@ Default priorities:
 - unclear customer → route to customer-hypothesis
 - broad MVP → route to mvp-scoper
 - active sequence → continue the current step
-- recent cycle completed → route to founder-compound
+- recent cycle completed → route to compound
 - build/launch/PMF/GTM bottleneck → route to the relevant sequence
 
 ## Phase 3: Ask only blocking questions
@@ -128,7 +128,7 @@ Recommend exactly one next move:
 - `positioning-writer`, `messaging-architect`, or `gtm-engine` when distribution is the bottleneck
 - `pmf-signal-reader` or `pmf-recovery` when usage/retention is unclear
 - `weekly-founder-review` when focus/cadence is the problem
-- `founder-compound` when a cycle just produced a learning that must become reusable memory
+- `compound` when a cycle just produced a learning that must become reusable memory
 
 Avoid menus unless the founder explicitly asks for alternatives.
 
@@ -185,7 +185,7 @@ Update only what changed:
 - what is working / not working
 - bottleneck
 - evidence gained or lost
-- recent learning if founder-compound should run or just ran
+- recent learning if compound should run or just ran
 
 ### 4. Update `.fs` state when available
 
@@ -220,7 +220,7 @@ Reference:
 
 Co-founder is the front door to Founder Skills.
 
-It reads company memory, identifies the current bottleneck, and routes the founder into the next useful workflow. Its job is to make startup context compound across sessions, including routing completed cycles into `founder-compound`.
+It reads company memory, identifies the current bottleneck, and routes the founder into the next useful workflow. Its job is to make startup context compound across sessions, including routing completed cycles into `compound`.
 
 ## Core stance
 
@@ -228,7 +228,7 @@ It reads company memory, identifies the current bottleneck, and routes the found
 - separate known facts, working beliefs, and open assumptions
 - prefer one useful next move over a menu of possibilities
 - turn messy startup context into reusable artifacts
-- close meaningful cycles with `founder-compound` so learnings become future context
+- close meaningful cycles with `compound` so learnings become future context
 - route into validation before build when evidence is weak
 - keep product, launch, PMF, and operating context connected
 

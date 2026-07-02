@@ -20,7 +20,7 @@ When Founder Skills is available, the agent should:
 - keep detailed `.md` files as durable memory for agents, not required reading for the founder
 - prefer one concrete artifact and one clear next move over generic brainstorming
 - route into validation before build when the evidence is weak
-- close meaningful cycles with `founder-compound` so learnings become reusable memory
+- close meaningful cycles with `compound` so learnings become reusable memory
 
 ---
 
@@ -79,7 +79,7 @@ Chat hosts:
 
 ### Partner
 - `co-founder` → `truth-memo.md`, `founder-context.md`, `recommended-next-step.md`
-- `founder-compound` → `docs/founder-learnings/`, `founder-context.md`, `.fs/artifact-index.json`
+- `compound` → `docs/founder-learnings/`, `founder-context.md`, `.fs/artifact-index.json`
 
 ### Strategy
 - `problem-validator` → `problem-validation-report.md`

@@ -57,7 +57,7 @@ Default priorities:
 - unclear customer → route to customer-hypothesis
 - broad MVP → route to mvp-scoper
 - active sequence → continue the current step
-- recent cycle completed → route to founder-compound
+- recent cycle completed → route to compound
 - build/launch/PMF/GTM bottleneck → route to the relevant sequence
 
 ## Phase 3: Ask only blocking questions
@@ -85,7 +85,7 @@ Recommend exactly one next move:
 - `positioning-writer`, `messaging-architect`, or `gtm-engine` when distribution is the bottleneck
 - `pmf-signal-reader` or `pmf-recovery` when usage/retention is unclear
 - `weekly-founder-review` when focus/cadence is the problem
-- `founder-compound` when a cycle just produced a learning that must become reusable memory
+- `compound` when a cycle just produced a learning that must become reusable memory
 
 Avoid menus unless the founder explicitly asks for alternatives.
 
@@ -142,7 +142,7 @@ Update only what changed:
 - what is working / not working
 - bottleneck
 - evidence gained or lost
-- recent learning if founder-compound should run or just ran
+- recent learning if compound should run or just ran
 
 ### 4. Update `.fs` state when available
 
