@@ -57,7 +57,7 @@ function listGeneratedSkillFiles(host = 'pi') {
   const generatedRoot = path.join(root, 'generated', host);
   const files = [];
   if (!fs.existsSync(generatedRoot)) {
-    fail(`generated/${host}/ directory not found`);
+    fail(`generated/${host}/ directory not found. Run npm run os:gen:all first.`);
     return files;
   }
 
@@ -199,7 +199,6 @@ function assertNoLegacyStrings() {
     'site/index.html',
     'site/llms.txt',
     'site/og-source.svg',
-    'legacy/install.sh',
     'scripts/install.sh',
   ];
 

@@ -1,3 +1,3 @@
-# Generated host/chat bundles are committed so GitHub-based npx installs work without a build step.
-# Hide their textual diffs in reviews; source/skills and source/sequences are the reviewable sources of truth.
+# Generated host/chat bundles are produced during tests and package preparation.
+# If they ever appear in a diff, hide generated noise from reviews.
 generated/** linguist-generated=true -diff

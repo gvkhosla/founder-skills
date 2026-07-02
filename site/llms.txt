@@ -1,8 +1,8 @@
-# Founder Skills OS
+# Founder Skills
 
-> Compound startup work for your coding agent.
+> Startup workflows for founders building more than the product.
 
-Founder Skills gives agents reusable workflows for the non-technical work of building a startup: ideas, customer validation, product scope, launch, PMF, and operating rhythm.
+Founder Skills gives coding agents reusable workflows for company-building work: choosing what to build, validating who wants it, shaping the offer, launching, reading traction, and deciding what to do next.
 
 Source: https://github.com/gvkhosla/founder-skills
 Site: https://fskills.xyz
@@ -34,7 +34,7 @@ The quick install runs directly from GitHub:
 npx --yes github:gvkhosla/founder-skills setup
 ```
 
-### Founder Skills OS
+### Founder Skills
 
 ```bash
 npm install

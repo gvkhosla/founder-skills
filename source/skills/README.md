@@ -1,6 +1,6 @@
 # Canonical Skills Source
 
-This directory is the source of truth for Founder Skills OS beta.
+This directory is the source of truth for Founder Skills beta.
 
 Each skill lives under:
 
@@ -13,7 +13,7 @@ Core files:
 - optional `reference.md`
 - optional `evals/` and `examples/`
 
-The legacy compatibility pack now lives in `legacy/skills/`, but all new OS routing, host generation, and sequence validation should point here first.
+The legacy compatibility pack now lives in `legacy/skills/`, but all new routing, host generation, and sequence validation should point here first.
 
 ## UX standard
 

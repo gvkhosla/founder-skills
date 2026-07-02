@@ -2,7 +2,7 @@ import path from "node:path";
 import { startSequenceCommand, syncSequenceCommand } from "../packages/cli/src/index.js";
 
 function usage() {
-  console.log(`Founder Skills OS sequence control
+  console.log(`Founder Skills sequence control
 
 Usage:
   npm run os:sequence -- start --name <sequence> [--project <path>]

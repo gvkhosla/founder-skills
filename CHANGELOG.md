@@ -1,11 +1,14 @@
 # Changelog
 
-## Unreleased
+## 0.5.0 — Canonical skills and responsive brand refresh
 
-- Rename the front-door skill to `co-founder` across source, generated bundles, docs, tests, install checks, and the website.
-- Rename the cycle-closing skill to `compound`.
-- Move the public CLI out of `legacy/`, install current generated skills from `setup`, and make validation report canonical source skill counts.
-- Mark generated bundles as generated/no-diff review artifacts.
+- Rename the front-door skill to `co-founder` and the cycle-closing skill to `compound`.
+- Move the public CLI out of `legacy/`; `setup` and `install` now use the 30 canonical generated skills.
+- Stop committing generated bundles; they are regenerated during tests and package preparation.
+- Make validation report canonical source/generated skill counts.
+- Remove the old legacy shell installer and add a packed CLI smoke test in CI.
+- Replace heavier system branding with simpler Founder Skills naming.
+- Refresh the landing page copy, mobile responsiveness, favicon, OG image, and README image.
 
 ## 0.4.0 — Compound startup loop
 

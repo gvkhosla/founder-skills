@@ -31,7 +31,7 @@ jobs:
       - name: Fail on generated drift
         run: git diff --exit-code
 
-      - name: Smoke legacy CLI install
+      - name: Smoke public CLI install
         run: |
           tmp="$(mktemp -d)"
           HOME="$tmp" npx --yes "file:$PWD" install --agent pi
@@ -40,30 +40,44 @@ jobs:
           HOME="$tmp" npx --yes "file:$PWD" install --agent codex
           test -f "$tmp/.codex/skills/co-founder/SKILL.md"
 
-      - name: Smoke OS host installs
+      - name: Smoke host installs
         run: |
           tmp="$(mktemp -d)"
 
           HOME="$tmp" npm run os:install -- --host pi
-          test -f "$tmp/.pi/agent/skills/founder-skills-os/partner/co-founder/SKILL.md"
+          test -f "$tmp/.pi/agent/skills/founder-skills/partner/co-founder/SKILL.md"
 
           HOME="$tmp" npm run os:install -- --host codex
           test -f "$tmp/.codex/skills/co-founder/SKILL.md"
 
           npm run os:install -- --host codex --scope project --project "$tmp"
-          test -f "$tmp/.codex/founder-skills-os/workspace/project-instructions.md"
-          grep -q "Founder Skills OS for Codex" "$tmp/AGENTS.md"
+          test -f "$tmp/.codex/founder-skills/workspace/project-instructions.md"
+          grep -q "Founder Skills for Codex" "$tmp/AGENTS.md"
 
           npm run os:install -- --host opencode --project "$tmp"
-          test -f "$tmp/.opencode/founder-skills-os/workspace/project-instructions.md"
-          grep -q "Founder Skills OS for OpenCode" "$tmp/AGENTS.md"
+          test -f "$tmp/.opencode/founder-skills/workspace/project-instructions.md"
+          grep -q "Founder Skills for OpenCode" "$tmp/AGENTS.md"
 
           npm run os:install -- --host openclaw --project "$tmp"
-          test -f "$tmp/.openclaw/founder-skills-os/workspace/project-instructions.md"
-          grep -q "Founder Skills OS for OpenClaw" "$tmp/AGENTS.md"
+          test -f "$tmp/.openclaw/founder-skills/workspace/project-instructions.md"
+          grep -q "Founder Skills for OpenClaw" "$tmp/AGENTS.md"
 
           HOME="$tmp" npm run os:install -- --host hermes
-          test -f "$tmp/.hermes/skills/founder-skills-os/workspace/project-instructions.md"
+          test -f "$tmp/.hermes/skills/founder-skills/workspace/project-instructions.md"
+
+      - name: Smoke packed CLI setup
+        run: |
+          rm -f founder-skills-*.tgz
+          npm pack >/tmp/founder-skills-pack.log
+          pkg="$(ls founder-skills-*.tgz | tail -n 1)"
+          tmp="$(mktemp -d)"
+          HOME="$tmp" npm exec --yes --package "./$pkg" -- founder-skills setup --project "$tmp/startup" --company SmokeCo
+          test -f "$tmp/startup/AGENTS.md"
+          test -f "$tmp/startup/.fs/company-state.json"
+          test -f "$tmp/.pi/agent/skills/co-founder/SKILL.md"
+          test -f "$tmp/.codex/skills/co-founder/SKILL.md"
+          grep -q "SmokeCo" "$tmp/startup/.fs/company-state.json"
+          rm -f "$pkg"
 
       - name: Verify npm package contents
         run: npm run pack:dry-run

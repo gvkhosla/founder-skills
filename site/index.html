@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Founder Skills</title>
-  <meta name="description" content="Compound startup work for your coding agent." />
+  <meta name="description" content="Startup workflows for founders building more than the product." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
@@ -13,19 +13,18 @@
     (() => {
       const saved = localStorage.getItem('founder-skills-theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = saved || (prefersDark ? 'dark' : 'light');
-      document.documentElement.dataset.theme = theme;
+      document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
     })();
   </script>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Founder Skills" />
-  <meta property="og:description" content="Compound startup work for your coding agent." />
+  <meta property="og:description" content="Startup workflows for founders building more than the product." />
   <meta property="og:url" content="https://fskills.xyz" />
   <meta property="og:image" content="https://fskills.xyz/og.png" />
-  <meta property="og:image:alt" content="Founder Skills social preview inspired by a Paris invader mosaic" />
+  <meta property="og:image:alt" content="Invader mosaic on a city wall" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Founder Skills" />
-  <meta name="twitter:description" content="Compound startup work for your coding agent." />
+  <meta name="twitter:description" content="Startup workflows for founders building more than the product." />
   <meta name="twitter:image" content="https://fskills.xyz/og.png" />
 
   <style>
@@ -33,16 +32,16 @@
       color-scheme: light;
       --paper: #f7f3ea;
       --ink: #171512;
-      --muted: #6e685f;
-      --faint: #d9d0c1;
-      --line: #cfc4b3;
+      --muted: #6d675f;
+      --line: #d6cbbc;
+      --soft-line: #e7ded0;
       --code: #eee5d7;
       --photo: #efe6d8;
-      --example: rgba(255,255,255,.27);
-      --command-border: rgba(23,21,18,.08);
-      --accent: #d94f22;
-      --accent-soft: #f2c3aa;
-      --max: 760px;
+      --example: rgba(255,255,255,.34);
+      --accent: #ff7a3d;
+      --accent-2: #6d3a22;
+      --cream: #eee6d7;
+      --max: 820px;
       --serif: Georgia, "Times New Roman", Times, serif;
       --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -50,17 +49,17 @@
 
     :root[data-theme="dark"] {
       color-scheme: dark;
-      --paper: #11100e;
-      --ink: #f3eadb;
-      --muted: #b4aa9c;
-      --faint: #3a332b;
+      --paper: #10100f;
+      --ink: #f2eadc;
+      --muted: #b7ad9f;
       --line: #554a3d;
+      --soft-line: #302923;
       --code: #211d18;
-      --photo: #1b1713;
+      --photo: #191613;
       --example: rgba(255,246,231,.055);
-      --command-border: rgba(255,246,231,.09);
       --accent: #ff7a3d;
-      --accent-soft: #6f3826;
+      --accent-2: #8a4a2b;
+      --cream: #eee6d7;
     }
 
     * { box-sizing: border-box; }
@@ -79,40 +78,55 @@
     code { font-family: var(--mono); font-size: .92em; }
 
     .page {
-      width: min(var(--max), calc(100% - 36px));
+      width: min(var(--max), calc(100% - 28px));
       margin: 0 auto;
-      padding: 26px 0 56px;
+      padding: 18px 0 48px;
     }
 
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      margin-bottom: clamp(42px, 8vw, 82px);
+      gap: 14px;
+      margin-bottom: clamp(34px, 8vw, 84px);
       color: var(--muted);
       font-size: .94rem;
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       color: var(--ink);
-      font-weight: 750;
+      font-weight: 760;
       letter-spacing: -.02em;
       text-decoration: none;
+      white-space: nowrap;
     }
+
+    .brand-mark {
+      display: inline-grid;
+      grid-template-columns: repeat(3, 9px);
+      width: 27px;
+      height: 9px;
+      overflow: hidden;
+    }
+    .brand-mark span:nth-child(1) { background: var(--accent); }
+    .brand-mark span:nth-child(2) { background: var(--accent-2); }
+    .brand-mark span:nth-child(3) { background: var(--cream); }
 
     .links {
       display: flex;
-      gap: 18px;
+      gap: 14px;
       align-items: center;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .links a {
       color: var(--muted);
       text-decoration: none;
     }
-
     .links a:hover { color: var(--ink); }
 
     .theme-toggle {
@@ -123,17 +137,16 @@
       color: var(--muted);
       display: inline-grid;
       place-items: center;
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       padding: 0;
-      font: 760 .92rem var(--sans);
       cursor: pointer;
     }
 
     .theme-toggle svg,
     .copy svg {
-      width: 17px;
-      height: 17px;
+      width: 18px;
+      height: 18px;
       stroke-width: 2;
     }
 
@@ -142,27 +155,24 @@
       color: var(--ink);
     }
 
-    .theme-toggle:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 3px; }
-
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 29px;
-      margin-bottom: 18px;
-      color: var(--muted);
-      font-size: .78rem;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
+    .theme-toggle:focus-visible,
+    .copy:focus-visible,
+    .button:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 36%, transparent);
+      outline-offset: 3px;
     }
 
-    .kicker::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      margin-right: 20px;
-      background: var(--accent);
-      box-shadow: 10px 0 0 var(--accent-soft), 20px 0 0 var(--ink);
+    .hero {
+      display: grid;
+      gap: 30px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font: 760 .78rem var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
     h1, h2 {
@@ -173,48 +183,49 @@
     }
 
     h1 {
-      max-width: 9.5ch;
+      max-width: 10ch;
       margin: 0;
-      font-size: clamp(4.1rem, 13vw, 8.8rem);
+      font-size: clamp(3.45rem, 17vw, 8.4rem);
     }
 
     .lede {
-      max-width: 42rem;
-      margin: 30px 0 0;
+      max-width: 44rem;
+      margin: 24px 0 0;
       color: var(--muted);
-      font-size: clamp(1.16rem, 2.4vw, 1.44rem);
-      line-height: 1.5;
+      font-size: clamp(1.13rem, 4.7vw, 1.45rem);
+      line-height: 1.48;
       text-wrap: pretty;
     }
-
     .lede strong { color: var(--ink); font-weight: 760; }
 
     .install {
-      margin: 34px 0 44px;
+      margin: 30px 0 0;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      padding: 16px 0;
+      padding: 14px 0 16px;
     }
 
     .command-row {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 12px;
+      gap: 10px;
+      align-items: stretch;
     }
 
     .command {
-      display: block;
+      display: flex;
+      align-items: center;
       min-width: 0;
-      padding: 13px 14px;
-      border-radius: 10px;
+      padding: 12px 13px;
+      border: 1px solid var(--soft-line);
+      border-radius: 14px;
       background: var(--code);
       color: var(--ink);
       overflow-wrap: anywhere;
-      border: 1px solid var(--command-border);
+      word-break: break-word;
+      line-height: 1.45;
     }
-
-    .prompt { color: #948a7e; }
+    .prompt { color: #948a7e; padding-right: .45rem; }
 
     .copy {
       appearance: none;
@@ -225,14 +236,13 @@
       display: inline-grid;
       place-items: center;
       width: 48px;
+      min-width: 48px;
       height: 48px;
       padding: 0;
-      font: 760 .9rem var(--sans);
       cursor: pointer;
       position: relative;
       transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
     }
-
     .copy::after {
       content: "";
       position: absolute;
@@ -243,16 +253,13 @@
       transform: scale(.82);
       pointer-events: none;
     }
-
-    .copy:hover { background: var(--accent); border-color: var(--accent); }
+    .copy:hover,
     .copy.copied {
       background: var(--accent);
       border-color: var(--accent);
-      transform: scale(1.04);
     }
-
+    .copy.copied { transform: scale(1.04); }
     .copy.copied::after { animation: copied-ring .72s ease-out; }
-    .copy:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 3px; }
 
     @keyframes copied-ring {
       0% { opacity: .75; transform: scale(.82); }
@@ -260,99 +267,97 @@
     }
 
     .install-note {
-      margin-top: 11px;
+      margin: 12px 0 0;
       color: var(--muted);
-      font-size: .96rem;
+      font-size: 1rem;
     }
 
     .photo {
-      margin: 48px 0 54px;
+      margin: 38px 0 48px;
       border: 1px solid var(--line);
       background: var(--photo);
-      padding: 10px;
+      padding: 8px;
     }
-
     .photo img {
       display: block;
       width: 100%;
       height: auto;
-      filter: saturate(.95) contrast(1.02);
+      filter: saturate(.96) contrast(1.02);
     }
-
     :root[data-theme="dark"] .photo img {
-      filter: saturate(.88) contrast(1.03) brightness(.82);
+      filter: saturate(.9) contrast(1.04) brightness(.84);
     }
-
     .photo figcaption {
       display: flex;
-      justify-content: space-between;
-      gap: 18px;
+      flex-direction: column;
+      gap: 3px;
       margin-top: 9px;
       color: var(--muted);
-      font-size: .88rem;
-      line-height: 1.35;
+      font-size: .9rem;
+      line-height: 1.4;
     }
 
-    .article-section {
-      padding: 40px 0;
+    .section {
+      padding: 38px 0;
       border-top: 1px solid var(--line);
     }
-
     h2 {
-      margin: 0 0 18px;
-      font-size: clamp(2.15rem, 5vw, 4.2rem);
+      margin: 0 0 14px;
+      font-size: clamp(2.15rem, 9vw, 4.1rem);
     }
-
-    .article-section > p {
-      margin: 0 0 18px;
+    .section > p {
+      margin: 0 0 22px;
+      max-width: 43rem;
       color: var(--muted);
       font-size: 1.08rem;
     }
 
-    .list {
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+    .card {
+      padding: 18px 0 0;
+      border-top: 1px solid var(--soft-line);
+    }
+    .card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.07rem;
+    }
+    .card span { color: var(--muted); }
+
+    .steps {
+      counter-reset: step;
       display: grid;
       gap: 18px;
-      margin: 26px 0 0;
+      margin: 24px 0 0;
       padding: 0;
       list-style: none;
-      counter-reset: item;
     }
-
-    .list li {
-      counter-increment: item;
+    .steps li {
+      counter-increment: step;
       display: grid;
       grid-template-columns: 44px 1fr;
-      gap: 16px;
+      gap: 14px;
       padding-top: 18px;
-      border-top: 1px solid var(--faint);
+      border-top: 1px solid var(--soft-line);
     }
-
-    .list li::before {
-      content: counter(item, decimal-leading-zero);
+    .steps li::before {
+      content: counter(step, decimal-leading-zero);
       color: var(--accent);
       font: 760 .86rem var(--mono);
     }
-
-    .list strong {
-      display: block;
-      margin-bottom: 3px;
-      font-size: 1.08rem;
-    }
-
-    .list span { color: var(--muted); }
+    .steps strong { display: block; margin-bottom: 3px; }
+    .steps span { color: var(--muted); }
 
     .example {
-      margin-top: 24px;
+      margin-top: 22px;
       border: 1px solid var(--line);
       background: var(--example);
     }
-
-    .example-block {
-      padding: 18px;
-    }
-
+    .example-block { padding: 16px; }
     .example-block + .example-block { border-top: 1px solid var(--line); }
-
     .label {
       margin-bottom: 10px;
       color: var(--muted);
@@ -360,84 +365,87 @@
       letter-spacing: .08em;
       text-transform: uppercase;
     }
-
     .question {
       margin: 0;
       font-family: var(--serif);
-      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      font-size: clamp(1.45rem, 7vw, 2.1rem);
       line-height: 1.12;
       letter-spacing: -.03em;
     }
-
     pre {
       margin: 0;
       white-space: pre-wrap;
       color: var(--ink);
-      font: .96rem/1.68 var(--mono);
+      font: .94rem/1.68 var(--mono);
     }
 
     .cta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin-top: 18px;
-      padding-top: 24px;
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 22px;
       border-top: 2px solid var(--ink);
     }
-
     .cta p {
       margin: 0;
-      max-width: 32rem;
       color: var(--muted);
+      font-size: 1.06rem;
     }
-
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
+      min-height: 46px;
+      width: fit-content;
       padding: 0 17px;
       border: 1px solid var(--ink);
       border-radius: 999px;
       color: var(--ink);
       font-weight: 760;
       text-decoration: none;
-      white-space: nowrap;
     }
-
     .button:hover { background: var(--ink); color: var(--paper); }
 
     footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 42px;
+      display: grid;
+      gap: 8px;
+      margin-top: 36px;
       padding-top: 18px;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: .92rem;
     }
-
     footer a { color: inherit; }
 
-    @media (max-width: 620px) {
-      .page { width: min(var(--max), calc(100% - 24px)); padding-top: 18px; }
-      .topbar { align-items: flex-start; flex-direction: column; margin-bottom: 44px; }
-      .command-row { grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; }
-      .copy { width: 48px; height: 48px; }
-      .photo { margin-left: -12px; margin-right: -12px; }
-      .photo figcaption { flex-direction: column; gap: 4px; }
-      .list li { grid-template-columns: 1fr; gap: 5px; }
-      .cta { align-items: flex-start; flex-direction: column; }
+    @media (min-width: 640px) {
+      .page { width: min(var(--max), calc(100% - 56px)); padding-top: 24px; }
+      .photo { padding: 10px; }
+      .photo figcaption { flex-direction: row; justify-content: space-between; gap: 18px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
+      .cta { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+      footer { grid-template-columns: minmax(0, 1fr) auto; }
+    }
+
+    @media (max-width: 430px) {
+      .page { width: min(var(--max), calc(100% - 22px)); }
+      .topbar { align-items: flex-start; }
+      .links { gap: 10px; font-size: .9rem; }
+      .links a[href="#example"] { display: none; }
+      .brand-mark { grid-template-columns: repeat(3, 8px); width: 24px; height: 8px; }
+      .command { font-size: .9rem; padding: 11px 12px; }
+      .steps li { grid-template-columns: 1fr; gap: 4px; }
+      .photo { margin-left: -11px; margin-right: -11px; }
+      pre { font-size: .88rem; }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <nav class="topbar" aria-label="Primary navigation">
-      <a class="brand" href="/">Founder Skills</a>
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        Founder Skills
+      </a>
       <div class="links">
         <a href="#how">How it works</a>
         <a href="#example">Example</a>
@@ -451,55 +459,62 @@
     </nav>
 
     <main>
-      <header>
-        <div class="kicker">Skills for builders</div>
-        <h1>Stop starting from scratch.</h1>
-        <p class="lede"><strong>Founder Skills</strong> gives any coding agent startup workflows for the work around the code: choosing an idea, validating the customer, scoping the MVP, planning launch, reading PMF signals, and remembering what changed.</p>
+      <header class="hero">
+        <div>
+          <p class="eyebrow">For technical and non-technical founders</p>
+          <h1>Build the company around the product.</h1>
+          <p class="lede"><strong>Founder Skills</strong> gives your coding agent startup workflows for traction, positioning, launch, sales, PMF, and focus — so every session helps you build a successful company, not just a better product.</p>
 
-        <div class="install" aria-label="Install command">
-          <div class="command-row">
-            <code class="command" id="install-command"><span class="prompt">$</span> npx --yes github:gvkhosla/founder-skills setup</code>
-            <button class="copy" id="copy-install" type="button" aria-label="Copy install command" title="Copy install command">
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-              </svg>
-            </button>
+          <div class="install" aria-label="Install command">
+            <div class="command-row">
+              <code class="command" id="install-command"><span class="prompt">$</span> npx --yes github:gvkhosla/founder-skills setup</code>
+              <button class="copy" id="copy-install" type="button" aria-label="Copy install command" title="Copy install command">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                </svg>
+              </button>
+            </div>
+            <p class="install-note">Run it in your repo. Then ask any coding agent: <code>Use co-founder to help me decide what to do next.</code></p>
           </div>
-          <div class="install-note">Run it in your repo. Then ask any coding agent: <code>Use co-founder to help me decide what to do next.</code></div>
         </div>
       </header>
 
       <figure class="photo">
         <picture>
           <source srcset="/assets/hero-invader.webp" type="image/webp" />
-          <img src="/assets/hero-invader.png" alt="Invader mosaic on a Paris wall" width="1200" height="1132" decoding="async" fetchpriority="high" />
+          <img src="/assets/hero-invader.png" alt="Invader mosaic on a city wall" width="1200" height="1132" decoding="async" fetchpriority="high" />
         </picture>
         <figcaption>
           <span>Each cycle leaves a tile for the next one.</span>
-          <span>Compound startup work, not one-off prompts.</span>
+          <span>Company-building memory, not one-off prompts.</span>
         </figcaption>
       </figure>
 
-      <section class="article-section" id="how">
-        <h2>What it actually does.</h2>
-        <p>It turns loose founder work into a simple loop your agent can follow and improve over time.</p>
-        <ol class="list">
-          <li>
-            <div><strong>Find the bottleneck</strong><span><code>co-founder</code> reads company memory, separates facts from assumptions, and chooses the next useful workflow.</span></div>
-          </li>
-          <li>
-            <div><strong>Create the artifact</strong><span>Validation reports, customer hypotheses, MVP briefs, launch plans, PMF reviews, and weekly focus docs.</span></div>
-          </li>
-          <li>
-            <div><strong>Compound the learning</strong><span><code>compound</code> captures what changed so the next session starts with sharper context.</span></div>
-          </li>
+      <section class="section" id="why">
+        <h2>The hard part is not only building.</h2>
+        <p>Entrepreneurial people already know the product matters. Founder Skills helps with everything around it: who it is for, why they care, how you reach them, what signal matters, and what to do next.</p>
+        <div class="grid">
+          <div class="card"><strong>Find sharper customers</strong><span>Turn broad markets into specific buyers, painful moments, and current workarounds.</span></div>
+          <div class="card"><strong>Choose smaller bets</strong><span>Scope the next product slice around validation, risk, and traction — not wishful roadmaps.</span></div>
+          <div class="card"><strong>Launch with a point of view</strong><span>Shape positioning, pricing, messaging, channels, and founder-led sales motion.</span></div>
+          <div class="card"><strong>Read traction honestly</strong><span>Use PMF, retention, churn, support, and weekly focus loops to decide what changes.</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <h2>How it works.</h2>
+        <p>It gives your agent a repeatable operating loop for startup work, then saves the useful parts as company memory.</p>
+        <ol class="steps">
+          <li><div><strong>Start with <code>co-founder</code></strong><span>It reads company memory, identifies the current bottleneck, and recommends one useful next move.</span></div></li>
+          <li><div><strong>Run the right workflow</strong><span>Validation, customer hypothesis, MVP scope, launch, pipeline, PMF, support, or weekly focus.</span></div></li>
+          <li><div><strong>Close with <code>compound</code></strong><span>It captures what changed so the next session starts with better context.</span></div></li>
         </ol>
       </section>
 
-      <section class="article-section" id="example">
+      <section class="section" id="example">
         <h2>The chat stays short.</h2>
-        <p>The founder gets the bottom line. The agent keeps the supporting markdown as memory.</p>
+        <p>The founder gets the bottom line. The agent keeps the supporting markdown as durable memory.</p>
         <div class="example">
           <div class="example-block">
             <div class="label">You ask</div>
@@ -507,9 +522,9 @@
           </div>
           <div class="example-block">
             <div class="label">Agent answers</div>
-            <pre>Bottom line: the idea is plausible, but the customer and painful moment are still too broad.
+            <pre>Bottom line: the product idea is plausible, but the customer and painful moment are still too broad.
 
-Do this now: validate one narrow customer before building.
+Do this now: validate one narrow customer before building more.
 1. Pick the exact buyer and situation.
 2. Document the current workaround.
 3. Run problem-validator before scoping the MVP.
@@ -519,10 +534,10 @@ Saved: recommended-next-step.md, truth-memo.md, startup-loop.md</pre>
         </div>
       </section>
 
-      <section class="article-section">
-        <h2>Use it when the next move is fuzzy.</h2>
+      <section class="section">
+        <h2>Use it when momentum feels messy.</h2>
         <div class="cta">
-          <p>Works with any agentic coding tool that can read repo files. Install once, then keep the same startup context alive.</p>
+          <p>Works with coding agents that can read repo files. Install once, then keep startup context alive across product, launch, traction, and growth work.</p>
           <a class="button" href="https://github.com/gvkhosla/founder-skills" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </div>
       </section>
@@ -546,22 +561,17 @@ Saved: recommended-next-step.md, truth-memo.md, startup-loop.md</pre>
     function setTheme(theme) {
       document.documentElement.dataset.theme = theme;
       localStorage.setItem('founder-skills-theme', theme);
-      if (themeButton) {
-        themeButton.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      }
+      themeButton?.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
       if (themeIcon) {
         themeIcon.innerHTML = theme === 'dark'
           ? '<circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" />'
           : '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />';
       }
-      themeColor?.setAttribute('content', theme === 'dark' ? '#11100e' : '#f7f3ea');
+      themeColor?.setAttribute('content', theme === 'dark' ? '#10100f' : '#f7f3ea');
     }
 
     setTheme(document.documentElement.dataset.theme || 'light');
-
-    themeButton?.addEventListener('click', () => {
-      setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
-    });
+    themeButton?.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 
     copyButton?.addEventListener('click', async () => {
       try {

@@ -1,6 +1,6 @@
 # Canonical Sequences Source
 
-Sequences are the lifecycle loops of Founder Skills OS.
+Sequences are the lifecycle loops of Founder Skills.
 
 Current canonical sequences:
 - `validate-to-build`

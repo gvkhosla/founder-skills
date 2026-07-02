@@ -44,10 +44,10 @@ for (const adapter of hostAdapters) {
     ? [
         "Default/global install copies each generated skill to ~/.codex/skills/<skill-name>/SKILL.md",
         "Restart Codex if $co-founder or other skills are not immediately discoverable",
-        "Use --scope project for the .codex/founder-skills-os bundle plus AGENTS.md reference workflow",
+        "Use --scope project for the .codex/founder-skills bundle plus AGENTS.md reference workflow",
       ]
     : [
-        "Install Founder Skills OS for this host",
+        "Install Founder Skills for this host",
         "Load generated project instructions",
         "Run co-founder as the default entrypoint",
       ];

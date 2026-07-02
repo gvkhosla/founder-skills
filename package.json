@@ -1,6 +1,6 @@
 {
   "name": "founder-skills",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Compound startup workflows and company memory for coding agents",
   "bin": {
     "founder-skills": "bin/founder-skills.js"
@@ -21,9 +21,10 @@
     "packages"
   ],
   "scripts": {
+    "prepare": "npm run os:gen:all",
     "validate": "node scripts/validate-skill-pack.js",
     "lint:shell": "bash -n scripts/install.sh",
-    "check": "npm run lint:shell && npm run validate",
+    "check": "npm run lint:shell && npm run os:gen:all && npm run validate",
     "pack:dry-run": "npm pack --dry-run",
     "test": "npm run check && npm run os:typecheck && npm run os:test",
     "os:gen": "npm run os:gen:hosts && npm run os:check:generated && npm run os:check:sequences && npm run os:check:consistency",

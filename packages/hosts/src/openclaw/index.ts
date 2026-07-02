@@ -37,8 +37,8 @@ export class OpenClawAdapter implements HostAdapter {
         path: "generated/openclaw/agents-founder-skills-section.md",
         kind: "project-instructions",
         content: [
-          "## Founder Skills OS routing",
-          "When the user's request matches a Founder Skills OS workflow, spawn a coding session and inject the appropriate Founder Skills OS instructions.",
+          "## Founder Skills routing",
+          "When the user's request matches a Founder Skills workflow, spawn a coding session and inject the appropriate Founder Skills instructions.",
           "Read founder-context.md, truth-memo.md, recommended-next-step.md, and .fs state files before routing when they exist.",
           "Use co-founder for routing when the next move is unclear.",
           "Prefer validate-to-build for pre-launch product work, gtm-engine for distribution bottlenecks, pmf-recovery for weak retention or activation, and weekly-operating-rhythm for operating cadence.",
@@ -48,7 +48,7 @@ export class OpenClawAdapter implements HostAdapter {
         path: "generated/openclaw/founder-skills-lite.md",
         kind: "project-instructions",
         content: [
-          "# Founder Skills OS Lite",
+          "# Founder Skills Lite",
           "1. Read project instructions, .fs state files, founder-context.md, truth-memo.md, and recent artifacts before editing.",
           "2. Identify the current bottleneck and separate what is known, believed, and hoped.",
           "3. Produce the expected artifact before making broad implementation changes.",
@@ -59,7 +59,7 @@ export class OpenClawAdapter implements HostAdapter {
         path: "generated/openclaw/founder-skills-full.md",
         kind: "project-instructions",
         content: [
-          "# Founder Skills OS Full",
+          "# Founder Skills Full",
           "1. Run co-founder logic first to identify bottleneck and next move.",
           "2. Read .fs/company-state.json, .fs/artifact-index.json, .fs/sequence-state.json, founder-context.md, truth-memo.md, and recommended-next-step.md when present.",
           "3. Continue the active sequence if one is in progress and update recommended-next-step.md.",
@@ -110,7 +110,7 @@ export class OpenClawAdapter implements HostAdapter {
       [
         "OpenClaw behavior:",
         "- If coding work is required, spawn a coding session with the current repo context.",
-        "- Read the relevant Founder Skills OS artifacts before implementation.",
+        "- Read the relevant Founder Skills artifacts before implementation.",
         "- Return with the produced artifacts and the next recommended move.",
       ].join("\n"),
       `## When to invoke\n${skill.invocations.map((invocation) => `- ${invocation}`).join("\n")}`,
