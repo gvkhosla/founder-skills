@@ -10,7 +10,7 @@ steps:
   - growth-loop-builder
   - experiment-planner
   - weekly-founder-review
-  - founder-compound
+  - compound
 primary_outputs:
   - north-star.md
   - pmf-assessment.md

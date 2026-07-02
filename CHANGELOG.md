@@ -3,13 +3,16 @@
 ## Unreleased
 
 - Rename the front-door skill to `co-founder` across source, generated bundles, docs, tests, install checks, and the website.
+- Rename the cycle-closing skill to `compound`.
+- Move the public CLI out of `legacy/`, install current generated skills from `setup`, and make validation report canonical source skill counts.
+- Mark generated bundles as generated/no-diff review artifacts.
 
 ## 0.4.0 — Compound startup loop
 
-- Add `founder-compound` to close startup work cycles and capture reusable learnings.
+- Add `compound` to close startup work cycles and capture reusable learnings.
 - Add `docs/founder-work/startup-loop.md` as the cross-skill startup artifact contract.
 - Rewrite `co-founder`, `problem-validator`, `customer-hypothesis`, and `mvp-scoper` as more explicit phased workflows.
-- Add `founder-compound` as the final step in lifecycle sequences.
+- Add `compound` as the final step in lifecycle sequences.
 - Remove the retired model-specific host adapters, generated bundles, install docs, and public references.
 
 ## 0.3.0 — Founder-first install and onboarding

@@ -97,7 +97,7 @@ Details saved: recommended-next-step.md, truth-memo.md, founder-context.md.
 
 | If you want... | Use this | Verify |
 | --- | --- | --- |
-| Universal setup for any repo-aware agent | `founder-skills setup` | `founder-skills doctor --project .` |
+| Universal setup for any coding agent | `founder-skills setup` | `founder-skills doctor --project .` |
 | Quick pi skills only | `founder-skills install --agent pi` | `founder-skills doctor --agent pi` |
 | Codex `$skill-name` invocation only | `founder-skills install --agent codex` | `founder-skills doctor --agent codex` |
 | Repo memory files only | `founder-skills init --project .` | `founder-skills doctor --project .` |
@@ -136,7 +136,7 @@ Founder Skills includes 30 canonical skills across:
 - **Operations** — focus, experiments, weekly review
 - **Support + Scale** — support insights, first hire briefs
 
-It also includes lifecycle sequences for validation, build, launch, GTM, PMF recovery, and weekly operating rhythm. Meaningful cycles close with `founder-compound` so learnings become reusable memory.
+It also includes lifecycle sequences for validation, build, launch, GTM, PMF recovery, and weekly operating rhythm. Meaningful cycles close with `compound` so learnings become reusable memory.
 
 ## Docs
 

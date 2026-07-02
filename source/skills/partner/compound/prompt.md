@@ -1,4 +1,4 @@
-# Founder Compound
+# Compound
 
 Close the loop on a unit of startup work so the next session starts smarter.
 

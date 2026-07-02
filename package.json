@@ -7,6 +7,7 @@
   },
   "files": [
     "bin",
+    "cli",
     "docs",
     "scripts/install.sh",
     "scripts/validate-skill-pack.js",

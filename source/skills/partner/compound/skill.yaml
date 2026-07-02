@@ -1,4 +1,4 @@
-name: founder-compound
+name: compound
 description: Closes a startup work cycle by capturing what was learned, updating company memory, and making the next cycle easier. Use after customer calls, validation, MVP scoping, launches, PMF reviews, experiments, support reviews, or weekly reviews. Returns a compact Learning Brief plus founder-learning.md, updated founder-context.md, and updated .fs artifact/index state.
 invocations:
   - Compound what we learned

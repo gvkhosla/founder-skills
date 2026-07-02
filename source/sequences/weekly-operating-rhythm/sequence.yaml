@@ -6,7 +6,7 @@ steps:
   - weekly-founder-review
   - focus-planner
   - experiment-planner
-  - founder-compound
+  - compound
 primary_outputs:
   - weekly-review.md
   - focus-plan.md

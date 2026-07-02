@@ -8,6 +8,6 @@ Flow:
 3. turn the message into an offer and landing page
 4. assess pipeline quality and discoverability
 5. diagnose paid efficiency before adding more spend
-6. Capture the learning with founder-compound so the next cycle starts smarter
+6. Capture the learning with compound so the next cycle starts smarter
 
 The system should leave the founder with one message architecture and a prioritized channel plan.

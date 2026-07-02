@@ -11,7 +11,7 @@ steps:
   - pricing-model-framer
   - landing-page-copywriter
   - launch-plan-builder
-  - founder-compound
+  - compound
 primary_outputs:
   - implementation-plan.md
   - architecture-overview.md

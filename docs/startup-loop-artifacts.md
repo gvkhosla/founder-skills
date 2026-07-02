@@ -35,7 +35,7 @@ Use stable IDs so later skills can cite earlier decisions without re-explaining 
 - `D#` — decision
 - `M#` — MVP requirement
 - `S#` — success signal
-- `L#` — learning captured by `founder-compound`
+- `L#` — learning captured by `compound`
 
 ## Recommended structure
 

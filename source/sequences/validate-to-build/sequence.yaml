@@ -8,7 +8,7 @@ steps:
   - implementation-planner
   - architecture-reviewer
   - release-readiness-auditor
-  - founder-compound
+  - compound
 primary_outputs:
   - problem-validation-report.md
   - customer-profile.md

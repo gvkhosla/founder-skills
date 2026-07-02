@@ -32,7 +32,7 @@ Edit this file to change wording before syncing it back into `site/index.html`.
 - Stop starting from scratch.
 
 **Subhead**
-- Founder Skills gives any repo-aware coding agent startup workflows for the work around the code: choosing an idea, validating the customer, scoping the MVP, planning launch, reading PMF signals, and remembering what changed.
+- Founder Skills gives any coding agent startup workflows for the work around the code: choosing an idea, validating the customer, scoping the MVP, planning launch, reading PMF signals, and remembering what changed.
 
 **Install command**
 - `npx --yes github:gvkhosla/founder-skills setup`
@@ -68,7 +68,7 @@ Edit this file to change wording before syncing it back into `site/index.html`.
 - Validation reports, customer hypotheses, MVP briefs, launch plans, PMF reviews, and weekly focus docs.
 
 **Compound the learning**
-- `founder-compound` captures what changed so the next session starts with sharper context.
+- `compound` captures what changed so the next session starts with sharper context.
 
 ## Example
 

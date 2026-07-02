@@ -14,7 +14,7 @@ Runs a PMF recovery loop across measurement, support signal, churn diagnosis, re
 6. growth-loop-builder
 7. experiment-planner
 8. weekly-founder-review
-9. founder-compound
+9. compound
 
 ## Primary outputs
 - north-star.md
@@ -48,6 +48,6 @@ Flow:
 3. use support and churn to explain the signal
 4. redesign retention before forcing growth
 5. choose one experiment and lock the weekly learning loop
-6. Capture the learning with founder-compound so the next cycle starts smarter
+6. Capture the learning with compound so the next cycle starts smarter
 
 The goal is not optimism. The goal is a grounded plan for what to improve next.

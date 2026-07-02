@@ -10,7 +10,7 @@ Runs the founder’s weekly operating cadence across bottleneck review, executio
 2. weekly-founder-review
 3. focus-planner
 4. experiment-planner
-5. founder-compound
+5. compound
 
 ## Primary outputs
 - weekly-review.md
@@ -38,4 +38,4 @@ Run this sequence every week.
 3. Decide the one focus for this week
 4. Lock one or two active experiments
 5. Recommend the next skill or sequence if conditions change
-6. Capture the learning with founder-compound so the next cycle starts smarter
+6. Capture the learning with compound so the next cycle starts smarter

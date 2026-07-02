@@ -8,6 +8,6 @@ Flow:
 3. use support and churn to explain the signal
 4. redesign retention before forcing growth
 5. choose one experiment and lock the weekly learning loop
-6. Capture the learning with founder-compound so the next cycle starts smarter
+6. Capture the learning with compound so the next cycle starts smarter
 
 The goal is not optimism. The goal is a grounded plan for what to improve next.
