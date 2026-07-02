@@ -358,11 +358,19 @@ export function renderStarterRecommendedNextStep(): string {
 
 export function getStarterWorkspaceFiles(options: { date?: string } = {}): Array<{ path: string; content: string }> {
   const seedDate = options.date ?? STARTER_TEMPLATE_DATE;
+  const starterCompanyState: CompanyState = {
+    ...defaultCompanyState,
+    stateMeta: {
+      ...defaultCompanyState.stateMeta,
+      lastUpdated: seedDate,
+      lastReviewed: seedDate,
+    },
+  };
 
   return [
     {
       path: path.posix.join("workspace", "starter", ".fs", "company-state.json"),
-      content: `${JSON.stringify(defaultCompanyState, null, 2)}\n`,
+      content: `${JSON.stringify(starterCompanyState, null, 2)}\n`,
     },
     {
       path: path.posix.join("workspace", "starter", ".fs", "artifact-index.json"),

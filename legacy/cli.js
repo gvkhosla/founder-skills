@@ -24,15 +24,16 @@ Usage:
 Install options:
   --agent, -a   Agent target (pi | claude | codex)
   --phase, -p   all | strategy | design | build | launch | compound | pmf | scale | partner
-  --scope, -s   (claude only) global | project
-  --out, -o     (codex only) output file path (default: ./AGENTS.founder-skills.md)
+  --scope, -s   (claude/codex) global | project (codex global installs ~/.codex/skills)
+  --out, -o     (codex only) also write an AGENTS file for project-mode/reference use
 
 Examples:
   npx --yes github:gvkhosla/founder-skills install --agent pi
   npx --yes github:gvkhosla/founder-skills install --agent pi --phase strategy
   npx --yes github:gvkhosla/founder-skills install claude project
   npx --yes github:gvkhosla/founder-skills install --agent claude --scope project --phase pmf
-  npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.md
+  npx --yes github:gvkhosla/founder-skills install --agent codex
+  npx --yes github:gvkhosla/founder-skills install --agent codex --scope project --out ./AGENTS.md
   npx --yes github:gvkhosla/founder-skills list
 `);
 }
@@ -179,6 +180,20 @@ function installClaude(skillDirs, scope) {
   );
 }
 
+function installCodexSkills(skillDirs) {
+  const targetRoot = path.join(os.homedir(), '.codex', 'skills');
+  fs.mkdirSync(targetRoot, { recursive: true });
+
+  for (const skillDir of skillDirs) {
+    const skillName = path.basename(skillDir);
+    const dest = path.join(targetRoot, skillName);
+    copyDirContents(skillDir, dest);
+  }
+
+  console.log(`Installed ${skillDirs.length} skill(s) for Codex → ${targetRoot}`);
+  console.log('Next: restart Codex if $founder-partner or other skills are not immediately discoverable.');
+}
+
 function generateCodexAgents(skillDirs, outPath) {
   const header = `# Founder Skills — Codex Integration
 
@@ -262,8 +277,8 @@ function resolveInstallArgs(options, positionals) {
 
   config.phase = ensurePhase(config.phase);
 
-  if (config.agent !== 'claude' && options.scope) {
-    throw new Error('--scope is only valid for --agent claude');
+  if (config.agent !== 'claude' && config.agent !== 'codex' && options.scope) {
+    throw new Error('--scope is only valid for --agent claude or --agent codex');
   }
 
   if (config.scope !== 'global' && config.scope !== 'project') {
@@ -295,7 +310,13 @@ function runInstall(options, positionals) {
     return;
   }
 
-  generateCodexAgents(skillDirs, config.out);
+  if (config.scope === 'project') {
+    generateCodexAgents(skillDirs, config.out);
+    return;
+  }
+
+  installCodexSkills(skillDirs);
+  if (config.out) generateCodexAgents(skillDirs, config.out);
 }
 
 function runList(options) {

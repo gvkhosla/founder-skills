@@ -58,13 +58,18 @@ Project skills: `.claude/skills/[skill-name]/` (takes precedence over global)
 ### Codex
 
 ```bash
-# Generate AGENTS.md with all skill entries
-npx --yes github:gvkhosla/founder-skills install --agent codex --out ./AGENTS.founder-skills.md
+# Install global Codex skills for $skill-name invocation
+npx --yes github:gvkhosla/founder-skills install --agent codex
+
+# Optional project/reference AGENTS bundle
+npx --yes github:gvkhosla/founder-skills install --agent codex --scope project --out ./AGENTS.founder-skills.md
 ```
 
-Generates `AGENTS.founder-skills.md` (or your custom `--out` path). Add its contents to your project's `AGENTS.md`.
+Global install writes each skill to `~/.codex/skills/[skill-name]/SKILL.md`. Restart Codex if `$founder-partner` is not immediately discoverable.
 
-**To invoke:** "Use the [skill-name] skill" — Codex will read the corresponding SKILL.md.
+Project/reference mode generates `AGENTS.founder-skills.md` (or your custom `--out` path). Add its contents to your project's `AGENTS.md`.
+
+**To invoke:** `$skill-name` for global installs, or "Use the [skill-name] skill" in project/reference mode.
 
 **Note:** Codex runs parallel phases sequentially. Same output, ~2–3× longer time.
 

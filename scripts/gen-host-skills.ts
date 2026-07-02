@@ -40,13 +40,21 @@ for (const adapter of hostAdapters) {
     writeArtifact(root, artifact.path, artifact.content);
   }
 
+  const installSteps = adapter.id === "codex"
+    ? [
+        "Default/global install copies each generated skill to ~/.codex/skills/<skill-name>/SKILL.md",
+        "Restart Codex if $founder-partner or other skills are not immediately discoverable",
+        "Use --scope project for the .codex/founder-skills-os bundle plus AGENTS.md reference workflow",
+      ]
+    : [
+        "Install Founder Skills OS for this host",
+        "Load generated project instructions",
+        "Run founder-partner as the default entrypoint",
+      ];
+
   for (const artifact of adapter.generateInstallDocs({
     hostName: adapter.displayName,
-    installSteps: [
-      "Install Founder Skills OS for this host",
-      "Load generated project instructions",
-      "Run founder-partner as the default entrypoint",
-    ],
+    installSteps,
   })) {
     writeArtifact(root, artifact.path, artifact.content);
   }

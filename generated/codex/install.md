@@ -1,4 +1,4 @@
 # Codex install
-- Install Founder Skills OS for this host
-- Load generated project instructions
-- Run founder-partner as the default entrypoint
+- Default/global install copies each generated skill to ~/.codex/skills/<skill-name>/SKILL.md
+- Restart Codex if $founder-partner or other skills are not immediately discoverable
+- Use --scope project for the .codex/founder-skills-os bundle plus AGENTS.md reference workflow

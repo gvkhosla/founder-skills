@@ -62,8 +62,8 @@
   },
   "stateMeta": {
     "version": 1,
-    "lastUpdated": "2026-04-18",
-    "lastReviewed": "2026-04-18",
+    "lastUpdated": "YYYY-MM-DD",
+    "lastReviewed": "YYYY-MM-DD",
     "confidence": "low"
   }
 }

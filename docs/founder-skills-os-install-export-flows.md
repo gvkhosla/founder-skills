@@ -57,8 +57,9 @@ npm run os:doctor -- --project /path/to/startup
 - project installs also update a managed Founder Skills OS section in `CLAUDE.md`
 
 ### Codex
-- bundle copied to `.codex/founder-skills-os/`
-- project `AGENTS.md` gets a managed Founder Skills OS section
+- default/global scope installs each generated skill as `~/.codex/skills/<skill-name>/SKILL.md`
+- this makes skills invokable by name in Codex after restart (for example `$founder-partner`)
+- project scope is still available with `--scope project`; it copies the bundle to `.codex/founder-skills-os/` and updates project `AGENTS.md`
 
 ### OpenCode
 - bundle copied to `.opencode/founder-skills-os/`
