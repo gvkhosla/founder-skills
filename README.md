@@ -10,61 +10,13 @@
 
 **Turn your agent into a brutally honest co-founder.**
 
-Founder Skills transforms coding agents into founder collaborators with:
-- founder workflows
-- company memory
-- clear next-step routing
-- concrete written artifacts
+Founder Skills gives coding agents startup operating workflows: they read company context, separate evidence from optimism, name the current bottleneck, and return one useful next move.
 
-It is built for the moments where the real bottleneck is not code — it is clarity.
+Use it when the real blocker is not code — it is clarity, validation, scope, launch, PMF, or focus.
 
-## What it does
+## Start here
 
-Founder Skills helps your agent:
-- pressure-test the problem and customer
-- decide what to validate before building
-- scope and sequence build work
-- write launch and GTM artifacts
-- read PMF signals and route the next move
-- keep context in `.fs/`, `founder-context.md`, `truth-memo.md`, and `recommended-next-step.md`
-
-## What ships today
-
-Founder Skills is now organized around **one primary product**:
-
-- **Founder Skills OS** in `source/`, `generated/`, `packages/`, and `scripts/*.ts`
-- **29 canonical skills** in `source/skills/`
-- **6 lifecycle sequences** in `source/sequences/`
-- workspace memory in `.fs/`
-- recommendation routing
-- multi-host generation and install/export flows
-
-The original 27-skill pack still ships as a **legacy compatibility layer** under `legacy/` so existing install commands keep working.
-
-Quick install still runs directly from GitHub:
-```bash
-npx --yes github:gvkhosla/founder-skills install --agent pi
-```
-
-## Best supported today
-
-Best today on:
-- **pi**
-- **Claude Code**
-- **Codex**
-
-Also available in beta for:
-- **OpenCode**
-- **OpenClaw**
-- **Hermes**
-
-Chat bundles are also generated for:
-- **ChatGPT**
-- **Claude**
-
-## Fastest way to try it
-
-Pick your agent, install, then start with `founder-partner`.
+Install for your agent:
 
 ```bash
 # pi
@@ -77,22 +29,37 @@ npx --yes github:gvkhosla/founder-skills install --agent codex
 npx --yes github:gvkhosla/founder-skills install --agent claude --scope project
 ```
 
-Optional but recommended for startup repos:
+Optional, but recommended inside a startup repo:
 
 ```bash
 npx --yes github:gvkhosla/founder-skills init --project . --company "Acme"
 npx --yes github:gvkhosla/founder-skills doctor --project .
 ```
 
-Then ask:
+Then ask your agent:
 
 ```text
 Use founder-partner and be brutally honest with me.
 ```
 
-Founder Skills are **human-first in chat**: you get a short bottom line, one next move, and concrete steps immediately. The `.md` files are durable memory for agents and follow-up work, not required reading before you can act.
+If you are in Codex, use:
 
-## 60-second demo
+```text
+$founder-partner
+```
+
+## What you get
+
+Founder Skills is **human-first in chat**:
+
+- a short bottom line
+- one recommended move
+- up to three concrete steps
+- saved `.md` artifacts for agent memory and follow-up work
+
+The files are useful, but they should not be required reading before you can act.
+
+## 60-second example
 
 ```text
 You: Use founder-partner and be brutally honest with me.
@@ -117,39 +84,63 @@ Details saved: recommended-next-step.md, truth-memo.md, founder-context.md.
 | Repo memory files | `founder-skills init --project .` | `founder-skills doctor --project .` |
 | OpenCode/OpenClaw/Hermes beta bundles | clone repo, then `npm run os:install -- --host <host> --project /path/to/startup` | `npm run os:doctor -- --host <host> --project /path/to/startup` |
 
-## Founder Skills OS quickstart
+## Core commands
 
 ```bash
-npm install
+founder-skills install --agent codex   # install skills
+founder-skills init --project .        # seed company memory
+founder-skills doctor --agent codex    # verify install
+founder-skills list                    # list available skills
+```
+
+Advanced OS commands from a cloned repo:
+
+```bash
 npm run os:gen:all
-npm run os:init -- --project /path/to/startup --stage building --sequence validate-to-build
+npm run os:init -- --project /path/to/startup --stage building
 npm run os:install -- --host opencode --project /path/to/startup
 npm run os:doctor -- --host opencode --project /path/to/startup
+npm test
 ```
+
+## Included workflows
+
+Founder Skills includes 29 canonical skills across:
+
+- **Partner** — `founder-partner`
+- **Strategy** — problem validation, customer hypothesis, MVP scope, assumptions
+- **Engineering + Product** — implementation planning, architecture, QA, release readiness
+- **Launch** — positioning, landing page copy, pricing, launch plans
+- **Marketing + Sales** — messaging, SEO/GEO, CAC, pipeline review
+- **PMF** — PMF signal, north star, churn, retention, growth loops
+- **Operations** — focus, experiments, weekly review
+- **Support + Scale** — support insights, first hire briefs
+
+It also includes lifecycle sequences for validation, build, launch, GTM, PMF recovery, and weekly operating rhythm.
 
 ## Core idea
 
-Founder Skills is built around a simple rule:
-
 > **Tell the founder the truth before the market does.**
 
-In practice that means:
+That means:
+
 - read company memory first
 - separate what is known, believed, and hoped
-- route into validation before build when the evidence is weak
-- leave behind one concrete artifact and one next move
+- route into validation before build when evidence is weak
+- leave behind one artifact and one next move
 
 ## Docs
 
 - [Docs index](docs/README.md)
-- [Homepage positioning](docs/homepage-positioning.md)
 - [Founder Partner manifesto](docs/founder-partner-manifesto.md)
 - [OS install/export flows](docs/founder-skills-os-install-export-flows.md)
 - [Legacy compatibility layer](legacy/README.md)
+- [Changelog](CHANGELOG.md)
 
 ## Development
 
 ```bash
+npm install
 npm run os:gen:all
 npm test
 ```
