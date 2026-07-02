@@ -1,6 +1,6 @@
 # How to Write a Founder Skill
 
-> This document describes the archived legacy pack in `legacy/skills/`. For Founder Skills OS work, start in `source/skills/`.
+> This document describes the archived legacy pack in `legacy/skills/`. For Founder Skills work, start in `source/skills/`.
 
 This guide is for anyone contributing a new skill to Founder Skills. Read it completely before writing your first skill.
 

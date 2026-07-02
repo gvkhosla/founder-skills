@@ -1,6 +1,6 @@
 # @founder-skills/cli
 
-Internal command modules for Founder Skills OS.
+Internal command modules for Founder Skills.
 
 This package backs the repo-level scripts for:
 
@@ -8,4 +8,4 @@ This package backs the repo-level scripts for:
 - `npm run os:recommend`
 - `npm run os:sequence`
 
-It is the real home of the OS CLI logic.
+It is the real home of the Founder Skills CLI logic.

@@ -2,7 +2,7 @@ import path from "node:path";
 import { recommendStateCommand } from "../packages/cli/src/index.js";
 
 function usage() {
-  console.log(`Founder Skills OS recommendation
+  console.log(`Founder Skills recommendation
 
 Usage:
   npm run os:recommend -- --project <path>

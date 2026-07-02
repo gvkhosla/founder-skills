@@ -1,9 +1,9 @@
 # Internal docs
 
-These docs explain the current Founder Skills OS internals.
+These docs explain the current Founder Skills internals.
 
-- [Orchestrator state model](./founder-skills-os-orchestrator-state-model.md)
-- [Host adapter contract](./founder-skills-os-host-adapter-contract.md)
-- [Coding host priority](./founder-skills-os-coding-host-priority.md)
+- [Orchestrator state model](./founder-skills-orchestrator-state-model.md)
+- [Host adapter contract](./founder-skills-host-adapter-contract.md)
+- [Coding host priority](./founder-skills-coding-host-priority.md)
 
 Older scaffolding and repo-planning docs now live in [`archive/`](./archive/README.md).

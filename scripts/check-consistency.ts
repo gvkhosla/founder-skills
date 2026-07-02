@@ -7,12 +7,12 @@ const checks = [
   "docs/internal/README.md",
   "docs/internal/archive/README.md",
   "docs/legacy/README.md",
-  "docs/internal/founder-skills-os-orchestrator-state-model.md",
-  "docs/internal/founder-skills-os-host-adapter-contract.md",
-  "docs/internal/founder-skills-os-coding-host-priority.md",
+  "docs/internal/founder-skills-orchestrator-state-model.md",
+  "docs/internal/founder-skills-host-adapter-contract.md",
+  "docs/internal/founder-skills-coding-host-priority.md",
   "docs/co-founder-manifesto.md",
   "docs/homepage-positioning.md",
-  "docs/founder-skills-os-install-export-flows.md",
+  "docs/host-install-export-flows.md",
   "tsconfig.base.json",
   "tsconfig.json",
   "packages/cli/src/index.ts",
@@ -53,8 +53,8 @@ const checks = [
 
 const missing = checks.filter((rel) => !fs.existsSync(path.join(root, rel)));
 if (missing.length > 0) {
-  console.error("Founder Skills OS consistency check failed. Missing:\n- " + missing.join("\n- "));
+  console.error("Founder Skills consistency check failed. Missing:\n- " + missing.join("\n- "));
   process.exit(1);
 }
 
-console.log("Founder Skills OS consistency scaffold check passed.");
+console.log("Founder Skills consistency scaffold check passed.");

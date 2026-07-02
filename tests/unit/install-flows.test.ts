@@ -12,12 +12,12 @@ test("upsertManagedSection replaces an existing managed block", () => {
   const initial = [
     "# AGENTS",
     "",
-    "<!-- BEGIN FOUNDER-SKILLS-OS-CODEX -->",
+    "<!-- BEGIN FOUNDER-SKILLS-CODEX -->",
     "old body",
-    "<!-- END FOUNDER-SKILLS-OS-CODEX -->",
+    "<!-- END FOUNDER-SKILLS-CODEX -->",
   ].join("\n");
 
-  const next = upsertManagedSection(initial, "FOUNDER-SKILLS-OS-CODEX", "new body");
+  const next = upsertManagedSection(initial, "FOUNDER-SKILLS-CODEX", "new body");
 
   assert.ok(next.includes("new body"));
   assert.ok(!next.includes("old body"));
@@ -46,7 +46,7 @@ test("codex global install exports top-level invokable skills without touching A
 
 test("codex project install exports bundle and updates AGENTS.md", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-codex-project-"));
-  const bundleDir = path.join(tempDir, ".codex", "founder-skills-os");
+  const bundleDir = path.join(tempDir, ".codex", "founder-skills");
 
   const result = installGeneratedHostBundle({
     rootDir: root,
@@ -62,7 +62,7 @@ test("codex project install exports bundle and updates AGENTS.md", () => {
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", ".fs", "company-state.json")));
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", "truth-memo.md")));
   assert.ok(fs.existsSync(path.join(bundleDir, "strategy", "problem-validator", "SKILL.md")));
-  assert.ok(fs.readFileSync(agentsFile, "utf8").includes("Founder Skills OS for Codex"));
+  assert.ok(fs.readFileSync(agentsFile, "utf8").includes("Founder Skills for Codex"));
 });
 
 test("public default install writes current pi and codex skills", () => {
@@ -163,21 +163,21 @@ test("public init seeds workspace memory files", () => {
   assert.match(doctorOutput, /checks look healthy/);
 });
 
-test("OS install defaults use documented golden layouts", () => {
+test("host install defaults use documented golden layouts", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-golden-"));
 
   assert.equal(defaultScopeForHost("codex"), "global");
   assert.equal(defaultScopeForHost("opencode"), "project");
   assert.equal(defaultScopeForHost("openclaw"), "project");
   assert.equal(getDefaultBundlePath("codex", "global", tempDir), path.join(os.homedir(), ".codex", "skills"));
-  assert.equal(getDefaultBundlePath("opencode", "project", tempDir), path.join(tempDir, ".opencode", "founder-skills-os"));
-  assert.equal(getDefaultBundlePath("openclaw", "project", tempDir), path.join(tempDir, ".openclaw", "founder-skills-os"));
-  assert.equal(getDefaultBundlePath("hermes", "global", tempDir), path.join(os.homedir(), ".hermes", "skills", "founder-skills-os"));
+  assert.equal(getDefaultBundlePath("opencode", "project", tempDir), path.join(tempDir, ".opencode", "founder-skills"));
+  assert.equal(getDefaultBundlePath("openclaw", "project", tempDir), path.join(tempDir, ".openclaw", "founder-skills"));
+  assert.equal(getDefaultBundlePath("hermes", "global", tempDir), path.join(os.homedir(), ".hermes", "skills", "founder-skills"));
 });
 
 test("openclaw install exports bundle and updates AGENTS.md", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-openclaw-"));
-  const bundleDir = path.join(tempDir, ".openclaw", "founder-skills-os");
+  const bundleDir = path.join(tempDir, ".openclaw", "founder-skills");
 
   installGeneratedHostBundle({
     rootDir: root,
@@ -190,13 +190,13 @@ test("openclaw install exports bundle and updates AGENTS.md", () => {
   assert.ok(fs.existsSync(path.join(bundleDir, "founder-skills-lite.md")));
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", ".fs", "sequence-state.json")));
   assert.ok(fs.existsSync(path.join(bundleDir, "workspace", "starter", "truth-memo.md")));
-  assert.ok(fs.readFileSync(agentsFile, "utf8").includes("Founder Skills OS for OpenClaw"));
+  assert.ok(fs.readFileSync(agentsFile, "utf8").includes("Founder Skills for OpenClaw"));
   assert.ok(fs.readFileSync(agentsFile, "utf8").includes("agents-founder-skills-section.md"));
 });
 
 test("hermes install exports a bundle without touching project files", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-hermes-"));
-  const bundleDir = path.join(tempDir, ".hermes", "skills", "founder-skills-os");
+  const bundleDir = path.join(tempDir, ".hermes", "skills", "founder-skills");
 
   const result = installGeneratedHostBundle({
     rootDir: root,

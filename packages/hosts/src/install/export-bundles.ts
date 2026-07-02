@@ -20,7 +20,7 @@ export interface InstallResult {
   notes: string[];
 }
 
-const BUNDLE_NAME = "founder-skills-os";
+const BUNDLE_NAME = "founder-skills";
 
 export function getSupportedCodingHosts(): CodingHostId[] {
   return ["pi", "codex", "opencode", "openclaw", "hermes"];
@@ -60,14 +60,14 @@ export function installGeneratedHostBundle(options: InstallGeneratedHostOptions)
 
   if (options.host === "codex" && scope === "project") {
     const agentsFile = path.join(projectDir, "AGENTS.md");
-    upsertManagedSectionFile(agentsFile, "FOUNDER-SKILLS-OS-CODEX", renderCodexSection(path.relative(projectDir, bundlePath) || "."));
+    upsertManagedSectionFile(agentsFile, "FOUNDER-SKILLS-CODEX", renderCodexSection(path.relative(projectDir, bundlePath) || "."));
     updatedFiles.push(agentsFile);
     notes.push(`Updated ${agentsFile} with a Codex bundle section`);
   }
 
   if (options.host === "opencode") {
     const agentsFile = path.join(projectDir, "AGENTS.md");
-    upsertManagedSectionFile(agentsFile, "FOUNDER-SKILLS-OS-OPENCODE", renderOpenCodeSection(path.relative(projectDir, bundlePath) || "."));
+    upsertManagedSectionFile(agentsFile, "FOUNDER-SKILLS-OPENCODE", renderOpenCodeSection(path.relative(projectDir, bundlePath) || "."));
     updatedFiles.push(agentsFile);
     notes.push(`Updated ${agentsFile} with an OpenCode bundle section`);
   }
@@ -77,8 +77,8 @@ export function installGeneratedHostBundle(options: InstallGeneratedHostOptions)
     const openclawSectionPath = path.join(bundlePath, "agents-founder-skills-section.md");
     const openclawSection = fs.existsSync(openclawSectionPath)
       ? fs.readFileSync(openclawSectionPath, "utf8").trim()
-      : "Use Founder Skills OS as the routing layer for startup bottlenecks.";
-    upsertManagedSectionFile(agentsFile, "FOUNDER-SKILLS-OS-OPENCLAW", renderOpenClawSection(path.relative(projectDir, bundlePath) || ".", openclawSection));
+      : "Use Founder Skills as the routing layer for startup bottlenecks.";
+    upsertManagedSectionFile(agentsFile, "FOUNDER-SKILLS-OPENCLAW", renderOpenClawSection(path.relative(projectDir, bundlePath) || ".", openclawSection));
     updatedFiles.push(agentsFile);
     notes.push(`Updated ${agentsFile} with an OpenClaw bundle section`);
   }
@@ -200,8 +200,8 @@ function renderPostInstallNotes(host: CodingHostId, scope: InstallScope, project
 
 function renderCodexSection(bundlePath: string): string {
   return [
-    "## Founder Skills OS for Codex",
-    `Use the generated Founder Skills OS bundle at \`${toPosix(bundlePath)}\`.`,
+    "## Founder Skills for Codex",
+    `Use the generated Founder Skills bundle at \`${toPosix(bundlePath)}\`.`,
     `Primary workspace instructions: \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/project-instructions.md"))}\`.`,
     `Starter state files live under \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/starter"))}\`.`,
     `Skills live under \`${toPosix(bundlePath)}/<domain>/<skill>/SKILL.md\` and sequences under \`${toPosix(bundlePath)}/sequences/\`.`,
@@ -211,8 +211,8 @@ function renderCodexSection(bundlePath: string): string {
 
 function renderOpenCodeSection(bundlePath: string): string {
   return [
-    "## Founder Skills OS for OpenCode",
-    `Use the generated Founder Skills OS bundle at \`${toPosix(bundlePath)}\`.`,
+    "## Founder Skills for OpenCode",
+    `Use the generated Founder Skills bundle at \`${toPosix(bundlePath)}\`.`,
     `Project instructions: \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/project-instructions.md"))}\`.`,
     `Starter files: \`${toPosix(path.posix.join(toPosix(bundlePath), "workspace/starter"))}\`.`,
     "Treat `co-founder` as the default router when the next move is unclear.",
@@ -222,7 +222,7 @@ function renderOpenCodeSection(bundlePath: string): string {
 
 function renderOpenClawSection(bundlePath: string, sectionBody: string): string {
   return [
-    "## Founder Skills OS for OpenClaw",
+    "## Founder Skills for OpenClaw",
     `Bundle root: \`${toPosix(bundlePath)}\`.`,
     `AGENTS section source: \`${toPosix(path.posix.join(toPosix(bundlePath), "agents-founder-skills-section.md"))}\`.`,
     `Lite prompt: \`${toPosix(path.posix.join(toPosix(bundlePath), "founder-skills-lite.md"))}\`.`,

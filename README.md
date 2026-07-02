@@ -1,10 +1,12 @@
-# Founder Skills OS
+# Founder Skills
 
-**Compound Engineering for the non-technical work of building a startup.**
+![Invader mosaic on a city wall](site/og.png)
 
-Founder Skills gives your agent a repeatable operating loop for the work around the code: finding ideas, validating customers, scoping products, planning launches, reading PMF signals, and deciding what to do next.
+**Startup workflows for founders who know the product is only part of the company.**
 
-Each cycle should make the next cycle easier. A good customer hypothesis sharpens validation. A good validation report sharpens scope. A good scope makes build planning smaller. A good launch review improves the next launch.
+Founder Skills gives your coding agent a simple operating loop for the work around the code: choosing what to build, validating who wants it, shaping the offer, launching, reading traction, and deciding what to do next.
+
+The goal is not more planning. The goal is to help you build a successful company, gain traction, and grow without starting every session from scratch.
 
 <p>
   <a href="https://fskills.xyz">Website</a> ·
@@ -113,7 +115,7 @@ founder-skills doctor --agent codex    # verify install
 founder-skills list                    # list available skills
 ```
 
-Advanced OS commands from a cloned repo:
+Advanced host commands from a cloned repo:
 
 ```bash
 npm run os:gen:all
@@ -144,7 +146,7 @@ It also includes lifecycle sequences for validation, build, launch, GTM, PMF rec
 - [Positioning](docs/homepage-positioning.md)
 - [Co-founder details](docs/co-founder-manifesto.md)
 - [Startup loop artifact contract](docs/startup-loop-artifacts.md)
-- [OS install/export flows](docs/founder-skills-os-install-export-flows.md)
+- [Host install/export flows](docs/host-install-export-flows.md)
 - [Legacy compatibility layer](legacy/README.md)
 - [Changelog](CHANGELOG.md)
 

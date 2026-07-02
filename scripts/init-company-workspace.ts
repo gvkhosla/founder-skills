@@ -3,7 +3,7 @@ import { initStateCommand } from "../packages/cli/src/index.js";
 import type { CompanyStage } from "../packages/core/src/types/state.js";
 
 function usage() {
-  console.log(`Founder Skills OS workspace init
+  console.log(`Founder Skills workspace init
 
 Usage:
   npm run os:init -- --project <path> [options]
@@ -62,7 +62,7 @@ function main() {
   const projectDir = path.resolve(options.projectDir ?? process.cwd());
   const result = initStateCommand(rootDir, projectDir, options);
 
-  console.log(`Initialized Founder Skills OS workspace in ${result.projectDir}`);
+  console.log(`Initialized Founder Skills workspace in ${result.projectDir}`);
   for (const file of result.createdFiles) {
     console.log(`- created ${file}`);
   }

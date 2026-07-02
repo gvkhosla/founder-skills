@@ -20,12 +20,12 @@ const groups: Record<string, string[]> = {
     "docs/internal/README.md",
     "docs/internal/archive/README.md",
     "docs/legacy/README.md",
-    "docs/internal/founder-skills-os-orchestrator-state-model.md",
-    "docs/internal/founder-skills-os-host-adapter-contract.md",
-    "docs/internal/founder-skills-os-coding-host-priority.md",
+    "docs/internal/founder-skills-orchestrator-state-model.md",
+    "docs/internal/founder-skills-host-adapter-contract.md",
+    "docs/internal/founder-skills-coding-host-priority.md",
     "docs/co-founder-manifesto.md",
     "docs/homepage-positioning.md",
-    "docs/founder-skills-os-install-export-flows.md",
+    "docs/host-install-export-flows.md",
     "docs/startup-loop-artifacts.md",
   ],
   workspace: ["package.json", "package-lock.json", "tsconfig.base.json", "tsconfig.json"],
@@ -87,7 +87,7 @@ function parseArgs(argv: string[]) {
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     if (token === "--help" || token === "-h") {
-      console.log(`Founder Skills OS doctor\n\nUsage:\n  npm run os:doctor\n  npm run os:doctor -- --project /path/to/startup\n  npm run os:doctor -- --host codex\n  npm run os:doctor -- --host codex --scope project --project /path/to/startup\n`);
+      console.log(`Founder Skills doctor\n\nUsage:\n  npm run os:doctor\n  npm run os:doctor -- --project /path/to/startup\n  npm run os:doctor -- --host codex\n  npm run os:doctor -- --host codex --scope project --project /path/to/startup\n`);
       process.exit(0);
     }
     if (token === "--project") {
@@ -147,10 +147,10 @@ function checkHostInstall(host: CodingHostId, scope: InstallScope, projectDir: s
 
   if ((host === "codex" || host === "opencode" || host === "openclaw") && scope === "project") {
     const agentsFile = path.join(projectDir, "AGENTS.md");
-    if (fs.existsSync(agentsFile) && fs.readFileSync(agentsFile, "utf8").includes("Founder Skills OS")) {
+    if (fs.existsSync(agentsFile) && fs.readFileSync(agentsFile, "utf8").includes("Founder Skills")) {
       console.log(`✓ ${agentsFile}`);
     } else {
-      console.log(`- missing managed Founder Skills OS section in ${agentsFile}`);
+      console.log(`- missing managed Founder Skills section in ${agentsFile}`);
       failed = true;
     }
   }
@@ -218,7 +218,7 @@ try {
   }
 
   if (failed) process.exit(1);
-  console.log(projectDir || host ? "Founder Skills OS bootstrap and requested checks look healthy." : "Founder Skills OS bootstrap looks healthy.");
+  console.log(projectDir || host ? "Founder Skills bootstrap and requested checks look healthy." : "Founder Skills bootstrap looks healthy.");
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exit(1);

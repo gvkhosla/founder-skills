@@ -9,7 +9,7 @@ interface CliOptions {
 }
 
 function usage() {
-  console.log(`Founder Skills OS host installer
+  console.log(`Founder Skills host installer
 
 Usage:
   npm run os:install -- --host <pi|codex|opencode|openclaw|hermes|all> [options]
@@ -102,7 +102,7 @@ function main() {
     for (const file of result.updatedFiles) console.log(`- updated ${file}`);
   }
 
-  console.log(`\nInstalled Founder Skills OS bundles for ${hosts.length} host(s).`);
+  console.log(`\nInstalled Founder Skills bundles for ${hosts.length} host(s).`);
 }
 
 try {

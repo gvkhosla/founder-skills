@@ -1,13 +1,13 @@
 # Docs
 
-Founder Skills OS is the primary product in this repo.
+Founder Skills is the primary product in this repo.
 
 ## Public docs
 
 - [Homepage positioning](./homepage-positioning.md)
 - [Co-founder manifesto](./co-founder-manifesto.md)
 - [Startup loop artifact contract](./startup-loop-artifacts.md)
-- [OS install and export flows](./founder-skills-os-install-export-flows.md)
+- [Host install and export flows](./host-install-export-flows.md)
 
 ## Internal docs
 

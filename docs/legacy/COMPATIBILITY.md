@@ -27,4 +27,4 @@ founder-skills doctor --agent codex
 founder-skills doctor --agent codex --scope project --project .
 ```
 
-For new work, prefer the OS host bundles and generated skills under `generated/`.
+For new work, prefer the host bundles and generated skills under `generated/`.
