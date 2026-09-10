@@ -163,6 +163,18 @@ test("public init seeds workspace memory files", () => {
   assert.match(doctorOutput, /checks look healthy/);
 });
 
+test("public doctor without --agent does not fail when no agents are installed", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-doctor-optional-"));
+  const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "doctor"], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  }).toString();
+  assert.match(output, /Founder Skills doctor 0\.5\.1/);
+  assert.match(output, /optional/);
+  assert.match(output, /look healthy/);
+});
+
 test("host install defaults use documented golden layouts", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-golden-"));
 

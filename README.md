@@ -111,7 +111,8 @@ Details saved: recommended-next-step.md, truth-memo.md, founder-context.md.
 founder-skills setup                   # recommended: universal AGENTS.md + memory + native shortcuts
 founder-skills install --agent codex   # optional: install only Codex skills
 founder-skills init --project .        # optional: seed only startup memory
-founder-skills doctor --agent codex    # verify install
+founder-skills doctor                  # survey installs (missing agents are optional)
+founder-skills doctor --agent codex    # fail if Codex is not installed
 founder-skills list                    # list available skills
 ```
 

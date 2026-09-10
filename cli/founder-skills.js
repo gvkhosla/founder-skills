@@ -21,6 +21,7 @@ Usage:
   founder-skills install <agent> [phase|project]
   founder-skills init [--project <path>] [--company <name>] [--stage <stage>]
   founder-skills doctor [--agent <pi|codex>] [--scope <global|project>] [--project <path>]
+               Without --agent, missing installs are reported and not fatal.
   founder-skills list [--phase <phase>]
   founder-skills version
 
@@ -564,9 +565,10 @@ function checkWorkspace(projectDir, required = false) {
 function runDoctor(options) {
   const { agent, scope, projectDir } = resolveDoctorArgs(options);
   const agentsToCheck = agent ? [agent] : AGENTS;
+  const requireInstall = Boolean(agent);
   let failed = false;
 
-  console.log('Founder Skills doctor');
+  console.log(`Founder Skills doctor ${packageJson.version}`);
 
   if (options.project && !agent) {
     failed = !checkWorkspace(projectDir, true);
@@ -574,6 +576,10 @@ function runDoctor(options) {
     for (const candidate of agentsToCheck) {
       const checks = checkAgentInstall(candidate, scope, projectDir);
       for (const check of checks) {
+        if (!check.ok && !requireInstall) {
+          console.log(check.message.replace(/^✗ /, '· ') + ' (optional)');
+          continue;
+        }
         console.log(check.message);
         if (!check.ok) failed = true;
       }
