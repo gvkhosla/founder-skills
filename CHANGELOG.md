@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2 — Doctor JSON
+
+- `founder-skills doctor --json` prints the same checks as JSON for agents and CI.
+
 ## 0.5.1 — Doctor no longer fails a healthy single-agent setup
 
 - `founder-skills doctor` without `--agent` reports missing Pi/Codex installs as optional instead of exiting 1.

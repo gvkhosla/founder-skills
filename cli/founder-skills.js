@@ -20,7 +20,7 @@ Usage:
   founder-skills install [--agent <pi|codex>] [options]
   founder-skills install <agent> [phase|project]
   founder-skills init [--project <path>] [--company <name>] [--stage <stage>]
-  founder-skills doctor [--agent <pi|codex>] [--scope <global|project>] [--project <path>]
+  founder-skills doctor [--agent <pi|codex>] [--scope <global|project>] [--project <path>] [--json]
                Without --agent, missing installs are reported and not fatal.
   founder-skills list [--phase <phase>]
   founder-skills version
@@ -101,6 +101,11 @@ function parseArgs(argv) {
     if (token === '--stage') {
       options.stage = argv[i + 1];
       i += 1;
+      continue;
+    }
+
+    if (token === '--json') {
+      options.json = true;
       continue;
     }
 
@@ -534,7 +539,7 @@ function checkAgentInstall(agent, scope, projectDir) {
   return [checkSkillFile('codex', path.join(os.homedir(), '.codex', 'skills', 'co-founder', 'SKILL.md'))];
 }
 
-function checkWorkspace(projectDir, required = false) {
+function checkWorkspace(projectDir, required = false, silent = false) {
   const files = [
     'founder-context.md',
     'truth-memo.md',
@@ -548,17 +553,19 @@ function checkWorkspace(projectDir, required = false) {
   const missing = files.filter((rel) => !fs.existsSync(path.join(projectDir, rel)));
 
   if (missing.length === 0) {
-    console.log(`✓ Workspace memory in ${projectDir}`);
+    if (!silent) console.log(`✓ Workspace memory in ${projectDir}`);
     return true;
   }
 
   if (found.length === 0 && !required) {
-    console.log(`- Optional workspace memory not initialized in ${projectDir}`);
-    console.log('  Run `founder-skills init --project .` when you want persistent company state.');
+    if (!silent) {
+      console.log(`- Optional workspace memory not initialized in ${projectDir}`);
+      console.log('  Run `founder-skills init --project .` when you want persistent company state.');
+    }
     return true;
   }
 
-  for (const rel of missing) console.log(`✗ workspace missing ${rel}`);
+  if (!silent) for (const rel of missing) console.log(`✗ workspace missing ${rel}`);
   return false;
 }
 
@@ -566,27 +573,49 @@ function runDoctor(options) {
   const { agent, scope, projectDir } = resolveDoctorArgs(options);
   const agentsToCheck = agent ? [agent] : AGENTS;
   const requireInstall = Boolean(agent);
+  const lines = [];
+  const report = {
+    version: packageJson.version,
+    agent: agent || null,
+    checks: [],
+    ok: true,
+  };
   let failed = false;
 
-  console.log(`Founder Skills doctor ${packageJson.version}`);
+  const emit = (message, ok = true, optional = false) => {
+    report.checks.push({ ok, optional, message });
+    lines.push(message);
+    if (!ok && !optional) failed = true;
+  };
+
+  if (!options.json) lines.push(`Founder Skills doctor ${packageJson.version}`);
 
   if (options.project && !agent) {
-    failed = !checkWorkspace(projectDir, true);
+    const workspaceOk = checkWorkspace(projectDir, true, options.json);
+    emit(workspaceOk ? `✓ Workspace memory in ${projectDir}` : `✗ workspace memory missing in ${projectDir}`, workspaceOk, false);
+    failed = !workspaceOk;
   } else {
     for (const candidate of agentsToCheck) {
       const checks = checkAgentInstall(candidate, scope, projectDir);
       for (const check of checks) {
         if (!check.ok && !requireInstall) {
-          console.log(check.message.replace(/^✗ /, '· ') + ' (optional)');
+          emit(check.message.replace(/^\u2717 /, '· ') + ' (optional)', true, true);
           continue;
         }
-        console.log(check.message);
-        if (!check.ok) failed = true;
+        emit(check.message, check.ok, false);
       }
     }
-    checkWorkspace(projectDir, false);
+    checkWorkspace(projectDir, false, options.json);
   }
 
+  report.ok = !failed;
+  if (options.json) {
+    console.log(JSON.stringify(report, null, 2));
+    if (failed) process.exit(1);
+    return;
+  }
+
+  console.log(lines.join('\n'));
   if (failed) {
     console.log('');
     console.log('Suggested fix: run `founder-skills install --agent <agent>` for install issues or `founder-skills init --project .` for workspace memory.');

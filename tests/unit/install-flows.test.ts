@@ -170,9 +170,22 @@ test("public doctor without --agent does not fail when no agents are installed",
     env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
     stdio: "pipe",
   }).toString();
-  assert.match(output, /Founder Skills doctor 0\.5\.1/);
+  assert.match(output, /Founder Skills doctor 0\.5\.2/);
   assert.match(output, /optional/);
   assert.match(output, /look healthy/);
+});
+
+test("public doctor --json is machine-readable and not fatal without agents", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "founder-skills-doctor-json-"));
+  const output = execFileSync(process.execPath, [path.join(root, "legacy", "cli.js"), "doctor", "--json"], {
+    cwd: tempDir,
+    env: { ...process.env, HOME: tempDir, USERPROFILE: tempDir },
+    stdio: "pipe",
+  }).toString();
+  const report = JSON.parse(output);
+  assert.equal(report.version, "0.5.2");
+  assert.equal(report.ok, true);
+  assert.ok(Array.isArray(report.checks));
 });
 
 test("host install defaults use documented golden layouts", () => {
