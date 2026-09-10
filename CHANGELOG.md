@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.1 — Doctor no longer fails a healthy single-agent setup
+
+- `founder-skills doctor` without `--agent` reports missing Pi/Codex installs as optional instead of exiting 1.
+- `--agent pi` or `--agent codex` still fail closed when that install is missing.
+- Doctor prints the package version.
+
 ## 0.5.0 — Canonical skills and responsive brand refresh
 
 - Rename the front-door skill to `co-founder` and the cycle-closing skill to `compound`.
