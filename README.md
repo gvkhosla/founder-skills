@@ -1,5 +1,7 @@
 # Founder Skills
 
+[![npm](https://img.shields.io/npm/v/founder-skills)](https://www.npmjs.com/package/founder-skills)
+
 ![Invader mosaic on a city wall](site/og.png)
 
 **Startup workflows for founders who know the product is only part of the company.**
