@@ -20,6 +20,12 @@ The goal is not more planning. The goal is to help you build a successful compan
 Run this inside your startup repo:
 
 ```bash
+npx --yes founder-skills setup
+```
+
+Or from git:
+
+```bash
 npx --yes github:gvkhosla/founder-skills setup
 ```
 

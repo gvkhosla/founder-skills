@@ -1,6 +1,9 @@
 {
   "name": "founder-skills",
   "version": "0.5.2",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Compound startup workflows and company memory for coding agents",
   "bin": {
     "founder-skills": "bin/founder-skills.js"
